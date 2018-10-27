@@ -120,7 +120,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
           </View>
         </ViewWrapper>
 
-        <ButtonGroup buttonText={!play ? 'Play' : 'Pause'} path={'/animate-keyframes'} onClick={() => this.setState(({ play }) => ({ play: !play }))}  />
+        <ButtonGroup buttonText={!play ? 'Pause' : 'Resume'} path={'/animate-keyframes'} onClick={() => this.setState(({ play }) => ({ play: !play }))}  />
 
         <SyntaxHighlighter language="javascript" style={docco}>
           {code(play)}

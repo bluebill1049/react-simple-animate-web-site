@@ -8,14 +8,6 @@ import 'typeface-fjalla-one'
 import colors from '../styled/colors'
 import './layout.css'
 
-HTMLDocument.prototype.ready = function() {
-  return new Promise(function(resolve) {
-    if (document.readyState === 'complete') {
-      resolve(document)
-    }
-  })
-}
-
 const Menu = styled.div`
   position: fixed;
   top: 0;
@@ -49,22 +41,29 @@ const Menu = styled.div`
   }
 `
 
+const Cover = styled.div`
+  background: ${colors.primary};
+  z-index: 100;
+  color: ${colors.white};
+  font-family: 'Fjalla One', Helvetica;
+  font-size: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const MenuContext = React.createContext({
   setMenuState: () => {},
 })
 
 export default class Layout extends React.PureComponent {
   state = {
-    loaded: false,
     showMenu: false,
-  }
-
-  componentDidMount() {
-    document.ready().then(() => {
-      this.setState({
-        loaded: true,
-      })
-    })
   }
 
   setMenuState = () => {
@@ -74,6 +73,34 @@ export default class Layout extends React.PureComponent {
       }
     })
   }
+
+  componentDidMount() {
+    if (document.readyState === 'complete') {
+      this.timer = setTimeout(() => {
+        document.querySelector('body').style.visibility = 'visible';
+        this.setState({
+          loaded: true,
+        })
+      })
+    } else {
+      document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+          document.querySelector('body').style.visibility = 'visible';
+          this.setState({
+            loaded: true,
+          })
+        }
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  ready = false
+
+  timer
 
   render() {
     const { showMenu, loaded } = this.state
@@ -97,7 +124,6 @@ export default class Layout extends React.PureComponent {
             >
               <html lang="en" />
             </Helmet>
-
             <MenuContext.Provider
               value={{
                 setMenuState: this.setMenuState,
@@ -105,13 +131,25 @@ export default class Layout extends React.PureComponent {
             >
               <Animate
                 play={loaded}
+                startStyle={{ opacity: 1 }}
+                endStyle={{ opacity: 0 }}
+                durationSeconds={1}
+                onCompleteStyle={{ display: 'none' }}
+              >
+                <Cover />
+              </Animate>
+
+              <Animate
+                play
                 startStyle={{
-                  opacity: 0,
                   background: colors.white,
+                  width: '100%',
+                  overflow: 'hidden',
                 }}
                 endStyle={{
-                  opacity: 1,
-                  background: 'white',
+                  background: colors.white,
+                  width: '100%',
+                  overflow: 'hidden',
                   boxShadow: `0 0 10px ${colors.black}`,
                   ...(showMenu
                     ? {

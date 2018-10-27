@@ -1,9 +1,11 @@
 import React from 'react'
-import {AnimateKeyframes} from "react-simple-animate";
-import styled from "styled-components";
-import ReactIcon from "../components/reactIcon";
-import colors from "../styled/colors";
-import MenuGroup from './menuGroup';
+import { AnimateKeyframes } from 'react-simple-animate'
+import Snackbar from '@material-ui/core/Snackbar'
+import styled from 'styled-components'
+import ReactIcon from '../components/reactIcon'
+import colors from '../styled/colors'
+import MenuGroup from './menuGroup'
+import { H1, H2 } from '../styled/typography';
 
 const HeaderWrapper = styled.div`
   background: ${colors.primary};
@@ -13,7 +15,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 700px;
-  
+
   @media (max-height: 813px) {
     height: 100vh;
   }
@@ -32,25 +34,6 @@ const Heading = styled.div`
   font-family: 'Fjalla One', sans-serif;
 `
 
-const H1 = styled.h1`
-  font-size: 34px;
-  font-weight: 300;
-  color: white;
-  text-align: center;
-  margin-bottom: 10px;
-  font-family: 'Fjalla One', sans-serif;
-  letter-spacing: 1px;
-`
-
-const H2 = styled.h2`
-  font-size: 20px;
-  font-weight: 300;
-  color: white;
-  text-align: center;
-  margin-bottom: 10px;
-  font-family: sans-serif;
-`
-
 const Code = styled.span`
   color: ${colors.white};
   display: block;
@@ -63,30 +46,71 @@ const Code = styled.span`
   align-content: unset;
 `
 
-const Header = () => (
-  <HeaderWrapper>
-    <MenuGroup />
+const SnackbarWrapper = styled.div`
+  & > div > div {
+    background: ${colors.secondary};
+  }
+`
 
-    <Logo>
-      <AnimateKeyframes
-        play
-        durationSeconds={10}
-        direaction="alternate"
-        iterationCount="infinite"
-        keyframes={['transform: rotateZ(0deg)', 'transform: rotateZ(359deg)']}
-      >
-        <ReactIcon color={colors.white} />
-      </AnimateKeyframes>
-    </Logo>
-    <Heading>
-      <H1>React Simple Animate</H1>
-      <H2>UI Animation Made Simple</H2>
-    </Heading>
+class Header extends React.PureComponent {
+  state = {
+    showSnackBars: false,
+  }
 
-    <Code>
-      <code>npm install --save styled-components</code>
-    </Code>
-  </HeaderWrapper>
-)
+  handleClose = () => {
+    this.setState({
+      showSnackBars: false,
+    })
+  }
+
+  render() {
+    const { showSnackBars } = this.state
+
+    return (
+      <HeaderWrapper>
+        <MenuGroup />
+
+        <Logo>
+          <AnimateKeyframes
+            play
+            durationSeconds={10}
+            direaction="alternate"
+            iterationCount="infinite"
+            keyframes={['transform: rotateZ(0deg)', 'transform: rotateZ(359deg)']}
+          >
+            <ReactIcon color={colors.white} />
+          </AnimateKeyframes>
+        </Logo>
+
+        <Heading>
+          <H1>React Simple Animate</H1>
+          <H2>UI Animation Made Simple</H2>
+        </Heading>
+
+        <Code>
+          <code
+            onClick={() => {
+              this.setState({ showSnackBars: true })
+            }}
+          >
+            npm install --S react-simple-animate
+          </code>
+        </Code>
+
+        <SnackbarWrapper>
+          <Snackbar
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            open={showSnackBars}
+            onClose={this.handleClose}
+            ContentProps={{
+              'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">❤ NPM Command is copied. Thank you!</span>}
+          />
+        </SnackbarWrapper>
+      </HeaderWrapper>
+    )
+  }
+}
 
 export default Header
