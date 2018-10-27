@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Animate } from 'react-simple-animate'
 import { MenuContext } from '../components/layout'
+import colors from "../styled/colors";
 
 const GitHub = styled.span`
   position: absolute;
@@ -12,23 +14,72 @@ const Menu = styled.span`
   position: absolute;
   top: 16px;
   left: 20px;
+  cursor: pointer;
 `
 
-export default class MenuGroup extends React.PureComponent {
+const style = {
+  position: 'fixed',
+  height: '50px',
+  width: '50px',
+  display: 'flex',
+  left: 10,
+  alignItems: 'center',
+};
+
+export default class TopMenuGroup extends React.PureComponent {
+  state = {
+    showFixedMenu: false,
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      if (window.scrollY > 75) {
+        this.setState({
+          showFixedMenu: true,
+        })
+      } else {
+        if (this.state.showFixedMenu) {
+          this.setState({
+            showFixedMenu: false,
+          })
+        }
+      }
+    })
+  }
+
   render() {
+    const { showFixedMenu } = this.state
+
     return (
       <MenuContext.Consumer>
         {({ setMenuState }) => {
           return (
             <>
-              <Menu onClick={setMenuState}>
-                <svg height="32px" viewBox="0 0 32 32" width="32px">
-                  <path
-                    fill="white"
-                    d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
-                  />
-                </svg>
-              </Menu>
+              <Animate
+                play={showFixedMenu}
+                startStyle={{
+                  top: 5,
+                  ...style
+                }}
+                delaySeconds={0.2}
+                endStyle={{
+                  top: 10,
+                  background: colors.secondary,
+                  borderRadius: '100%',
+                  zIndex: 1000,
+                  ...style,
+                }}
+                render={style => (
+                  <Menu onClick={setMenuState} {...style}>
+                    <svg height="32px" viewBox="0 0 32 32" width="32px">
+                      <path
+                        fill="white"
+                        d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
+                      />
+                    </svg>
+                  </Menu>
+                )}
+              />
               <a rel="noopener noreferrer" href="https://github.com/bluebill1049/react-simple-animate" target="_blank">
                 <GitHub>
                   <svg viewBox="0 0 496 512" height="30" aria-hidden="true" focusable="false" fill="currentColor">

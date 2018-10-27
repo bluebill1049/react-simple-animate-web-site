@@ -4,7 +4,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import styled from 'styled-components'
 import ReactIcon from '../components/reactIcon'
 import colors from '../styled/colors'
-import MenuGroup from './menuGroup'
+import TopMenuGroup from './topMenuGroup'
 import { H1, H2 } from '../styled/typography';
 
 const HeaderWrapper = styled.div`
@@ -68,7 +68,7 @@ class Header extends React.PureComponent {
 
     return (
       <HeaderWrapper>
-        <MenuGroup />
+        <TopMenuGroup />
 
         <Logo>
           <AnimateKeyframes

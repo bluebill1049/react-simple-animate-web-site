@@ -4,9 +4,9 @@ import { Animate } from 'react-simple-animate'
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light'
 import jsx from 'react-syntax-highlighter/languages/prism/jsx'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import ReactIcon from './reactIcon'
-import CodeContainer from '../components/codeContainer'
-import ButtonGroup from '../components/ButtonGroup';
+import ReactIcon from '../reactIcon'
+import CodeContainer from '../codeContainer'
+import ButtonGroup from '../ButtonGroup';
 
 registerLanguage('jsx', jsx)
 

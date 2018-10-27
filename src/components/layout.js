@@ -1,45 +1,12 @@
 import React from 'react'
 import { Animate } from 'react-simple-animate'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import 'typeface-fjalla-one'
 import colors from '../styled/colors'
+import Menu from '../components/menu'
 import './layout.css'
-
-const Menu = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100vw;
-  background: ${colors.secondary};
-  z-index: -1;
-  
-  & > ul {
-    list-style: none;
-    color: ${colors.white}
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: bold;
-    
-    & > ul {
-      list-style-type: disc;
-      text-transform: none;
-    }
-  }
-    
-  & li {
-    padding: 10px 0;
-    border-bottom: 1px solid ${colors.primary};
-  }
-  
-  & a {
-    color: ${colors.white};
-    text-decoration: none;
-  }
-`
 
 const Cover = styled.div`
   background: ${colors.primary};
@@ -64,56 +31,36 @@ export const MenuContext = React.createContext({
 export default class Layout extends React.PureComponent {
   state = {
     showMenu: false,
-    hideMenu: false,
-    test: false,
+    isMenuVisible: false,
   }
 
   setMenuState = () => {
     this.setState(state => {
       if (state.showMenu) {
-        clearTimeout(this.menuTimer);
+        clearTimeout(this.menuTimer)
         this.menuTimer = setTimeout(() => {
           this.setState({
-            test: false,
+            isMenuVisible: false,
           })
-        })
+        }, 800)
       }
+
       return {
         showMenu: !state.showMenu,
-        ...(!state.showMenu ? { test: true } : null),
+        ...(!state.showMenu ? { isMenuVisible: true } : null),
       }
     })
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
-      if (window.scrollY < 0) {
-        this.setState({
-          hideMenu: true,
-        })
-      } else {
-        if (this.state.hideMenu) {
-          this.setState({
-            hideMenu: false,
-          })
-        }
-      }
-    })
-
     if (document.readyState === 'complete') {
       this.timer = setTimeout(() => {
-        document.querySelector('body').style.visibility = 'visible'
-        this.setState({
-          loaded: true,
-        })
+        this.pageLoaded()
       })
     } else {
       document.onreadystatechange = () => {
         if (document.readyState === 'complete') {
-          document.querySelector('body').style.visibility = 'visible'
-          this.setState({
-            loaded: true,
-          })
+          this.pageLoaded()
         }
       }
     }
@@ -121,16 +68,22 @@ export default class Layout extends React.PureComponent {
 
   componentWillUnmount() {
     clearTimeout(this.timer)
+    clearTimeout(this.menuTimer)
   }
 
-  ready = false
+  pageLoaded = () => {
+    document.querySelector('body').style.visibility = 'visible'
+    this.setState({
+      loaded: true,
+    })
+  }
 
   timer
 
   menuTimer
 
   render() {
-    const { showMenu, loaded, test } = this.state
+    const { showMenu, loaded, isMenuVisible } = this.state
 
     return (
       <StaticQuery
@@ -166,6 +119,27 @@ export default class Layout extends React.PureComponent {
                 <Cover />
               </Animate>
 
+              <div
+                style={{
+                  visibility: isMenuVisible ? 'visible' : 'hidden',
+                }}
+              >
+                <Animate
+                  play={showMenu}
+                  startStyle={{
+                    transform: 'translateX(200px)',
+                    zIndex: -1,
+                  }}
+                  endStyle={{
+                    transform: 'translateX(0)',
+                    zIndex: 0,
+                  }}
+                  durationSeconds={0.8}
+                  easeType="cubic-bezier(0.19, 1, 0.22, 1)"
+                  render={style => <Menu {...style} />}
+                />
+              </div>
+
               <Animate
                 play
                 startStyle={{
@@ -187,47 +161,18 @@ export default class Layout extends React.PureComponent {
                 durationSeconds={0.8}
                 easeType="cubic-bezier(0.19, 1, 0.22, 1)"
               >
-                {this.props.children}
+                <div
+                  onClick={() => {
+                    if (this.state.showMenu) {
+                      this.setState({
+                        showMenu: false,
+                      })
+                    }
+                  }}
+                >
+                  {this.props.children}
+                </div>
               </Animate>
-
-              <div
-                style={{
-                  opacity: test ? 1 : 0,
-                }}
-              >
-                <Animate
-                  play={showMenu}
-                  startStyle={{
-                    transform: 'translateX(200px)',
-                  }}
-                  endStyle={{
-                    transform: 'translateX(0)',
-                  }}
-                  durationSeconds={0.8}
-                  easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-                  render={style => (
-                    <Menu {...style} ref={this.menu}>
-                      <ul>
-                        <li>
-                          <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                          <Link to="/docs">Introduction</Link>
-                        </li>
-                        <li>
-                          <Link to="/basic">{`<Animate />`}</Link>
-                        </li>
-                        <li>
-                          <Link to="/advanced">{`<AnimateKeyframes />`}</Link>
-                        </li>
-                        <li>
-                          <Link to="/api-reference">{`<AnimateGroup />`}</Link>
-                        </li>
-                      </ul>
-                    </Menu>
-                  )}
-                />
-              </div>
             </MenuContext.Provider>
           </>
         )}

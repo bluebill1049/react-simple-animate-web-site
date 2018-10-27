@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'React Simple Animate',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

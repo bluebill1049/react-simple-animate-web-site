@@ -6,18 +6,10 @@ import AnimateKeyframesPanel from '../components/home/animateKeyframesPanel'
 import Header from '../components/header'
 import Features from '../components/home/features'
 
-const IndexPage = () => (
+const Introduction = () => (
   <Layout>
     <Header />
-
-    <Features />
-
-    <AnimatePanel />
-
-    <AnimateKeyframesPanel />
-
-    <AnimateGroupPanel />
   </Layout>
 )
 
-export default IndexPage
+export default Introduction
