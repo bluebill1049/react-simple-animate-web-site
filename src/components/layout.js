@@ -64,20 +64,45 @@ export const MenuContext = React.createContext({
 export default class Layout extends React.PureComponent {
   state = {
     showMenu: false,
+    hideMenu: false,
+    test: false,
   }
 
   setMenuState = () => {
     this.setState(state => {
+      if (state.showMenu) {
+        clearTimeout(this.menuTimer);
+        this.menuTimer = setTimeout(() => {
+          this.setState({
+            test: false,
+          })
+        })
+      }
       return {
         showMenu: !state.showMenu,
+        ...(!state.showMenu ? { test: true } : null),
       }
     })
   }
 
   componentDidMount() {
+    document.addEventListener('scroll', () => {
+      if (window.scrollY < 0) {
+        this.setState({
+          hideMenu: true,
+        })
+      } else {
+        if (this.state.hideMenu) {
+          this.setState({
+            hideMenu: false,
+          })
+        }
+      }
+    })
+
     if (document.readyState === 'complete') {
       this.timer = setTimeout(() => {
-        document.querySelector('body').style.visibility = 'visible';
+        document.querySelector('body').style.visibility = 'visible'
         this.setState({
           loaded: true,
         })
@@ -85,7 +110,7 @@ export default class Layout extends React.PureComponent {
     } else {
       document.onreadystatechange = () => {
         if (document.readyState === 'complete') {
-          document.querySelector('body').style.visibility = 'visible';
+          document.querySelector('body').style.visibility = 'visible'
           this.setState({
             loaded: true,
           })
@@ -102,8 +127,10 @@ export default class Layout extends React.PureComponent {
 
   timer
 
+  menuTimer
+
   render() {
-    const { showMenu, loaded } = this.state
+    const { showMenu, loaded, test } = this.state
 
     return (
       <StaticQuery
@@ -133,7 +160,7 @@ export default class Layout extends React.PureComponent {
                 play={loaded}
                 startStyle={{ opacity: 1 }}
                 endStyle={{ opacity: 0 }}
-                durationSeconds={1}
+                durationSeconds={0.5}
                 onCompleteStyle={{ display: 'none' }}
               >
                 <Cover />
@@ -163,38 +190,44 @@ export default class Layout extends React.PureComponent {
                 {this.props.children}
               </Animate>
 
-              <Animate
-                play={showMenu}
-                startStyle={{
-                  transform: 'translateX(200px)',
+              <div
+                style={{
+                  opacity: test ? 1 : 0,
                 }}
-                endStyle={{
-                  transform: 'translateX(0)',
-                }}
-                durationSeconds={0.8}
-                easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-                render={style => (
-                  <Menu {...style}>
-                    <ul>
-                      <li>
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                        <Link to="/docs">Introduction</Link>
-                      </li>
-                      <li>
-                        <Link to="/basic">{`<Animate />`}</Link>
-                      </li>
-                      <li>
-                        <Link to="/advanced">{`<AnimateKeyframes />`}</Link>
-                      </li>
-                      <li>
-                        <Link to="/api-reference">{`<AnimateGroup />`}</Link>
-                      </li>
-                    </ul>
-                  </Menu>
-                )}
-              />
+              >
+                <Animate
+                  play={showMenu}
+                  startStyle={{
+                    transform: 'translateX(200px)',
+                  }}
+                  endStyle={{
+                    transform: 'translateX(0)',
+                  }}
+                  durationSeconds={0.8}
+                  easeType="cubic-bezier(0.19, 1, 0.22, 1)"
+                  render={style => (
+                    <Menu {...style} ref={this.menu}>
+                      <ul>
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs">Introduction</Link>
+                        </li>
+                        <li>
+                          <Link to="/basic">{`<Animate />`}</Link>
+                        </li>
+                        <li>
+                          <Link to="/advanced">{`<AnimateKeyframes />`}</Link>
+                        </li>
+                        <li>
+                          <Link to="/api-reference">{`<AnimateGroup />`}</Link>
+                        </li>
+                      </ul>
+                    </Menu>
+                  )}
+                />
+              </div>
             </MenuContext.Provider>
           </>
         )}
