@@ -1,23 +1,15 @@
 // @flow
 import React from 'react'
 import { AnimateKeyframes } from 'react-simple-animate'
-import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light'
 import jsx from 'react-syntax-highlighter/languages/prism/jsx'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import colors from '../styled/colors'
 import CodeContainer from '../components/codeContainer'
+import ButtonGroup from "../components/ButtonGroup";
 
 registerLanguage('jsx', jsx)
-
-const ButtonWrapper = styled.div`
-  margin-bottom: 20px;
-
-  & button {
-    border-color: ${colors.primary};
-  }
-`
 
 const code = () => `<AnimateKeyframes
   play
@@ -85,7 +77,6 @@ const Cricle = styled.div`
   border-radius: 100%;
   box-sizing: border-box;
   border: 10px solid ${colors.primary};
-  //box-shadow: 10px 10px 0px ${colors.primary};
 `
 
 const ViewWrapper = styled.div`
@@ -98,7 +89,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
   }
 
   render() {
-    const { play } = this.state
+    const { play } = this.state;
 
     return (
       <CodeContainer title="Animate Keyframes" description="Css keyframes animation within Component">
@@ -108,7 +99,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
               play
               iterationCount="infinite"
               direction="alternate"
-              durationSeconds={10}
+              durationSeconds={5}
               playState={!play ? 'running' : 'paused'}
               keyframes={[
                 'rotateX(0) rotateY(0) rotateZ(0)',
@@ -129,9 +120,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
           </View>
         </ViewWrapper>
 
-        <ButtonWrapper onClick={() => this.setState(({ play }) => ({ play: !play }))}>
-          <Button variant="outlined">{play ? 'Play' : 'Pause'}</Button>
-        </ButtonWrapper>
+        <ButtonGroup buttonText={!play ? 'Play' : 'Pause'} path={'/animate-keyframes'} onClick={() => this.setState(({ play }) => ({ play: !play }))}  />
 
         <SyntaxHighlighter language="javascript" style={docco}>
           {code(play)}
