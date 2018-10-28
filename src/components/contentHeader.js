@@ -13,8 +13,8 @@ const MenuWrapper = styled.div`
 `
 
 const H1Extend = styled(H1)`
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 17px;
+  margin-top: 24px;
   margin-bottom: 20px;
 `
 

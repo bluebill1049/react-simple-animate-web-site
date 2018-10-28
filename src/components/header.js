@@ -45,26 +45,12 @@ const Code = styled.span`
   align-content: unset;
 `
 
-const SnackbarWrapper = styled.div`
-  & > div > div {
-    background: ${colors.secondary};
-  }
-`
-
 class Header extends React.PureComponent {
   state = {
     showSnackBars: false,
   }
 
-  handleClose = () => {
-    this.setState({
-      showSnackBars: false,
-    })
-  }
-
   render() {
-    const { showSnackBars } = this.state
-
     return (
       <HeaderWrapper>
         <TopMenuGroup />

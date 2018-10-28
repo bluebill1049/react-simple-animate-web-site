@@ -102,7 +102,7 @@ export default class TopMenuGroup extends React.PureComponent {
                     />
                   </svg>
                 </GitHub>
-                <a href="https://medium.com/jsdownunder/react-ui-animation-made-simple-c2ff98056659" target="_blank">
+                <a href="https://medium.com/jsdownunder/react-ui-animation-made-simple-c2ff98056659" without rel="noopener noreferrer" target="_blank">
                   <Medium>
                     <svg
                       viewBox="0 0 512 512"

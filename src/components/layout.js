@@ -6,7 +6,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import 'typeface-fjalla-one'
 import colors from '../styled/colors'
 import Menu from '../components/menu'
-import Footer from './footer';
+import Footer from './footer'
 import './layout.css'
 
 const Cover = styled.div`
@@ -98,7 +98,11 @@ export default class Layout extends React.PureComponent {
           }
         `}
         render={data => (
-          <>
+          <div
+            style={{
+              overflow: 'hidden',
+            }}
+          >
             <Helmet
               title={data.site.siteMetadata.title}
               meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]}
@@ -138,7 +142,7 @@ export default class Layout extends React.PureComponent {
                   }}
                   durationSeconds={0.8}
                   easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-                  render={style => <Menu {...{...style, location: this.props.location }} />}
+                  render={style => <Menu {...{ ...style, location: this.props.location }} />}
                 />
               </div>
 
@@ -177,7 +181,7 @@ export default class Layout extends React.PureComponent {
               </Animate>
               <Footer />
             </MenuContext.Provider>
-          </>
+          </div>
         )}
       />
     )
