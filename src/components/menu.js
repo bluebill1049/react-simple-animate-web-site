@@ -55,7 +55,7 @@ const links = [
   },
 ]
 
-export default ({ style, location: { pathname } }) => (
+export default ({ style, location: { pathname } = {} }) => (
   <Root style={style}>
     <ul>
       {links.map(({ path, name }) => {
