@@ -6,8 +6,8 @@ import AnimateKeyframesPanel from '../components/home/animateKeyframesPanel'
 import Header from '../components/header'
 import Features from '../components/home/features'
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = ({location}) => (
+  <Layout location={location}>
     <Header />
 
     <Features />

@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
-import Content from '../components/animateContent'
+import Content from '../components/animateGroup'
 
-const Animate = ({location}) => (
+const AnimateGroup = ({location}) => (
   <Layout location={location}>
-    <ContentHeader title="<Animate />" />
+    <ContentHeader title="<AnimateGroup />" />
     <Content />
   </Layout>
 )
 
-export default Animate
+export default AnimateGroup

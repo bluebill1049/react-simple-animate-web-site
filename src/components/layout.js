@@ -6,6 +6,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import 'typeface-fjalla-one'
 import colors from '../styled/colors'
 import Menu from '../components/menu'
+import Footer from './footer';
 import './layout.css'
 
 const Cover = styled.div`
@@ -104,6 +105,7 @@ export default class Layout extends React.PureComponent {
             >
               <html lang="en" />
             </Helmet>
+
             <MenuContext.Provider
               value={{
                 setMenuState: this.setMenuState,
@@ -136,7 +138,7 @@ export default class Layout extends React.PureComponent {
                   }}
                   durationSeconds={0.8}
                   easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-                  render={style => <Menu {...style} />}
+                  render={style => <Menu {...{...style, location: this.props.location }} />}
                 />
               </div>
 
@@ -173,6 +175,7 @@ export default class Layout extends React.PureComponent {
                   {this.props.children}
                 </div>
               </Animate>
+              <Footer />
             </MenuContext.Provider>
           </>
         )}

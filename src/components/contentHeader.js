@@ -18,12 +18,12 @@ const H1Extend = styled(H1)`
   margin-bottom: 20px;
 `
 
-export default function() {
+export default function({ title}) {
   return (
     <div>
       <MenuWrapper>
         <TopMenuGroup />
-        <H1Extend>{`<Animate />`}</H1Extend>
+        <H1Extend>{title}</H1Extend>
       </MenuWrapper>
     </div>
   )

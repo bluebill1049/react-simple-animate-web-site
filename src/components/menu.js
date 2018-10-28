@@ -36,21 +36,44 @@ const Root = styled.div`
   }
 `
 
-export default ({ style }) => (
+const links = [
+  {
+    path: '/',
+    name: 'Home',
+  },
+  {
+    path: '/animate',
+    name: '<Animate />',
+  },
+  {
+    path: '/animate-keyframes',
+    name: '<AnimateKeyframes />',
+  },
+  {
+    path: '/animate-group',
+    name: '<AnimateGroup />',
+  },
+]
+
+export default ({ style, location: { pathname } }) => (
   <Root style={style}>
     <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/animate">{`<Animate />`}</Link>
-      </li>
-      <li>
-        <Link to="/animate-keyframes">{`<AnimateKeyframes />`}</Link>
-      </li>
-      <li>
-        <Link to="/animate-group">{`<AnimateGroup />`}</Link>
-      </li>
+      {links.map(({ path, name }) => {
+        return (
+          <li
+            style={{
+              ...(pathname === path
+                ? {
+                    opacity: 0.3,
+                  }
+                : null),
+            }}
+            key={name}
+          >
+            <Link to={path}>{name}</Link>
+          </li>
+        )
+      })}
     </ul>
   </Root>
 )

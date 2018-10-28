@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import Button from "@material-ui/core/Button/Button";
-import { navigate } from 'gatsby';
-import colors from '../../styled/colors'
+import Button from '@material-ui/core/Button/Button'
+import { navigate } from 'gatsby'
+import colors from '../styled/colors'
 
 const ContentContainer = styled.div`
   padding: 20px;
@@ -27,14 +27,33 @@ const Type = styled.span`
   color: ${colors.purple};
 `
 
-const renderProps = `<Animate 
-  play={true} 
-  startStyle={{ opacity: 0 }}
-  endStyle={{ opacity: 1 }} 
+const renderProps = `<AnimateKeyframes 
+  play 
+  keyframes={['opacity: 0', 'opacity: 1']} 
   render={({ style }) => (
     <Component style={ style } />
   )} 
 />
+`
+
+const keyframesString = `<AnimateKeyframes 
+  play 
+  keyframes={['opacity: 0', 'opacity: 1']}
+/>
+  <Component />
+</AnimateKeyframes>
+`
+
+const keyframesObject = `<AnimateKeyframes 
+  play 
+  keyframes={[
+    { 0: 'opacity: 0' }, // 0%
+    { 50: 'opacity: 0.5' }, // 50%
+    { 100: 'opacity: 1' } // 100%
+  ]}
+/>
+  <Component />
+</AnimateKeyframes>
 `
 
 export default function Content() {
@@ -54,18 +73,82 @@ export default function Content() {
         </li>
         <li>
           <code>
-            startStyle: <Type>Object</Type>
+            keyframes: <Type>{'Array<string> | Array<Object>'}</Type>
           </code>
 
-          <p>Component initial inline style.</p>
+          <p>
+            Array of styles in <code>string</code>.
+          </p>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {keyframesString}
+          </SyntaxHighlighter>
+          <p>
+            Array of Object with key pair of percentage and <code>style</code>.
+          </p>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {keyframesObject}
+          </SyntaxHighlighter>
         </li>
         <li>
           <code>
-            endStyle: <Type>Object</Type>
+            durationSeconds: <Type>number</Type> = 0.3
+          </code>
+          <p>
+            How long the animation takes in seconds. if <code>reverseDurationSeconds</code> is not provided, then this
+            apply to reverse duration seconds as well
+          </p>
+        </li>
+        <li>
+          <code>
+            delaySeconds: <Type>number</Type>
           </code>
 
-          <p>Component transition to inline style.</p>
+          <p>How much delay should apply before animation starts.</p>
         </li>
+        <li>
+          <code>direction: <Type>number | string</Type></code>
+
+          <p>
+            Number of times an animation cycle should be played:&nbsp;
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" rel="noopener noreferrer" target="_blank">
+              animation-iteration-count
+            </a>
+          </p>
+        </li>
+        <li>
+          <code>playState: <Type>'running' | 'paused'</Type> = 'running'</code>
+
+          <p>
+            An animation is running or paused&nbsp;
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" rel="noopener noreferrer" target="_blank">
+              animation-play-state
+            </a>
+          </p>
+        </li>
+        <li>
+          <code>fillMode: <Type>'none' | 'forwards' | 'backwards' | 'both'</Type> = 'none'</code>
+
+          <p>
+            Animation applies styles to target before and after execution&nbsp;
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode" rel="noopener noreferrer" target="_blank">
+              animation-play-state
+            </a>
+          </p>
+        </li>
+        <li>
+          <code>easeType</code>
+
+          <p>
+            Easing type refer to{' '}
+            <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
+              http://easings.net/
+            </a>
+          </p>
+        </li>
+      </ul>
+
+      <h3>Advanced</h3>
+      <ul>
         <li>
           <code>
             render: <Type>Function</Type>
@@ -85,66 +168,6 @@ export default function Content() {
         </li>
         <li>
           <code>
-            onCompleteStyle: <Type>Object</Type>
-          </code>
-          <p>
-            Style to be applied after the animation is completed. Useful when you want to apply{' '}
-            <code>display: none</code> after animation is complete
-          </p>
-        </li>
-        <li>
-          <code>
-            durationSeconds: <Type>number</Type> = 0.3
-          </code>
-          <p>
-            How long the animation takes in seconds. if <code>reverseDurationSeconds</code> is not provided, then this
-            apply to reverse duration seconds as well
-          </p>
-        </li>
-        <li>
-          <code>
-            delaySeconds: <Type>number</Type>
-          </code>
-
-          <p>How much delay should apply before animation starts.</p>
-        </li>
-        <li>
-          <code>
-            reverseDurationSeconds: <Type>number</Type>
-          </code>
-
-          <p>How long the reverse/toggle animation takes in seconds.</p>
-        </li>
-        <li>
-          <code>
-            reverseDelaySeconds: <Type>number</Type>
-          </code>
-
-          <p>How much delay should apply when reverse/toggle animation.</p>
-        </li>
-        <li>
-          <code>
-            onComplete: <Type>Function</Type>
-          </code>
-
-          <p>Call back function after animation complete.</p>
-        </li>
-        <li>
-          <code>easeType</code>
-
-          <p>
-            Easing type refer to{' '}
-            <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
-              http://easings.net/
-            </a>
-          </p>
-        </li>
-      </ul>
-
-      <h3>Advanced</h3>
-      <ul>
-        <li>
-          <code>
             sequenceIndex: <Type>number</Type>
           </code>
 
@@ -153,7 +176,9 @@ export default function Content() {
             AnimationGroup sequences.
           </p>
 
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
         <li>
           <code>
@@ -164,7 +189,9 @@ export default function Content() {
             This props is used by <code>AnimateGroup</code>, which provides unique id to associate with AnimationGroup
             sequences.
           </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
         <li>
           <code>
@@ -175,25 +202,9 @@ export default function Content() {
             This props is used by <code>AnimateGroup</code>, When animation need to play ahead, which overlay on top of
             the previous animation by seconds.
           </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
-        </li>
-        <li>
-          <code>
-            mount: <Type>boolean</Type> = false
-          </code>
-
-          <p>
-            Apply <code>mount</code> as true, will mount component then apply animation.
-          </p>
-        </li>
-        <li>
-          <code>
-            unMount: <Type>boolean</Type> = false
-          </code>
-
-          <p>
-            Apply <code>unMount</code> as true, will unMount component after animation completion.
-          </p>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
       </ul>
 
