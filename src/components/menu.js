@@ -43,9 +43,6 @@ export default ({ style }) => (
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/introduction">Introduction</Link>
-      </li>
-      <li>
         <Link to="/animate">{`<Animate />`}</Link>
       </li>
       <li>

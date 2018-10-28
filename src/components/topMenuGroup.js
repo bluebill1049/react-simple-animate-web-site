@@ -6,7 +6,7 @@ import colors from "../styled/colors";
 
 const GitHub = styled.span`
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 20px;
 `
 
@@ -24,6 +24,7 @@ const style = {
   display: 'flex',
   left: 10,
   alignItems: 'center',
+  justifyContent: 'center'
 };
 
 export default class TopMenuGroup extends React.PureComponent {
@@ -31,20 +32,26 @@ export default class TopMenuGroup extends React.PureComponent {
     showFixedMenu: false,
   }
 
-  componentDidMount() {
-    document.addEventListener('scroll', () => {
-      if (window.scrollY > 75) {
+  animateMenu = () => {
+    if (window.scrollY > 75) {
+      this.setState({
+        showFixedMenu: true,
+      })
+    } else {
+      if (this.state.showFixedMenu) {
         this.setState({
-          showFixedMenu: true,
+          showFixedMenu: false,
         })
-      } else {
-        if (this.state.showFixedMenu) {
-          this.setState({
-            showFixedMenu: false,
-          })
-        }
       }
-    })
+    }
+  };
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.animateMenu)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.animateMenu)
   }
 
   render() {
