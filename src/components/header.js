@@ -1,6 +1,5 @@
 import React from 'react'
 import { AnimateKeyframes } from 'react-simple-animate'
-import Snackbar from '@material-ui/core/Snackbar'
 import styled from 'styled-components'
 import ReactIcon from '../components/reactIcon'
 import colors from '../styled/colors'
@@ -96,18 +95,6 @@ class Header extends React.PureComponent {
             npm install --S react-simple-animate
           </code>
         </Code>
-
-        <SnackbarWrapper>
-          <Snackbar
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            open={showSnackBars}
-            onClose={this.handleClose}
-            ContentProps={{
-              'aria-describedby': 'message-id',
-            }}
-            message={<span id="message-id">❤ NPM Command is copied. Thank you!</span>}
-          />
-        </SnackbarWrapper>
       </HeaderWrapper>
     )
   }

@@ -14,7 +14,7 @@ const Root = styled.div`
 export default function Footer() {
   return (
     <Root>
-      Build with <span role="img">❤</span>️ by <a href="https://twitter.com/bluebill1049">@bill luo</a>, Brett Master
+      Build with <span role="img">❤️</span>️by <a href="https://twitter.com/bluebill1049">@bill luo</a>, Brett Master
     </Root>
   )
 }
