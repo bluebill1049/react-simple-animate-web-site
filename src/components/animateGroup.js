@@ -32,9 +32,34 @@ const sequences = `<AnimateGroup play>
 </AnimateGroup>
 `
 
+const example = `import react from 'react';
+import { Animate, AnimateGroup } from 'react-simple-animate';
+
+const props = {
+  startStyle: { opacity: 0 },
+  endStyle: { opacity: 1 }
+};
+
+export default () =>
+  <AnimateGroup play sequences={[
+    { sequenceId: 'header', ...props } // play first
+    { sequenceId: 'content', ...props, overlaySeconds: 0.1 } // play during header animation and overlay by 0.1s
+    { sequenceId: 'footer', ...props, delaySeconds: 0.4 } // play after content with 0.4s seconds delay
+  ]}>
+    <Animate sequenceId="header" />
+    <Animate sequenceId="content" />
+    <Animate sequenceId="footer" />
+  </AnimateGroup>
+);`
+
 export default function Content() {
   return (
     <ContentContainer>
+      <p>
+        <code>{'<AnimateGroup />'}</code> is made to chain up <code>{'<Animate />'}</code> and{' '}
+        <code>{'<AnimateKeyframes />'}</code> in sequences, so animations will play one after another in such order
+        which has been defined.
+      </p>
       <h3>Basic</h3>
       <ul>
         <li>
@@ -72,8 +97,10 @@ export default function Content() {
         </li>
       </ul>
 
-      <h3>Advanced Examples</h3>
-
+      <h3>Examples</h3>
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {example}
+      </SyntaxHighlighter>
     </ContentContainer>
   )
 }

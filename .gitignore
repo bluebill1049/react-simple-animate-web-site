@@ -6,4 +6,4 @@ yarn-error.log
 # Build directory
 /public
 .DS_Store
-.idea
+.idea/
