@@ -65,7 +65,8 @@ export default ({ children, play, onCompleteCallBack }) => {
   return <AnimateKeyframes 
     play 
     delaySeconds={1}
-    delaySeconds={10}
+    durationSeconds={10}]
+    iterationCount={3}
     direction="alternative"
     keyframes={[
        'transform: translateY(0)',
@@ -274,6 +275,7 @@ export default function Content() {
       </ul>
 
       <h3>Examples: </h3>
+      <p>The following example will animate the component to move at x coordinate 10px with 3 times.</p>
       <SyntaxHighlighter language="javascript" style={docco}>
         {exmaple}
       </SyntaxHighlighter>
