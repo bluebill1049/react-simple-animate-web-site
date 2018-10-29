@@ -2,18 +2,22 @@ import React, { useState } from 'react'
 
 export default function Example() {
   // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0)
+  const dta = useState('bill')
+  const [count, setCount] = dta;
+
+  console.log(dta)
+  function test() {
+    console.log('wtd')
+    console.log(setCount)
+    console.log(setCount(2));
+  }
 
   console.log(count)
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => {
-        console.log('hit')
-        console.log(setCount())
-        setCount(() => count + 1)
-      }}>Click me</button>
+      <button onClick={test}>Click me</button>
     </div>
   )
 }

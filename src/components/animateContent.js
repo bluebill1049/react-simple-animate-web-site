@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import Button from '@material-ui/core/Button/Button'
-import { navigate } from 'gatsby'
 import colors from '../styled/colors'
+import CommonProps from './CommonProps';
 
 const ContentContainer = styled.div`
   padding: 20px;
@@ -25,16 +24,6 @@ const ContentContainer = styled.div`
 
 const Type = styled.span`
   color: ${colors.purple};
-`
-
-const renderProps = `<Animate 
-  play 
-  startStyle={{ opacity: 0 }}
-  endStyle={{ opacity: 1 }} 
-  render={({ style }) => (
-    <Component style={ style } />
-  )} 
-/>
 `
 
 const example = `
@@ -63,8 +52,8 @@ export default function Content() {
   return (
     <ContentContainer>
       <p>
-        <code>{'<Animate />'}</code> is made to solve a simple React animation problem; animates <code>Components</code>{' '}
-        from destination A to destination B with the capability to revers play.
+        <code>{'<Animate />'}</code> is made to solve a simple React animation problem, which is animates{' '}
+        <code>Components</code> from destination A to destination B (with the ability to reverse play).
       </p>
 
       <h3>Basic Props</h3>
@@ -76,7 +65,7 @@ export default function Content() {
 
           <p>
             Defaults to <code>false</code>, set to true to start the animation, if set <code>play</code> as{' '}
-            <code>true</code> as default prop, then the animation will play right after <code>componentWillMount</code>.
+            <code>true</code> as default prop, then the animation will play right after <code>componentDidMount</code>.
           </p>
         </li>
         <li>
@@ -99,7 +88,7 @@ export default function Content() {
           </code>
           <p>
             Style to be applied after the animation is completed. Useful when you want to apply{' '}
-            <code>display: none</code> after animation is complete
+            <code>display: none</code> after animation is completed.
           </p>
         </li>
         <li>
@@ -107,8 +96,8 @@ export default function Content() {
             durationSeconds: <Type>number</Type> = 0.3
           </code>
           <p>
-            How long the animation takes in seconds. if <code>reverseDurationSeconds</code> is not provided, then this
-            apply to reverse duration seconds as well
+            How long the animation takes in seconds. (if <code>reverseDurationSeconds</code> is not provided, then this
+            apply to reverse animation duration seconds as well.)
           </p>
         </li>
         <li>
@@ -155,72 +144,7 @@ export default function Content() {
 
       <h3>Advanced</h3>
       <ul>
-        <li>
-          <code>
-            render: <Type>Function</Type>
-          </code>
-
-          <p>
-            This is a{' '}
-            <a href="https://reactjs.org/docs/render-props.html" rel="noopener noreferrer" target="_blank">
-              Render props
-            </a>{' '}
-            function, which is useful for render without any wrapper <code>div</code>
-            from <code>react-simple-animate</code> or adding event listeners.
-          </p>
-          <SyntaxHighlighter language="javascript" style={docco}>
-            {renderProps}
-          </SyntaxHighlighter>
-        </li>
-        <li>
-          <code>
-            sequenceIndex: <Type>number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, which provides unique array index to associate with
-            AnimationGroup sequences.
-          </p>
-
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
-        <li>
-          <code>
-            sequenceId: <Type>string | number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, which provides unique id to associate with AnimationGroup
-            sequences.
-          </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
-        <li>
-          <code>
-            overlaySeconds: <Type>number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, When animation need to play ahead, which overlay on top of
-            the previous animation by seconds.
-          </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
-        <li>
-          <code>
-            mount: <Type>boolean</Type> = false
-          </code>
-
-          <p>
-            Apply <code>mount</code> as true, will mount component then apply animation.
-          </p>
-        </li>
+        <CommonProps />
         <li>
           <code>
             unMount: <Type>boolean</Type> = false
@@ -234,8 +158,7 @@ export default function Content() {
 
       <h3>Examples: </h3>
       <p>
-        The following example will animate component's translate x and y with different duration seconds from play and
-        reverse the animation
+        The following example will animate the component.
       </p>
       <SyntaxHighlighter language="javascript" style={docco}>
         {example}

@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import Button from '@material-ui/core/Button/Button'
-import { navigate } from 'gatsby'
 import colors from '../styled/colors'
+import CommonProps from './CommonProps'
+import { PropType } from '../styled/typography';
 
 const ContentContainer = styled.div`
   padding: 20px;
@@ -21,19 +21,6 @@ const ContentContainer = styled.div`
     background: ${colors.secondary};
     color: ${colors.white};
   }
-`
-
-const Type = styled.span`
-  color: ${colors.purple};
-`
-
-const renderProps = `<AnimateKeyframes 
-  play 
-  keyframes={['opacity: 0', 'opacity: 1']} 
-  render={({ style }) => (
-    <Component style={ style } />
-  )} 
-/>
 `
 
 const keyframesString = `<AnimateKeyframes 
@@ -90,24 +77,26 @@ export default function Content() {
         >
           CSS animation
         </a>{' '}
-        specification. It's best to used for infinite animation and animation which can be paused and resumed.
+        specification. It's best to used for infinite animation, or animation which can be paused and resumed.
       </p>
       <h3>Basic Props</h3>
       <ul>
         <li>
           <code>
-            play: <Type>boolean</Type> = false
+            play: <PropType>boolean</PropType> = false
           </code>
 
           <p>
             Defaults to <code>false</code>, set to true to start the animation, if set <code>play</code> as{' '}
-            <code>true</code> as default prop, then the animation will play right after <code>componentWillMount</code>.
+            <code>true</code> as default prop, then the animation will play right after <code>componentDidMount</code>.
           </p>
         </li>
         <li>
           <code>
-            keyframes: <Type>{'Array<string> | Array<Object>'}</Type>
+            keyframes: <PropType>{'Array<string> | Array<Object>'}</PropType>
           </code>
+
+          {/*Or*/}
 
           <p>
             Array of styles in <code>string</code>.
@@ -116,7 +105,7 @@ export default function Content() {
             {keyframesString}
           </SyntaxHighlighter>
           <p>
-            Array of Object with key pair of percentage and <code>style</code>.
+            Array of <code>Object</code> with key pair of percentage and style.
           </p>
           <SyntaxHighlighter language="javascript" style={docco}>
             {keyframesObject}
@@ -124,27 +113,34 @@ export default function Content() {
         </li>
         <li>
           <code>
-            durationSeconds: <Type>number</Type> = 0.3
+            durationSeconds: <PropType>number</PropType> = 0.3
           </code>
+          <p>How long the animation takes in seconds.</p>
+        </li>
+        <li>
+          <code>
+            delaySeconds: <PropType>number</PropType>
+          </code>
+
           <p>
-            How long the animation takes in seconds. if <code>reverseDurationSeconds</code> is not provided, then this
-            apply to reverse duration seconds as well
+            How much delay should apply before animation starts:{' '}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              animation-delay
+            </a>
+            .
           </p>
         </li>
         <li>
           <code>
-            delaySeconds: <Type>number</Type>
-          </code>
-
-          <p>How much delay should apply before animation starts.</p>
-        </li>
-        <li>
-          <code>
-            iterationCount: <Type>string | number</Type> = 'none'
+            iterationCount: <PropType>string | number</PropType> = 'none'
           </code>
 
           <p>
-            whether an animation should play forwards, backwards, or alternating back and forth:&nbsp;
+            Whether an animation should play forwards, backwards, or alternating back and forth:&nbsp;
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction"
               rel="noopener noreferrer"
@@ -156,11 +152,11 @@ export default function Content() {
         </li>
         <li>
           <code>
-            direction: <Type>'normal' | 'reverse' | 'alternate' | 'alternate-reverse'</Type> = 'normal'
+            direction: <PropType>'normal' | 'reverse' | 'alternate' | 'alternate-reverse'</PropType> = 'normal'
           </code>
 
           <p>
-            Animation applies styles to target before and after execution&nbsp;
+            Animation applies styles to target before and after execution:&nbsp;
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
               rel="noopener noreferrer"
@@ -172,11 +168,11 @@ export default function Content() {
         </li>
         <li>
           <code>
-            playState: <Type>'running' | 'paused'</Type> = 'running'
+            playState: <PropType>'running' | 'paused'</PropType> = 'running'
           </code>
 
           <p>
-            An animation is running or paused&nbsp;
+            An animation is running or paused:&nbsp;
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"
               rel="noopener noreferrer"
@@ -188,11 +184,11 @@ export default function Content() {
         </li>
         <li>
           <code>
-            fillMode: <Type>'none' | 'forwards' | 'backwards' | 'both'</Type> = 'none'
+            fillMode: <PropType>'none' | 'forwards' | 'backwards' | 'both'</PropType> = 'none'
           </code>
 
           <p>
-            Animation applies styles to target before and after execution&nbsp;
+            Animation applies styles to target before and after execution:&nbsp;
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
               rel="noopener noreferrer"
@@ -203,7 +199,9 @@ export default function Content() {
           </p>
         </li>
         <li>
-          <code>easeType: <Type>string</Type> = 'linear'</code>
+          <code>
+            easeType: <PropType>string</PropType> = 'linear'
+          </code>
           <p>
             Easing type refer to{' '}
             <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
@@ -215,67 +213,11 @@ export default function Content() {
 
       <h3>Advanced</h3>
       <ul>
-        <li>
-          <code>
-            render: <Type>Function</Type>
-          </code>
-
-          <p>
-            This is a{' '}
-            <a href="https://reactjs.org/docs/render-props.html" rel="noopener noreferrer" target="_blank">
-              Render props
-            </a>{' '}
-            function, which is useful for render without any wrapper <code>div</code>
-            from <code>react-simple-animate</code> or adding event listeners.
-          </p>
-          <SyntaxHighlighter language="javascript" style={docco}>
-            {renderProps}
-          </SyntaxHighlighter>
-        </li>
-        <li>
-          <code>
-            sequenceIndex: <Type>number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, which provides unique array index to associate with
-            AnimationGroup sequences.
-          </p>
-
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
-        <li>
-          <code>
-            sequenceId: <Type>string | number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, which provides unique id to associate with AnimationGroup
-            sequences.
-          </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
-        <li>
-          <code>
-            overlaySeconds: <Type>number</Type>
-          </code>
-
-          <p>
-            This props is used by <code>AnimateGroup</code>, When animation need to play ahead, which overlay on top of
-            the previous animation by seconds.
-          </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">
-            Learn Animate Group
-          </Button>
-        </li>
+        <CommonProps />
       </ul>
 
       <h3>Examples: </h3>
-      <p>The following example will animate the component to move at x coordinate 10px with 3 times.</p>
+      <p>The following example will animate the component to move at X coordinate 3 times.</p>
       <SyntaxHighlighter language="javascript" style={docco}>
         {exmaple}
       </SyntaxHighlighter>

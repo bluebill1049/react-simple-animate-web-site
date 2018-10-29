@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "./colors";
 
 export const H1 = styled.h1`
   font-size: 34px;
@@ -17,4 +18,8 @@ export const H2 = styled.h2`
   text-align: center;
   margin-bottom: 10px;
   font-family: sans-serif;
+`
+
+export const PropType = styled.span`
+  color: ${colors.purple};
 `

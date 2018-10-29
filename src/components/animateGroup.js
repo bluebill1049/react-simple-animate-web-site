@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import colors from '../styled/colors'
+import { PropType } from '../styled/typography';
 
 const ContentContainer = styled.div`
   padding: 20px;
@@ -19,10 +20,6 @@ const ContentContainer = styled.div`
     background: ${colors.secondary};
     color: ${colors.white};
   }
-`
-
-const Type = styled.span`
-  color: ${colors.purple};
 `
 
 const sequences = `<AnimateGroup play> 
@@ -64,7 +61,7 @@ export default function Content() {
       <ul>
         <li>
           <code>
-            play: <Type>boolean</Type> = false
+            play: <PropType>boolean</PropType> = false
           </code>
 
           <p>
@@ -73,7 +70,7 @@ export default function Content() {
         </li>
         <li>
           <code>
-            sequences: <Type>{`Array<number> | Array<Object>`}</Type>
+            sequences: <PropType>{`Array<number> | Array<Object>`}</PropType>
           </code>
 
           <p>
@@ -87,17 +84,17 @@ export default function Content() {
         </li>
         <li>
           <code>
-            reverseSequences: <Type>{`Array<number> | Array<Object>`}</Type>
+            reverseSequences: <PropType>{`Array<number> | Array<Object>`}</PropType>
           </code>
 
           <p>
-            it's the same as <code>sequences</code>, except this will applied when <code>play</code> set to false and
-            animation group play in a reverse order.
+            Share the same behaviour as <code>sequences</code>. This prop is <b>optional</b>, except this will applied when <code>play</code> set to <code>false</code>.
           </p>
         </li>
       </ul>
 
       <h3>Examples</h3>
+      <p>Set up animation sequence with sequenceId.</p>
       <SyntaxHighlighter language="javascript" style={docco}>
         {example}
       </SyntaxHighlighter>
