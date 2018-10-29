@@ -56,10 +56,42 @@ const keyframesObject = `<AnimateKeyframes
 </AnimateKeyframes>
 `
 
+const exmaple = `
+import React from 'react';
+import { AnimateKeyframes }  from 'react-simple-animate';
+import YourComponent from './YourComponent';
+
+export default ({ children, play, onCompleteCallBack }) => {
+  return <AnimateKeyframes 
+    play 
+    delaySeconds={1}
+    delaySeconds={10}
+    direction="alternative"
+    keyframes={[
+       'transform: translateY(0)',
+       'transform: translateY(10px)'
+    ]}
+  />
+    <Component />
+  </YourComponent>
+};
+`
+
 export default function Content() {
   return (
     <ContentContainer>
-      <h3>Basic</h3>
+      <p>
+        <code>{'<AnimateKeyframes />'}</code> is implemented according to{' '}
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CSS animation
+        </a>{' '}
+        specification. It's best to used for infinite animation and animation which can be paused and resumed.
+      </p>
+      <h3>Basic Props</h3>
       <ul>
         <li>
           <code>
@@ -106,38 +138,71 @@ export default function Content() {
           <p>How much delay should apply before animation starts.</p>
         </li>
         <li>
-          <code>direction: <Type>number | string</Type></code>
+          <code>
+            iterationCount: <Type>string | number</Type> = 'none'
+          </code>
 
           <p>
-            Number of times an animation cycle should be played:&nbsp;
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" rel="noopener noreferrer" target="_blank">
-              animation-iteration-count
+            whether an animation should play forwards, backwards, or alternating back and forth:&nbsp;
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              animation-direction
             </a>
           </p>
         </li>
         <li>
-          <code>playState: <Type>'running' | 'paused'</Type> = 'running'</code>
-
-          <p>
-            An animation is running or paused&nbsp;
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" rel="noopener noreferrer" target="_blank">
-              animation-play-state
-            </a>
-          </p>
-        </li>
-        <li>
-          <code>fillMode: <Type>'none' | 'forwards' | 'backwards' | 'both'</Type> = 'none'</code>
+          <code>
+            direction: <Type>'normal' | 'reverse' | 'alternate' | 'alternate-reverse'</Type> = 'normal'
+          </code>
 
           <p>
             Animation applies styles to target before and after execution&nbsp;
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode" rel="noopener noreferrer" target="_blank">
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               animation-play-state
             </a>
           </p>
         </li>
         <li>
-          <code>easeType</code>
+          <code>
+            playState: <Type>'running' | 'paused'</Type> = 'running'
+          </code>
 
+          <p>
+            An animation is running or paused&nbsp;
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              animation-play-state
+            </a>
+          </p>
+        </li>
+        <li>
+          <code>
+            fillMode: <Type>'none' | 'forwards' | 'backwards' | 'both'</Type> = 'none'
+          </code>
+
+          <p>
+            Animation applies styles to target before and after execution&nbsp;
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              animation-play-state
+            </a>
+          </p>
+        </li>
+        <li>
+          <code>easeType: <Type>string</Type> = 'linear'</code>
           <p>
             Easing type refer to{' '}
             <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
@@ -209,6 +274,9 @@ export default function Content() {
       </ul>
 
       <h3>Examples: </h3>
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {exmaple}
+      </SyntaxHighlighter>
     </ContentContainer>
   )
 }

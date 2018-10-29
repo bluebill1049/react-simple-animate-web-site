@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import Button from "@material-ui/core/Button/Button";
-import { navigate } from 'gatsby';
+import Button from '@material-ui/core/Button/Button'
+import { navigate } from 'gatsby'
 import colors from '../styled/colors'
 
 const ContentContainer = styled.div`
@@ -37,10 +37,37 @@ const renderProps = `<Animate
 />
 `
 
+const example = `
+import React from 'react';
+import { Animate }  from 'react-simple-animate';
+import YourComponent from './YourComponent';
+
+export default ({ children, play, onCompleteCallBack }) => {
+  return <Aniamte
+    play={play}
+    durationSeconds={1}
+    delaySeconds={0.3}
+    reverseDurationSeconds={0.2}
+    reverseDelaySeconds={0.1}
+    startStyle={{ transform: 'translate(0, 0)' }}
+    endStyle={{ opacity: 'translate(10px, 10px)' }}
+    easeType="cubic-bezier(0.445, 0.05, 0.55, 0.95)"
+    onComplete={onCompleteCallBack}
+  >
+    <YourComponent />
+  </Aniamte>
+};
+`
+
 export default function Content() {
   return (
     <ContentContainer>
-      <h3>Basic</h3>
+      <p>
+        <code>{'<Animate />'}</code> is made to solve a simple React animation problem; animates <code>Components</code>{' '}
+        from destination A to destination B with the capability to revers play.
+      </p>
+
+      <h3>Basic Props</h3>
       <ul>
         <li>
           <code>
@@ -113,7 +140,9 @@ export default function Content() {
           <p>Call back function after animation complete.</p>
         </li>
         <li>
-          <code>easeType</code>
+          <code>
+            easeType: <Type>string</Type> = 'linear'
+          </code>
 
           <p>
             Easing type refer to{' '}
@@ -153,7 +182,9 @@ export default function Content() {
             AnimationGroup sequences.
           </p>
 
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
         <li>
           <code>
@@ -164,7 +195,9 @@ export default function Content() {
             This props is used by <code>AnimateGroup</code>, which provides unique id to associate with AnimationGroup
             sequences.
           </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
         <li>
           <code>
@@ -175,7 +208,9 @@ export default function Content() {
             This props is used by <code>AnimateGroup</code>, When animation need to play ahead, which overlay on top of
             the previous animation by seconds.
           </p>
-          <Button onClick={() => navigate('/animate-group')} variant="outlined">Learn Animate Group</Button>
+          <Button onClick={() => navigate('/animate-group')} variant="outlined">
+            Learn Animate Group
+          </Button>
         </li>
         <li>
           <code>
@@ -198,6 +233,13 @@ export default function Content() {
       </ul>
 
       <h3>Examples: </h3>
+      <p>
+        The following example will animate component's translate x and y with different duration seconds from play and
+        reverse the animation
+      </p>
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {example}
+      </SyntaxHighlighter>
     </ContentContainer>
   )
 }
