@@ -1,10 +1,10 @@
 import React from 'react'
 import { AnimateKeyframes } from 'react-simple-animate'
 import styled from 'styled-components'
-import ReactIcon from '../components/reactIcon'
+import logo from '../images/logo.svg';
 import colors from '../styled/colors'
 import TopMenuGroup from './topMenuGroup'
-import { H1, H2 } from '../styled/typography';
+import { H1, H2 } from '../styled/typography'
 
 const HeaderWrapper = styled.div`
   background: ${colors.primary};
@@ -21,15 +21,16 @@ const HeaderWrapper = styled.div`
 `
 
 const Logo = styled.div`
-  & > div {
-    height: 128px;
-    width: 200px;
-    margin-bottom: 50px;
-    transform-origin: 100px 64px;
+  & img {
+    width: 92px;
+    height: 92px;
+    transform-origin: 50% 50%;
+    margin-bottom: 0;
   }
 `
 
 const Heading = styled.div`
+  margin-top: 40px;
   font-family: 'Fjalla One', sans-serif;
 `
 
@@ -61,9 +62,9 @@ class Header extends React.PureComponent {
             durationSeconds={10}
             direaction="alternate"
             iterationCount="infinite"
-            keyframes={['transform: rotateZ(0deg)', 'transform: rotateZ(359deg)']}
+            keyframes={['transform: rotateZ(359deg)', 'transform: rotateZ(0deg)']}
           >
-            <ReactIcon color={colors.white} />
+            <img src={logo} alt="logo"/>
           </AnimateKeyframes>
         </Logo>
 
