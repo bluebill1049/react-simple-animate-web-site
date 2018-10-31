@@ -42,6 +42,14 @@ const links = [
     name: 'Home',
   },
   {
+    path: '/basics',
+    name: 'Basics',
+  },
+  {
+    path: '/advanced',
+    name: 'Advanced',
+  },
+  {
     path: '/animate',
     name: '<Animate />',
   },
