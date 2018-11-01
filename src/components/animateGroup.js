@@ -57,7 +57,7 @@ export default function Content() {
         <code>{'<AnimateKeyframes />'}</code> in sequences, so animations will play one after another in such order
         which has been defined.
       </p>
-      <h3>Basic</h3>
+      <h3>Props</h3>
       <ul>
         <li>
           <code>

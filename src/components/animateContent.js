@@ -56,7 +56,7 @@ export default function Content() {
         <code>Components</code> from destination A to destination B (with the ability to reverse play).
       </p>
 
-      <h3>Basic Props</h3>
+      <h3>Props</h3>
       <ul>
         <li>
           <code>

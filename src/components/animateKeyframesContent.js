@@ -79,7 +79,7 @@ export default function Content() {
         </a>{' '}
         specification. It's best to used for infinite animation, or animation which can be paused and resumed.
       </p>
-      <h3>Basic Props</h3>
+      <h3>Props</h3>
       <ul>
         <li>
           <code>
