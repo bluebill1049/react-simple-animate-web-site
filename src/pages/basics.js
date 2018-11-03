@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import colors from '../styled/colors'
-
-const ContentContainer = styled.div`
-  padding: 20px;
-`
+import { ContentContainer } from '../styled/containers';
 
 const InlineCode = styled.code`
   display: block;

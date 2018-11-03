@@ -1,20 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
-// import colors from '../styled/colors'
-
-const ContentContainer = styled.div`
-  padding: 20px;
-`
-
-// const InlineCode = styled.code`
-//   display: block;
-//   padding: 10px;
-//   background: ${colors.secondary};
-//   color: ${colors.white};
-//   margin-bottom: 30px;
-// `
+import { ContentContainer } from '../styled/containers'
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>

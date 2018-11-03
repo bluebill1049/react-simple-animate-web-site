@@ -117,13 +117,12 @@ export default class Layout extends React.PureComponent {
             >
               <Animate
                 play={loaded}
-                startStyle={{ opacity: 1 }}
-                endStyle={{ opacity: 0 }}
-                durationSeconds={0.5}
-                onCompleteStyle={{ display: 'none' }}
-              >
-                <Cover />
-              </Animate>
+                startStyle={{ opacity: 1, pointerEvents: 'none' }}
+                endStyle={{ opacity: 0, pointerEvents: 'none' }}
+                durationSeconds={1.5}
+                onCompleteStyle={{ display: 'none', pointerEvents: 'none' }}
+                render={attributes => <Cover {...attributes} />}
+              />
 
               <div
                 style={{

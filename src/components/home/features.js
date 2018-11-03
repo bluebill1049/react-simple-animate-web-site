@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import easyIcon from '../../images/easy.svg'
 import cssIcon from '../../images/css.svg'
 import ReactIconn from '../reactIcon'
-import colors from "../../styled/colors";
+import colors from '../../styled/colors'
 
 const FeaturesWrapper = styled.ul`
   list-style: none;
@@ -24,27 +24,54 @@ const FeaturesWrapper = styled.ul`
       padding-right: 0;
     }
   }
+
+  @media (min-width: 1024px) {
+    justify-content: center;
+
+    & > li {
+      padding: 0 40px;
+
+      margin-bottom: 40px;
+    }
+  }
 `
 
 const Root = styled.div`
   margin: 20px 20px 0;
   border-bottom: 1px solid ${colors.grey};
+
+  @media (min-width: 1024px) {
+    margin-bottom: 20px;
+  }
 `
 
 const IconWrapper = styled.span`
   margin-bottom: 10px;
   display: block;
   height: 40px;
-  
+
   & > img,
   & > svg {
     height: 40px;
     display: block;
     margin: 0 auto;
   }
-  
+
   & > svg {
     height: 35px;
+  }
+
+  @media (min-width: 768px) {
+    height: 60px;
+
+    & > img,
+    & > svg {
+      height: 60px;
+    }
+
+    & > svg {
+      height: 50px;
+    }
   }
 `
 

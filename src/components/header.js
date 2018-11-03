@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnimateKeyframes } from 'react-simple-animate'
 import styled from 'styled-components'
-import logo from '../images/logo.svg';
+import logo from '../images/logo.svg'
 import colors from '../styled/colors'
 import TopMenuGroup from './topMenuGroup'
 import { H1, H2 } from '../styled/typography'
@@ -22,10 +22,15 @@ const HeaderWrapper = styled.div`
 
 const Logo = styled.div`
   & img {
-    width: 92px;
-    height: 92px;
+    width: 120px;
+    height: 120px;
     transform-origin: 50% 50%;
     margin-bottom: 0;
+
+    @media (min-width: 768px) {
+      width: 200px;
+      height: 200px;
+    }
   }
 `
 
@@ -37,8 +42,7 @@ const Heading = styled.div`
 const Code = styled.span`
   color: ${colors.white};
   display: block;
-  width: 330px;
-  padding: 10px;
+  padding: 10px 20px;
   text-align: center;
   border: 1px solid #ffffff17;
   border-radius: 4px;
@@ -64,7 +68,7 @@ class Header extends React.PureComponent {
             iterationCount="infinite"
             keyframes={['transform: rotateZ(359deg)', 'transform: rotateZ(0deg)']}
           >
-            <img src={logo} alt="logo"/>
+            <img src={logo} alt="logo" />
           </AnimateKeyframes>
         </Logo>
 

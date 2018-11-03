@@ -2,9 +2,9 @@
 import React from 'react'
 import colors from '../styled/colors'
 
-export default function({ color = colors.primary }) {
+export default function({ color = colors.primary, className }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3" className={className}>
       <g>
         <path
           fill={`${color}`}
