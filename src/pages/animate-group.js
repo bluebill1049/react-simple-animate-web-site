@@ -5,7 +5,7 @@ import Content from '../components/animateGroup'
 
 const AnimateGroup = ({location}) => (
   <Layout location={location}>
-    <ContentHeader title="<AnimateGroup />" />
+    <ContentHeader location={location} title="<AnimateGroup />" />
     <Content />
   </Layout>
 )

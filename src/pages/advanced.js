@@ -5,7 +5,7 @@ import { ContentContainer } from '../styled/containers'
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <ContentHeader title="Advanced" />
+    <ContentHeader location={location} title="Advanced" />
 
     <ContentContainer>
       <h3>Animate Components in sequences</h3>

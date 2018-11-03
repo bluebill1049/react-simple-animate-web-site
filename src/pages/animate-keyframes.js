@@ -5,7 +5,7 @@ import Content from '../components/animateKeyframesContent'
 
 const AnimateKeyframes = ({ location }) => (
   <Layout location={location}>
-    <ContentHeader title="<AnimateKeyframes />" />
+    <ContentHeader location={location} title="<AnimateKeyframes />" />
     <Content />
   </Layout>
 )

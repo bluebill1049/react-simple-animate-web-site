@@ -15,7 +15,7 @@ const InlineCode = styled.code`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <ContentHeader title="Basics" />
+    <ContentHeader location={location} title="Basics" />
 
     <ContentContainer>
       <h3>Motivation</h3>

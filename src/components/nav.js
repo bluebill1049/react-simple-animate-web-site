@@ -4,10 +4,24 @@ import colors from '../styled/colors'
 import styled from 'styled-components'
 import { links } from './menu'
 import { Link } from 'gatsby'
+import logo from '../images/logo.svg'
+
+const Logo = styled.span`
+  & > img {
+    height: 30px;
+    margin-bottom: -10px;
+    margin-right: 30px;
+  }
+`
 
 const Root = styled.nav`
-  position: absolute;
-  top: 70px;
+  display: none;
+
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 70px;
+    display: block;
+  }
 
   & > a {
     color: ${colors.white};
@@ -16,6 +30,24 @@ const Root = styled.nav`
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 2px;
+      background: ${colors.purple};
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      transition: 0.3s all;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
 
     &:last-child {
       margin-right: 0;
@@ -23,24 +55,31 @@ const Root = styled.nav`
   }
 `
 
-export default function Nav({ location: { pathname } }) {
+export default function Nav({ showLogo, className, location: { pathname } }) {
   return (
-    <Root className="nav--desktop">
-      {links.map(({ name, path }) => (
-        <Link
-          style={{
-            ...(pathname === path
-              ? {
-                  opacity: 0.3,
-                }
-              : null),
-          }}
-          key={name}
-          to={path}
-        >
-          {name}
-        </Link>
-      ))}
-    </Root>
+    <>
+      <Root className={className}>
+        {showLogo && (
+          <Logo>
+            <img src={logo} alt="logo" />
+          </Logo>
+        )}
+        {links.map(({ name, path }) => (
+          <Link
+            style={{
+              ...(pathname === path
+                ? {
+                    opacity: 0.3,
+                  }
+                : null),
+            }}
+            key={name}
+            to={path}
+          >
+            {name}
+          </Link>
+        ))}
+      </Root>
+    </>
   )
 }
