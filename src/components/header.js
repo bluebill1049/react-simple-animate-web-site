@@ -5,6 +5,7 @@ import logo from '../images/logo.svg'
 import colors from '../styled/colors'
 import TopMenuGroup from './topMenuGroup'
 import { H1, H2 } from '../styled/typography'
+import Nav from './nav'
 
 const HeaderWrapper = styled.div`
   background: ${colors.primary};
@@ -58,6 +59,8 @@ class Header extends React.PureComponent {
   render() {
     return (
       <HeaderWrapper>
+        <Nav location={this.props.location} />
+
         <TopMenuGroup />
 
         <Logo>

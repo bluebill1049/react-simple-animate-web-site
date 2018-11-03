@@ -36,7 +36,7 @@ const Root = styled.div`
   }
 `
 
-const links = [
+export const links = [
   {
     path: '/',
     name: 'Home',

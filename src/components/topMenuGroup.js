@@ -21,6 +21,10 @@ const Menu = styled.span`
   top: 16px;
   left: 20px;
   cursor: pointer;
+  
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
 `
 
 const style = {
