@@ -7,10 +7,10 @@ import { Link } from 'gatsby'
 import logo from '../images/logo.svg'
 
 const Logo = styled.span`
-  & > img {
+  & img {
     height: 30px;
     margin-bottom: -10px;
-    margin-right: 30px;
+    margin-right: 10px;
   }
 `
 
@@ -22,7 +22,7 @@ const Root = styled.nav`
     top: 70px;
     display: block;
   }
-  
+
   @media (min-width: 1208px) {
     top: 20px;
   }
@@ -61,13 +61,15 @@ export default function Nav({ showLogo, className, location: { pathname } }) {
       <Root className={className}>
         {showLogo && (
           <Logo>
-            <img src={logo} alt="logo" />
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
           </Logo>
         )}
-        {links.map(({ name, path }) => (
+        {links.slice(1).map(({ name, path }) => (
           <Link
             style={{
-              ...(pathname === path
+              ...(pathname === path || pathname === `${path}/`
                 ? {
                     opacity: 0.3,
                   }

@@ -70,7 +70,7 @@ export default ({ style, location: { pathname } = {} }) => (
         return (
           <li
             style={{
-              ...(pathname === path
+              ...(pathname === path || pathname === `${path}/`
                 ? {
                     opacity: 0.3,
                   }

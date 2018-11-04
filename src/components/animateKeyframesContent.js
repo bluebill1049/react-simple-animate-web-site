@@ -1,29 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import CommonProps from './CommonProps'
-import { PropType } from '../styled/typography';
-import { PropsContentContainer} from '../styled/containers';
-
-const keyframesString = `<AnimateKeyframes 
-  play 
-  keyframes={['opacity: 0', 'opacity: 1']}
-/>
-  <Component />
-</AnimateKeyframes>
-`
-
-const keyframesObject = `<AnimateKeyframes 
-  play 
-  keyframes={[
-    { 0: 'opacity: 0' }, // 0%
-    { 50: 'opacity: 0.5' }, // 50%
-    { 100: 'opacity: 1' } // 100%
-  ]}
-/>
-  <Component />
-</AnimateKeyframes>
-`
+import { PropsContentContainer, Side } from '../styled/containers'
+import data from './props/animateKeyframesData'
+import Button from '@material-ui/core/Button/Button'
 
 const exmaple = `
 import React from 'react';
@@ -47,162 +27,85 @@ export default ({ children, play, onCompleteCallBack }) => {
 };
 `
 
-export default function Content() {
-  return (
-    <PropsContentContainer>
-      <p>
-        <code>{'<AnimateKeyframes />'}</code> is implemented according to{' '}
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CSS animation
-        </a>{' '}
-        specification. It's best to used for infinite animation, or animation which can be paused and resumed.
-      </p>
-      <h3>Props</h3>
-      <ul>
-        <li>
-          <code>
-            play: <PropType>boolean</PropType> = false
-          </code>
+export default class Content extends Component {
+  constructor(props) {
+    super(props)
+    this.codeRef = []
+    this.example = React.createRef()
+    data.forEach((_, i) => {
+      this.codeRef[i] = React.createRef()
+    })
+  }
 
+  goToProp = i => {
+    this.codeRef[i].current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  showExample = () => {
+    this.example.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  render() {
+    return (
+      <PropsContentContainer>
+        <Side>
+          <h4>Props</h4>
+          <ol>
+            {data.map(({ name, isAnimateGroup }, i) => {
+              const result = (
+                <li onClick={() => this.goToProp(i)} key={`codeShortCut${i}`}>
+                  <code>{name}</code>
+                </li>
+              )
+
+              if (isAnimateGroup) {
+                return (
+                  <span key={`codeShortCut${i}`}>
+                    <p>Following props are used by {`<AnimateGroup />`}</p>
+                    {result}
+                  </span>
+                )
+              }
+              return result
+            })}
+          </ol>
+          <Button variant="outlined" onClick={this.showExample}>
+            Example
+          </Button>
+        </Side>
+        <div>
           <p>
-            Defaults to <code>false</code>, set to true to start the animation, if set <code>play</code> as{' '}
-            <code>true</code> as default prop, then the animation will play right after <code>componentDidMount</code>.
+            <code>{'<AnimateKeyframes />'}</code> is implemented according to{' '}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CSS animation
+            </a>{' '}
+            specification. It's best to used for infinite animation, or animation which can be paused and resumed.
           </p>
-        </li>
-        <li>
-          <code>
-            keyframes: <PropType>{'Array<string> | Array<Object>'}</PropType>
-          </code>
+          <h3>Props</h3>
+          <ul>
+            {data.map(({ customised, name, description, link, code }, i) => (
+              <li key={`code${i}`} ref={this.codeRef[i]}>
+                <code>{name}</code>
 
-          {/*Or*/}
+                {customised ? customised : <p>{description}</p>}
+                {code}
+                {link}
+              </li>
+            ))}
+          </ul>
 
-          <p>
-            Array of styles in <code>string</code>.
-          </p>
+          <h3 ref={this.example}>Examples: </h3>
+          <p>The following example will animate the component to move at X coordinate 3 times.</p>
           <SyntaxHighlighter language="javascript" style={docco}>
-            {keyframesString}
+            {exmaple}
           </SyntaxHighlighter>
-          <p>
-            Array of <code>Object</code> with key pair of percentage and style.
-          </p>
-          <SyntaxHighlighter language="javascript" style={docco}>
-            {keyframesObject}
-          </SyntaxHighlighter>
-        </li>
-        <li>
-          <code>
-            durationSeconds: <PropType>number</PropType> = 0.3
-          </code>
-          <p>How long the animation takes in seconds.</p>
-        </li>
-        <li>
-          <code>
-            delaySeconds: <PropType>number</PropType>
-          </code>
-
-          <p>
-            How much delay should apply before animation starts:{' '}
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              animation-delay
-            </a>
-            .
-          </p>
-        </li>
-        <li>
-          <code>
-            iterationCount: <PropType>string | number</PropType> = 'none'
-          </code>
-
-          <p>
-            Whether an animation should play forwards, backwards, or alternating back and forth:&nbsp;
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              animation-direction
-            </a>
-          </p>
-        </li>
-        <li>
-          <code>
-            direction: <PropType>'normal' | 'reverse' | 'alternate' | 'alternate-reverse'</PropType> = 'normal'
-          </code>
-
-          <p>
-            Animation applies styles to target before and after execution:&nbsp;
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              animation-play-state
-            </a>
-          </p>
-        </li>
-        <li>
-          <code>
-            playState: <PropType>'running' | 'paused'</PropType> = 'running'
-          </code>
-
-          <p>
-            An animation is running or paused:&nbsp;
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              animation-play-state
-            </a>
-          </p>
-        </li>
-        <li>
-          <code>
-            fillMode: <PropType>'none' | 'forwards' | 'backwards' | 'both'</PropType> = 'none'
-          </code>
-
-          <p>
-            Animation applies styles to target before and after execution:&nbsp;
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              animation-play-state
-            </a>
-          </p>
-        </li>
-        <li>
-          <code>
-            easeType: <PropType>string</PropType> = 'linear'
-          </code>
-          <p>
-            Easing type refer to{' '}
-            <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
-              http://easings.net/
-            </a>
-          </p>
-        </li>
-      </ul>
-
-      <h3>Advanced</h3>
-      <ul>
-        <CommonProps />
-      </ul>
-
-      <h3>Examples: </h3>
-      <p>The following example will animate the component to move at X coordinate 3 times.</p>
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {exmaple}
-      </SyntaxHighlighter>
-    </PropsContentContainer>
-  )
+        </div>
+        <div style={{ clear: 'both' }} />
+      </PropsContentContainer>
+    )
+  }
 }

@@ -1,8 +1,6 @@
 import React from 'react'
 import { Animate } from 'react-simple-animate'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
 import 'typeface-fjalla-one'
 import colors from '../styled/colors'
 import Menu from '../components/menu'
@@ -29,7 +27,7 @@ const Root = styled.div`
   overflow: hidden;
   
   @media (min-width: 1024px) {
-    overflow: auto;
+    overflow: initial;
   } 
 `
 

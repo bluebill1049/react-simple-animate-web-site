@@ -60,7 +60,7 @@ export const PropsContentContainer = styled.div`
         width: 100%;
         border-color: ${colors.primary};
         color: ${colors.primary};
-        margin-top: 30px;
+        margin-top: 20px;
       }
     }
 
@@ -68,6 +68,34 @@ export const PropsContentContainer = styled.div`
       padding-top: 20px;
       max-width: 670px;
       float: right;
+    }
+  }
+`
+
+export const Side = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    position: sticky;
+    top: 0;
+
+    p {
+      font-size: 13px;
+      margin: 10px 0;
+    }
+
+    & > ol {
+      margin-left: 0;
+
+      & li {
+        margin-bottom: 10px;
+        list-style: none;
+
+        & code {
+          padding: 4px 10px;
+        }
+      }
     }
   }
 `
