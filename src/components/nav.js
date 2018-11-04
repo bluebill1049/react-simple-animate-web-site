@@ -22,11 +22,15 @@ const Root = styled.nav`
     top: 70px;
     display: block;
   }
+  
+  @media (min-width: 1208px) {
+    top: 20px;
+  }
 
   & > a {
     color: ${colors.white};
     text-transform: uppercase;
-    margin-right: 40px;
+    margin: 0 20px;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
@@ -47,10 +51,6 @@ const Root = styled.nav`
       &::before {
         width: 100%;
       }
-    }
-
-    &:last-child {
-      margin-right: 0;
     }
   }
 `

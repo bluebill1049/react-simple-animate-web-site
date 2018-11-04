@@ -28,7 +28,6 @@ const H1Extend = styled(H1)`
 `
 
 const NavExtend = styled(Nav)`
-  display: block;
   position: relative;
   top: 0;
   padding: 16px;
@@ -36,6 +35,11 @@ const NavExtend = styled(Nav)`
   float: left;
   margin: 0 auto;
   min-width: 1024px;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
 `
 
 export default function({ title, location }) {

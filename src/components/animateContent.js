@@ -1,26 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import colors from '../styled/colors'
-import CommonProps from './CommonProps';
-
-const ContentContainer = styled.div`
-  padding: 20px;
-
-  & ul {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  & li > code {
-    margin-bottom: 10px;
-    display: block;
-    padding: 10px;
-    background: ${colors.secondary};
-    color: ${colors.white};
-  }
-`
+import CommonProps from './CommonProps'
+import { PropsContentContainer } from '../styled/containers'
+import { PropType } from '../styled/typography'
 
 const Type = styled.span`
   color: ${colors.purple};
@@ -48,121 +33,196 @@ export default ({ children, play, onCompleteCallBack }) => {
 };
 `
 
-export default function Content() {
-  return (
-    <ContentContainer>
-      <p>
-        <code>{'<Animate />'}</code> is made to solve a simple React animation problem, which is animates{' '}
-        <code>Components</code> from destination A to destination B (with the ability to reverse play).
-      </p>
+const data = [
+  {
+    name: (
+      <>
+        play: <Type>boolean</Type> = false
+      </>
+    ),
+    description: (
+      <>
+        Defaults to <code>false</code>, set to true to start the animation, if set <code>play</code> as{' '}
+        <code>true</code> as default prop, then the animation will play right after <code>componentDidMount</code>.
+      </>
+    ),
+  },
+  {
+    name: (
+      <>
+        startStyle: <Type>Object</Type>
+      </>
+    ),
 
-      <h3>Props</h3>
-      <ul>
-        <li>
-          <code>
-            play: <Type>boolean</Type> = false
-          </code>
+    description: 'Component initial inline style.',
+  },
+  {
+    name: (
+      <>
+        endStyle: <Type>Object</Type>
+      </>
+    ),
 
+    description: 'Component transition to inline style.',
+  },
+  {
+    name: (
+      <>
+        {' '}
+        onCompleteStyle: <Type>Object</Type>
+      </>
+    ),
+    description: `Style to be applied after the animation is completed. Useful when you want to apply{' '}
+  <code>display: none</code> after animation is completed.`,
+  },
+  {
+    name: (
+      <>
+        durationSeconds: <Type>number</Type> = 0.3
+      </>
+    ),
+    description: (
+      <>
+        How long the animation takes in seconds.( if <code>reverseDurationSeconds</code> is not provided, then this
+        apply to reverse animation duration seconds as well. )
+      </>
+    ),
+  },
+  {
+    name: (
+      <>
+        delaySeconds: <Type>number</Type>
+      </>
+    ),
+    description: 'How much delay should apply before animation starts',
+  },
+  {
+    name: (
+      <>
+        reverseDurationSeconds: <Type>number</Type>
+      </>
+    ),
+    description: 'How long the reverse/toggle animation takes in seconds.',
+  },
+  {
+    name: (
+      <>
+        reverseDelaySeconds: <Type>number</Type>
+      </>
+    ),
+    description: `How much delay should apply when reverse/toggle animation.`,
+  },
+  {
+    name: (
+      <>
+        onComplete: <Type>Function</Type>
+      </>
+    ),
+    description: `Call back function after animation complete.`,
+  },
+  {
+    name: (
+      <>
+        easeType: <Type>string</Type> = 'linear'
+      </>
+    ),
+
+    description: (
+      <>
+        to{' '}
+        <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
+          http://easings.net/
+        </a>
+      </>
+    ),
+  },
+  {
+    name: (
+      <>
+        mount: <PropType>boolean</PropType> = false
+      </>
+    ),
+    description: `Apply <code>mount</code> as true, will mount component then apply animation.`,
+  },
+  {
+    name: (
+      <>
+        unMount: <Type>boolean</Type> = false
+      </>
+    ),
+
+    description: `Apply <code>unMount</code> as true, will unMount component after animation completion.`,
+  },
+]
+
+const Side = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    position: sticky;
+    top: 0;
+  }
+`
+
+export default class Content extends Component {
+  constructor(props) {
+    super(props)
+    this.codeRef = []
+    data.forEach((_, i) => {
+      this.codeRef[i] = React.createRef()
+    })
+  }
+
+  goToProp = i => {
+    this.codeRef[i].current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  render() {
+    return (
+      <PropsContentContainer>
+        <Side>
+          <ul>
+            <li>
+              <h4>Props</h4>
+              <ul>
+                {data.map(({ name }, i) => (
+                  <li onClick={() => this.goToProp(i)} key={`codeShortCut${i}`}>
+                    <code>{name}</code>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+        </Side>
+        <div>
           <p>
-            Defaults to <code>false</code>, set to true to start the animation, if set <code>play</code> as{' '}
-            <code>true</code> as default prop, then the animation will play right after <code>componentDidMount</code>.
+            <code>{'<Animate />'}</code> is made to solve a simple React animation problem, which is animates{' '}
+            <code>Components</code> from destination A to destination B (with the ability to reverse play).
           </p>
-        </li>
-        <li>
-          <code>
-            startStyle: <Type>Object</Type>
-          </code>
 
-          <p>Component initial inline style.</p>
-        </li>
-        <li>
-          <code>
-            endStyle: <Type>Object</Type>
-          </code>
+          <h3>Props</h3>
+          <ul>
+            {data.map(({ name, description }, i) => (
+              <li key={`code${i}`} ref={this.codeRef[i]}>
+                <code>{name}</code>
 
-          <p>Component transition to inline style.</p>
-        </li>
-        <li>
-          <code>
-            onCompleteStyle: <Type>Object</Type>
-          </code>
-          <p>
-            Style to be applied after the animation is completed. Useful when you want to apply{' '}
-            <code>display: none</code> after animation is completed.
-          </p>
-        </li>
-        <li>
-          <code>
-            durationSeconds: <Type>number</Type> = 0.3
-          </code>
-          <p>
-            How long the animation takes in seconds. (if <code>reverseDurationSeconds</code> is not provided, then this
-            apply to reverse animation duration seconds as well.)
-          </p>
-        </li>
-        <li>
-          <code>
-            delaySeconds: <Type>number</Type>
-          </code>
+                <p>{description}</p>
+              </li>
+            ))}
 
-          <p>How much delay should apply before animation starts.</p>
-        </li>
-        <li>
-          <code>
-            reverseDurationSeconds: <Type>number</Type>
-          </code>
+            <CommonProps />
+          </ul>
 
-          <p>How long the reverse/toggle animation takes in seconds.</p>
-        </li>
-        <li>
-          <code>
-            reverseDelaySeconds: <Type>number</Type>
-          </code>
+          <h3>Examples: </h3>
+          <p>The following example will animate the component.</p>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {example}
+          </SyntaxHighlighter>
+        </div>
 
-          <p>How much delay should apply when reverse/toggle animation.</p>
-        </li>
-        <li>
-          <code>
-            onComplete: <Type>Function</Type>
-          </code>
-
-          <p>Call back function after animation complete.</p>
-        </li>
-        <li>
-          <code>
-            easeType: <Type>string</Type> = 'linear'
-          </code>
-
-          <p>
-            Easing type refer to{' '}
-            <a href="http://easings.net/" rel="noopener noreferrer" target="_blank">
-              http://easings.net/
-            </a>
-          </p>
-        </li>
-      </ul>
-
-      <h3>Advanced</h3>
-      <ul>
-        <CommonProps />
-        <li>
-          <code>
-            unMount: <Type>boolean</Type> = false
-          </code>
-
-          <p>
-            Apply <code>unMount</code> as true, will unMount component after animation completion.
-          </p>
-        </li>
-      </ul>
-
-      <h3>Examples: </h3>
-      <p>
-        The following example will animate the component.
-      </p>
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {example}
-      </SyntaxHighlighter>
-    </ContentContainer>
-  )
+        <div style={{ clear: 'both' }} />
+      </PropsContentContainer>
+    )
+  }
 }

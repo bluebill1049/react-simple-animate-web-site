@@ -1,26 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import colors from '../styled/colors'
 import { PropType } from '../styled/typography';
-
-const ContentContainer = styled.div`
-  padding: 20px;
-
-  & ul {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  & li > code {
-    margin-bottom: 10px;
-    display: block;
-    padding: 10px;
-    background: ${colors.secondary};
-    color: ${colors.white};
-  }
-`
+import { PropsContentContainer} from '../styled/containers';
 
 const sequences = `<AnimateGroup play> 
   <Animate endStyle={{ opacity: 1 }} sequnceIndex={0} /> // play first
@@ -51,7 +33,7 @@ export default () =>
 
 export default function Content() {
   return (
-    <ContentContainer>
+    <PropsContentContainer>
       <p>
         <code>{'<AnimateGroup />'}</code> is made to chain up <code>{'<Animate />'}</code> and{' '}
         <code>{'<AnimateKeyframes />'}</code> in sequences, so animations will play one after another in such order
@@ -98,6 +80,6 @@ export default function Content() {
       <SyntaxHighlighter language="javascript" style={docco}>
         {example}
       </SyntaxHighlighter>
-    </ContentContainer>
+    </PropsContentContainer>
   )
 }

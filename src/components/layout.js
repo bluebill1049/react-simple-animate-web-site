@@ -99,9 +99,9 @@ export default class Layout extends React.PureComponent {
         `}
         render={data => (
           <div
-            style={{
-              overflow: 'hidden',
-            }}
+            // style={{
+            //   overflow: 'hidden',
+            // }}
           >
             <Helmet
               title={data.site.siteMetadata.title}
@@ -150,12 +150,12 @@ export default class Layout extends React.PureComponent {
                 startStyle={{
                   background: colors.white,
                   width: '100%',
-                  overflow: 'hidden',
+                  // overflow: 'hidden',
                 }}
                 endStyle={{
                   background: colors.white,
                   width: '100%',
-                  overflow: 'hidden',
+                  // overflow: 'hidden',
                   boxShadow: `0 0 10px ${colors.black}`,
                   ...(showMenu
                     ? {

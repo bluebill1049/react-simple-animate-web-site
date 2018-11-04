@@ -1,27 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
-import colors from '../styled/colors'
 import CommonProps from './CommonProps'
 import { PropType } from '../styled/typography';
-
-const ContentContainer = styled.div`
-  padding: 20px;
-
-  & ul {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  & li > code {
-    margin-bottom: 10px;
-    display: block;
-    padding: 10px;
-    background: ${colors.secondary};
-    color: ${colors.white};
-  }
-`
+import { PropsContentContainer} from '../styled/containers';
 
 const keyframesString = `<AnimateKeyframes 
   play 
@@ -67,7 +49,7 @@ export default ({ children, play, onCompleteCallBack }) => {
 
 export default function Content() {
   return (
-    <ContentContainer>
+    <PropsContentContainer>
       <p>
         <code>{'<AnimateKeyframes />'}</code> is implemented according to{' '}
         <a
@@ -221,6 +203,6 @@ export default function Content() {
       <SyntaxHighlighter language="javascript" style={docco}>
         {exmaple}
       </SyntaxHighlighter>
-    </ContentContainer>
+    </PropsContentContainer>
   )
 }

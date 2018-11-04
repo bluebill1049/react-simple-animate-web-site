@@ -75,15 +75,6 @@ export default function CommonProps() {
           Learn Animate Group
         </Button>
       </li>
-      <li>
-        <code>
-          mount: <PropType>boolean</PropType> = false
-        </code>
-
-        <p>
-          Apply <code>mount</code> as true, will mount component then apply animation.
-        </p>
-      </li>
     </>
   )
 }
