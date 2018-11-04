@@ -44,7 +44,7 @@ const Root = styled.nav`
       bottom: -4px;
       left: 0;
       width: 0;
-      transition: 0.3s all;
+      transition: 0.2s all;
     }
 
     &:hover {

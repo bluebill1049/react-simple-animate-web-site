@@ -25,6 +25,14 @@ const Cover = styled.div`
   justify-content: center;
 `
 
+const Root = styled.div`
+  overflow: hidden;
+  
+  @media (min-width: 1024px) {
+    overflow: auto;
+  } 
+`
+
 export const MenuContext = React.createContext({
   setMenuState: () => {},
 })
@@ -87,102 +95,78 @@ export default class Layout extends React.PureComponent {
     const { showMenu, loaded, isMenuVisible } = this.state
 
     return (
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                title
-              }
-            }
-          }
-        `}
-        render={data => (
-          <div
-            // style={{
-            //   overflow: 'hidden',
-            // }}
-          >
-            <Helmet
-              title={data.site.siteMetadata.title}
-              meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]}
-            >
-              <html lang="en" />
-            </Helmet>
+      <Root>
+        <MenuContext.Provider
+          value={{
+            setMenuState: this.setMenuState,
+          }}
+        >
+          <Animate
+            play={loaded}
+            startStyle={{ opacity: 1, pointerEvents: 'none' }}
+            endStyle={{ opacity: 0, pointerEvents: 'none' }}
+            durationSeconds={1.5}
+            onCompleteStyle={{ display: 'none', pointerEvents: 'none' }}
+            render={attributes => <Cover {...attributes} />}
+          />
 
-            <MenuContext.Provider
-              value={{
-                setMenuState: this.setMenuState,
+          <div
+            style={{
+              visibility: isMenuVisible ? 'visible' : 'hidden',
+            }}
+          >
+            <Animate
+              play={showMenu}
+              startStyle={{
+                transform: 'translateX(200px)',
+                zIndex: -1,
+              }}
+              endStyle={{
+                transform: 'translateX(0)',
+                zIndex: 0,
+              }}
+              durationSeconds={0.6}
+              easeType="cubic-bezier(0.19, 1, 0.22, 1)"
+              render={style => <Menu {...{ ...style, location: this.props.location }} />}
+            />
+          </div>
+
+          <Animate
+            play
+            startStyle={{
+              background: colors.white,
+              width: '100%',
+              // overflow: 'hidden',
+            }}
+            endStyle={{
+              background: colors.white,
+              width: '100%',
+              // overflow: 'hidden',
+              boxShadow: `0 0 10px ${colors.black}`,
+              ...(showMenu
+                ? {
+                    transform: 'translateX(300px)',
+                  }
+                : null),
+            }}
+            durationSeconds={0.8}
+            easeType="cubic-bezier(0.19, 1, 0.22, 1)"
+          >
+            <div
+              onClick={() => {
+                if (this.state.showMenu) {
+                  this.setState({
+                    showMenu: false,
+                  })
+                }
               }}
             >
-              <Animate
-                play={loaded}
-                startStyle={{ opacity: 1, pointerEvents: 'none' }}
-                endStyle={{ opacity: 0, pointerEvents: 'none' }}
-                durationSeconds={1.5}
-                onCompleteStyle={{ display: 'none', pointerEvents: 'none' }}
-                render={attributes => <Cover {...attributes} />}
-              />
-
-              <div
-                style={{
-                  visibility: isMenuVisible ? 'visible' : 'hidden',
-                }}
-              >
-                <Animate
-                  play={showMenu}
-                  startStyle={{
-                    transform: 'translateX(200px)',
-                    zIndex: -1,
-                  }}
-                  endStyle={{
-                    transform: 'translateX(0)',
-                    zIndex: 0,
-                  }}
-                  durationSeconds={0.8}
-                  easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-                  render={style => <Menu {...{ ...style, location: this.props.location }} />}
-                />
-              </div>
-
-              <Animate
-                play
-                startStyle={{
-                  background: colors.white,
-                  width: '100%',
-                  // overflow: 'hidden',
-                }}
-                endStyle={{
-                  background: colors.white,
-                  width: '100%',
-                  // overflow: 'hidden',
-                  boxShadow: `0 0 10px ${colors.black}`,
-                  ...(showMenu
-                    ? {
-                        transform: 'translateX(300px)',
-                      }
-                    : null),
-                }}
-                durationSeconds={0.8}
-                easeType="cubic-bezier(0.19, 1, 0.22, 1)"
-              >
-                <div
-                  onClick={() => {
-                    if (this.state.showMenu) {
-                      this.setState({
-                        showMenu: false,
-                      })
-                    }
-                  }}
-                >
-                  {this.props.children}
-                </div>
-              </Animate>
-              <Footer />
-            </MenuContext.Provider>
-          </div>
-        )}
-      />
+              {this.props.children}
+            </div>
+          </Animate>
+          <Footer />
+        </MenuContext.Provider>
+      </Root>
     )
   }
 }

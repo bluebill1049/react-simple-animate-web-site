@@ -4,6 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import colors from '../styled/colors'
 import CommonProps from './CommonProps'
+import Button from '@material-ui/core/Button'
 import { PropsContentContainer } from '../styled/containers'
 import { PropType } from '../styled/typography'
 
@@ -169,6 +170,7 @@ export default class Content extends Component {
   constructor(props) {
     super(props)
     this.codeRef = []
+    this.example = React.createRef()
     data.forEach((_, i) => {
       this.codeRef[i] = React.createRef()
     })
@@ -176,6 +178,10 @@ export default class Content extends Component {
 
   goToProp = i => {
     this.codeRef[i].current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  showExample = () => {
+    this.example.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   render() {
@@ -192,6 +198,9 @@ export default class Content extends Component {
                   </li>
                 ))}
               </ul>
+              <Button variant="outlined" onClick={this.showExample}>
+                Example
+              </Button>
             </li>
           </ul>
         </Side>
@@ -214,7 +223,7 @@ export default class Content extends Component {
             <CommonProps />
           </ul>
 
-          <h3>Examples: </h3>
+          <h3 ref={this.example}>Examples: </h3>
           <p>The following example will animate the component.</p>
           <SyntaxHighlighter language="javascript" style={docco}>
             {example}

@@ -31,9 +31,36 @@ export const PropsContentContainer = styled.div`
       padding-top: 20px;
       padding-right: 20px;
       float: left;
-      
+
       & code {
         cursor: pointer;
+        font-size: 13px;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          height: 2px;
+          background: ${colors.purple};
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          transition: 0.2s all;
+        }
+
+        &:hover {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+
+      & button {
+        display: block;
+        width: 100%;
+        border-color: ${colors.primary};
+        color: ${colors.primary};
+        margin-top: 30px;
       }
     }
 
