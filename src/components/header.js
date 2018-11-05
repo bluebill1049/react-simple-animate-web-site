@@ -51,47 +51,35 @@ const Code = styled.span`
   align-content: unset;
 `
 
-class Header extends React.PureComponent {
-  state = {
-    showSnackBars: false,
-  }
+function Header(props) {
+  return (
+    <HeaderWrapper>
+      <Nav location={props.location} />
 
-  render() {
-    return (
-      <HeaderWrapper>
-        <Nav location={this.props.location} />
+      <TopMenuGroup />
 
-        <TopMenuGroup />
+      <Logo>
+        <AnimateKeyframes
+          play
+          durationSeconds={10}
+          direaction="alternate"
+          iterationCount="infinite"
+          keyframes={['transform: rotateZ(359deg)', 'transform: rotateZ(0deg)']}
+        >
+          <img src={logo} alt="logo" />
+        </AnimateKeyframes>
+      </Logo>
 
-        <Logo>
-          <AnimateKeyframes
-            play
-            durationSeconds={10}
-            direaction="alternate"
-            iterationCount="infinite"
-            keyframes={['transform: rotateZ(359deg)', 'transform: rotateZ(0deg)']}
-          >
-            <img src={logo} alt="logo" />
-          </AnimateKeyframes>
-        </Logo>
+      <Heading>
+        <H1>React Simple Animate</H1>
+        <H2>UI Animation Made Simple</H2>
+      </Heading>
 
-        <Heading>
-          <H1>React Simple Animate</H1>
-          <H2>UI Animation Made Simple</H2>
-        </Heading>
-
-        <Code>
-          <code
-            onClick={() => {
-              this.setState({ showSnackBars: true })
-            }}
-          >
-            npm install --S react-simple-animate
-          </code>
-        </Code>
-      </HeaderWrapper>
-    )
-  }
+      <Code>
+        <code>npm install --S react-simple-animate</code>
+      </Code>
+    </HeaderWrapper>
+  )
 }
 
 export default Header
