@@ -8,7 +8,7 @@ import Footer from './footer'
 import './layout.css'
 
 const Cover = styled.div`
-  background: ${colors.primary};
+  background: ${colors.white};
   z-index: 100;
   color: ${colors.white};
   font-family: 'Fjalla One', Helvetica;
@@ -103,7 +103,7 @@ export default class Layout extends React.PureComponent {
             play={loaded}
             startStyle={{ opacity: 1, pointerEvents: 'none' }}
             endStyle={{ opacity: 0, pointerEvents: 'none' }}
-            durationSeconds={1.5}
+            durationSeconds={0.5}
             onCompleteStyle={{ display: 'none', pointerEvents: 'none' }}
             render={attributes => <Cover {...attributes} />}
           />

@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import colors from '../styled/colors'
 import { ContentContainer } from '../styled/containers';
+import Helmet from "react-helmet";
 
 const InlineCode = styled.code`
   display: block;
@@ -15,6 +16,14 @@ const InlineCode = styled.code`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
+    <Helmet
+      title={'Basics'}
+      meta={[
+        { name: 'description', content: 'React animation basics' },
+      ]}
+    >
+      <html lang="en" />
+    </Helmet>
     <ContentHeader location={location} title="Basics" />
 
     <ContentContainer>

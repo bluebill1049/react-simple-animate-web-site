@@ -2,9 +2,19 @@ import React from 'react'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import { ContentContainer } from '../styled/containers'
+import Helmet from "react-helmet";
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
+    <Helmet
+      title={'Advanced'}
+      meta={[
+        { name: 'description', content: 'Do more complex animation with React Simple Animate' },
+      ]}
+    >
+      <html lang="en" />
+    </Helmet>
+
     <ContentHeader location={location} title="Advanced" />
 
     <ContentContainer>

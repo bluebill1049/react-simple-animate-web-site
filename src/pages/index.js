@@ -12,12 +12,7 @@ const IndexPage = ({ location }) => (
     <Helmet
       title={'React Simple Animate - UI Animation made simple'}
       meta={[
-        { name: 'description', content: 'React animation component' },
-        {
-          name:
-            'react animation animate transition-animation animate-css animation-controller animation-sequence keyframes-animation',
-          content: 'sample, something',
-        },
+        { name: 'description', content: 'React animation component, aim to help developer experience better for animation.' },
       ]}
     >
       <html lang="en" />
