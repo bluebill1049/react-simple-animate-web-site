@@ -1,5 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: `http://react-simple-animate.now.sh`,
+  },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
