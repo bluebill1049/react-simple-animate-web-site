@@ -5,6 +5,10 @@ export const ContentContainer = styled.div`
   padding: 20px;
   max-width: 1024px;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    padding: 40px 20px 20px;
+  }
 `
 
 export const PropsContentContainer = styled.div`

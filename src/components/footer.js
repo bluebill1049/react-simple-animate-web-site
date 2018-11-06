@@ -7,6 +7,7 @@ const Root = styled.div`
   padding: 20px;
   color: ${colors.white};
   background: ${colors.secondary};
+  font-size: 14px;
 
   & > a {
     color: ${colors.white};
@@ -19,6 +20,8 @@ const Root = styled.div`
   & > img {
     height: 20px;
     margin-bottom: -4px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 `
 

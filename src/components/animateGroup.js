@@ -13,7 +13,7 @@ const props = {
   endStyle: { opacity: 1 }
 };
 
-export default () =>
+export default () => (
   <AnimateGroup play sequences={[
     { sequenceId: 'header', ...props } // play first
     { sequenceId: 'content', ...props, overlaySeconds: 0.1 } // play during header animation and overlay by 0.1s
@@ -22,6 +22,22 @@ export default () =>
     <Animate sequenceId="header" />
     <Animate sequenceId="content" />
     <Animate sequenceId="footer" />
+  </AnimateGroup>
+);`
+
+const sequenceIndexExample = `import react from 'react';
+import { Animate, AnimateGroup } from 'react-simple-animate';
+
+const props = {
+  startStyle: { opacity: 0 },
+  endStyle: { opacity: 1 }
+};
+
+export default () => (
+  <AnimateGroup play>
+    <Animate {...props} sequenceIndex={0}) />
+    <Animate {...props} sequenceIndex={1} />
+    <Animate {...props} sequenceIndex={2} />
   </AnimateGroup>
 );`
 
@@ -90,7 +106,12 @@ export default class Content extends Component {
           </ul>
 
           <h3 ref={this.example}>Examples: </h3>
-          <p>Set up animation sequence with sequenceId.</p>
+          <p>Set up animation sequence with <code>sequenceIndex</code>.</p>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {sequenceIndexExample}
+          </SyntaxHighlighter>
+
+          <p>Set up animation sequence with <code>sequenceId</code>.</p>
           <SyntaxHighlighter language="javascript" style={docco}>
             {example}
           </SyntaxHighlighter>

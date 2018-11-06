@@ -11,13 +11,14 @@ import ButtonGroup from "../ButtonGroup";
 
 registerLanguage('jsx', jsx)
 
-const code = () => `<AnimateKeyframes
+const code = (play) => `<AnimateKeyframes
   play
   iterationCount="infinite"
   direaction="alternate"
   durationSeconds={10}
+  playState="${!play ? 'running' : 'paused'}"
   keyframes={[
-    'rotateX(0) rotateY(0) rotateZ(0)',
+    'transform: rotateX(0) rotateY(0) rotateZ(0)',
     'transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)',
   ]}
 >
@@ -92,7 +93,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
     const { play } = this.state;
 
     return (
-      <CodeContainer title="Animate Keyframes" description="Css keyframes animation within Component">
+      <CodeContainer title="Animate CSS Keyframes" description="Defined your animation keyframes in your Component">
         <ViewWrapper>
           <View>
             <AnimateKeyframes

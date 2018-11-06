@@ -5,25 +5,24 @@ import { PropsContentContainer, Side } from '../styled/containers'
 import data from './props/animateKeyframesData'
 import Button from '@material-ui/core/Button/Button'
 
-const exmaple = `
-import React from 'react';
+const exmaple = `import React from 'react';
 import { AnimateKeyframes }  from 'react-simple-animate';
 import YourComponent from './YourComponent';
 
-export default ({ children, play, onCompleteCallBack }) => {
+export default ({ children, play }) => {
   return <AnimateKeyframes 
     play 
     delaySeconds={1}
-    durationSeconds={10}]
+    durationSeconds={10}
     iterationCount={3}
     direction="alternative"
     keyframes={[
-       'transform: translateY(0)',
-       'transform: translateY(10px)'
+      'transform: translateY(0)',
+      'transform: translateY(10px)',
     ]}
   />
-    <Component />
-  </YourComponent>
+    <YourComponent />
+  </AnimateKeyframes>
 };
 `
 
@@ -83,7 +82,7 @@ export default class Content extends Component {
             >
               CSS animation
             </a>{' '}
-            specification. It's best to used for infinite animation, or animation which can be paused and resumed.
+            specification. It's best to use for infinite animation, or animation which can be paused and resumed.
           </p>
           <h3>Props</h3>
           <ul>

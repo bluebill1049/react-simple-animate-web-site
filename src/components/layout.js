@@ -7,22 +7,6 @@ import Menu from '../components/menu'
 import Footer from './footer'
 import './layout.css'
 
-const Cover = styled.div`
-  background: ${colors.white};
-  z-index: 100;
-  color: ${colors.white};
-  font-family: 'Fjalla One', Helvetica;
-  font-size: 30px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
 const Root = styled.div`
   overflow: hidden;
   
@@ -90,7 +74,7 @@ export default class Layout extends React.PureComponent {
   menuTimer
 
   render() {
-    const { showMenu, loaded, isMenuVisible } = this.state
+    const { showMenu, isMenuVisible } = this.state
 
     return (
       <Root>
@@ -99,15 +83,6 @@ export default class Layout extends React.PureComponent {
             setMenuState: this.setMenuState,
           }}
         >
-          <Animate
-            play={loaded}
-            startStyle={{ opacity: 1, pointerEvents: 'none' }}
-            endStyle={{ opacity: 0, pointerEvents: 'none' }}
-            durationSeconds={0.5}
-            onCompleteStyle={{ display: 'none', pointerEvents: 'none' }}
-            render={attributes => <Cover {...attributes} />}
-          />
-
           <div
             style={{
               visibility: isMenuVisible ? 'visible' : 'hidden',

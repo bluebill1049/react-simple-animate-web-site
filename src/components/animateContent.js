@@ -8,13 +8,12 @@ import data from './props/animateData'
 import { Side } from '../styled/containers'
 import colors from '../styled/colors'
 
-const example = `
-import React from 'react';
+const example = `import React from 'react';
 import { Animate }  from 'react-simple-animate';
 import YourComponent from './YourComponent';
 
-export default ({ children, play, onCompleteCallBack }) => {
-  return <Aniamte
+export default ({ play, onCompleteCallBack }) => (
+  <Aniamte
     play={play}
     durationSeconds={1}
     delaySeconds={0.3}
@@ -27,7 +26,7 @@ export default ({ children, play, onCompleteCallBack }) => {
   >
     <YourComponent />
   </Aniamte>
-};
+);
 `
 
 const LinkButton = styled.span`
@@ -101,8 +100,8 @@ export default class Content extends Component {
         </Side>
         <div>
           <p>
-            <code>{'<Animate />'}</code> is made to solve a simple React animation problem, which is animates{' '}
-            <code>Components</code> from destination A to destination B (with the ability to reverse play).
+            <code>{'<Animate />'}</code> component is made to achieve a simple animation task, which is animated{' '}
+            <code>Components</code> from destination A to destination B, and with the ability to reverse the animation backwards.
           </p>
 
           <h3>Props</h3>

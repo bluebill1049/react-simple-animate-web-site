@@ -21,8 +21,8 @@ const AnimateGroup = ({ location }) => (
       <h3>Animate Components in sequences</h3>
 
       <p>
-        React simple animation provide ability to chain up your animations in sequences, the following example will
-        animation components one after another, which refer to <code>sequenceIndex</code>.
+        React simple animation provides the ability to chain up your animations in sequences, the following example will
+        animation components one after another by referring each component's <code>sequenceIndex</code>.
       </p>
 
       <iframe
@@ -32,9 +32,9 @@ const AnimateGroup = ({ location }) => (
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
-      <h3>Add or remove components</h3>
+      <h3>Add or Remove components</h3>
 
-      <p>React simple animation also support transition on adding or remove components.</p>
+      <p>React simple animation also support transition on component enter or exit.</p>
 
       <iframe
         title="react simple animate on adding or removing animation"

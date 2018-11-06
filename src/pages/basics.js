@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import colors from '../styled/colors'
-import { ContentContainer } from '../styled/containers';
-import Helmet from "react-helmet";
+import { ContentContainer } from '../styled/containers'
+import Helmet from 'react-helmet'
 
 const InlineCode = styled.code`
   display: block;
@@ -16,12 +16,7 @@ const InlineCode = styled.code`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <Helmet
-      title={'Basics'}
-      meta={[
-        { name: 'description', content: 'React animation basics' },
-      ]}
-    >
+    <Helmet title={'Basics'} meta={[{ name: 'description', content: 'React animation basics' }]}>
       <html lang="en" />
     </Helmet>
     <ContentHeader location={location} title="Basics" />
@@ -30,10 +25,10 @@ const AnimateGroup = ({ location }) => (
       <h3>Motivation</h3>
 
       <p>
-        React Animation is always not that easy, there are plenty libraries out, but most of them required to learn the
-        way doing things. <code>React Simple Animate</code> focuses on inline style and using standard CSS animation,
-        which provide great experience for developers to get on React animation easier and leverage their existing
-        knowledge.
+        React Animation is always not that easy. However, there are plenty of libraries out there, but most of them
+        required you to learn the way doing things, and package size are not always small.{' '}
+        <code>React Simple Animate</code> focuses on standard CSS animation to leverage most of your existing knowledge
+        on styling, which aims to provide simple and great experience to get you on board with React animation.
       </p>
 
       <p>The package provided some of the key features below:</p>
@@ -42,7 +37,7 @@ const AnimateGroup = ({ location }) => (
         <li>Animation from inline style A to B.</li>
         <li>Support CSS animation keyframes.</li>
         <li>Chain up animation sequences.</li>
-        <li>Tiny size without other dependency.</li>
+        <li>Tiny size without other dependencies.</li>
       </ul>
 
       <h3>Installation</h3>
@@ -54,9 +49,9 @@ const AnimateGroup = ({ location }) => (
       <h3>Getting Started</h3>
 
       <p>
-        The following example demonstrate doing basic animation from style A to B, which is perfect to use{' '}
-        <code>{`<Animate />`}</code>, by declare <code>startStyle</code>, <code>endStyle</code> and a peace of state to
-        control the <code>play</code> animation.
+        The following example demonstrates doing basic animation from style <b>A</b> to <b>B</b>, which is perfect to
+        use <code>{`<Animate />`}</code> Component, by declaring <code>startStyle</code>, <code>endStyle</code> and a
+        local state to control the <code>play</code> animation.
       </p>
 
       <iframe
@@ -66,11 +61,11 @@ const AnimateGroup = ({ location }) => (
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
-      <h3>Control animation speed</h3>
+      <h3>Control React animation speed</h3>
 
       <p>
-        Easily adjust the animation speed with duration, the following example will adjust the animation speed duration
-        to 1 second and also delay the animation on start.
+        React Simple Animate allows you easily adjust the animation speed with duration. The following example will
+        adjust the animation speed duration to 1 second, and also delay the animation by 1 second on start.
       </p>
 
       <iframe
@@ -82,8 +77,8 @@ const AnimateGroup = ({ location }) => (
 
       <h3>Animate with CSS @keyframes</h3>
       <p>
-        The following example demonstrate how to easily apply CSS <code>@keyframes</code> knowledge to React
-        component, by declare you keyframes animation in an <code>array</code> of style and duration seconds to play.
+        The following example demonstrate how to easily apply CSS <code>@keyframes</code> animation on your React
+        component.
       </p>
 
       <iframe

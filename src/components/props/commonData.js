@@ -49,8 +49,8 @@ export default [
         <a href="https://reactjs.org/docs/render-props.html" rel="noopener noreferrer" target="_blank">
           Render props
         </a>{' '}
-        function, which is useful for render animation component without any <code>div</code> wrapper, or if required to
-        add event listener to the component.
+        function, which is useful for render animation component without any <code>div</code> or <code>span</code>{' '}
+        wrapper.
       </>
     ),
     code: (

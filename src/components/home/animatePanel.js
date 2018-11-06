@@ -18,8 +18,8 @@ const ReactIconExtends = styled(ReactIcon)`
 
 const code = play => `<Animate
   play={${play}}
-  startStyle={{opacity: 1, filter: 'blur(0)'}}
-  endStyle={{opacity: 0, filter: 'blur(10px)'}}
+  startStyle={{ opacity: 1, filter: 'blur(0)' }}
+  endStyle={{ opacity: 0, filter: 'blur(10px)' }}
 >
   <Component />
 </Animate>
@@ -34,7 +34,7 @@ export default class AnimatePanel extends React.PureComponent {
     const { play } = this.state
 
     return (
-      <CodeContainer title="Animation from inline style A to B." description="Inline style animation made super easy">
+      <CodeContainer title="Transition from inline style A to B." description="Inline style React animation made easy">
         <Animate
           play={play}
           startStyle={{ opacity: 1, filter: 'blur(0)' }}

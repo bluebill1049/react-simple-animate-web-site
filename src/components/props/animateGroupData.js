@@ -31,8 +31,8 @@ export default [
     ),
     description: (
       <>
-        Array with <code>sequenceIndex</code> or <code>sequenceId</code>. This prop is <b>optional</b>, if not provided,
-        then it will animate in order of <code>sequenceIndex</code>.
+        Array with <code>sequenceIndex</code> or <code>sequenceId</code>. default behaviour will be animate in order of{' '}
+        <code>sequenceIndex</code>.
       </>
     ),
     code: (
@@ -49,8 +49,8 @@ export default [
     ),
     description: (
       <>
-        Share the same behaviour as <code>sequences</code>. This prop is <b>optional</b>, except this will applied when{' '}
-        <code>play</code> set to <code>false</code>.
+        Share the same behaviour as <code>sequences</code>, this will applied when <code>play</code> set to{' '}
+        <code>false</code>.
       </>
     ),
   },
