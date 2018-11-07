@@ -28,7 +28,7 @@ export default [
   {
     name: (
       <>
-        play: <PropType>boolean</PropType> = false
+        play: <PropType>boolean</PropType> = false <i>required</i>
       </>
     ),
     description: (
@@ -41,7 +41,7 @@ export default [
   {
     name: (
       <>
-        keyframes: <PropType>{'Array<string> | Array<Object>'}</PropType>
+        keyframes: <PropType>{'Array<string> | Array<Object>'}</PropType> <i>required</i>
       </>
     ),
     customised: (

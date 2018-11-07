@@ -56,7 +56,7 @@ const AnimateGroup = ({ location }) => (
 
       <iframe
         title="Animate inline style"
-        src="https://codesandbox.io/embed/v1q4p2q327"
+        src="https://codesandbox.io/embed/v1q4p2q327?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
@@ -70,20 +70,20 @@ const AnimateGroup = ({ location }) => (
 
       <iframe
         title="Animate with speed control"
-        src="https://codesandbox.io/embed/r7q1pj660p"
+        src="https://codesandbox.io/embed/r7q1pj660p?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
-      <h3>Animate with CSS @keyframes</h3>
-      <p>
-        The following example demonstrate how to easily apply CSS <code>@keyframes</code> animation on your React
-        component.
-      </p>
+      <h3>
+        Apply complete style after animation is finished
+      </h3>
+
+      <p>You can apply a complete style right after the animation finished playing.</p>
 
       <iframe
-        title="Animate with CSS @keyframes"
-        src="https://codesandbox.io/embed/o47j97mxk5"
+        title="Apply complete style after animation is finished"
+        src="https://codesandbox.io/embed/n0xv5z362l?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />

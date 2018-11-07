@@ -4,6 +4,7 @@ import { docco } from 'react-syntax-highlighter/styles/hljs'
 import { PropsContentContainer, Side } from '../styled/containers'
 import data from './props/animateKeyframesData'
 import Button from '@material-ui/core/Button/Button'
+import colors from '../styled/colors'
 
 const exmaple = `import React from 'react';
 import { AnimateKeyframes }  from 'react-simple-animate';
@@ -50,10 +51,16 @@ export default class Content extends Component {
         <Side>
           <h4>Props</h4>
           <ol>
-            {data.map(({ name, isAnimateGroup }, i) => {
+            {data.map(({ required, name, isAnimateGroup }, i) => {
               const result = (
                 <li onClick={() => this.goToProp(i)} key={`codeShortCut${i}`}>
-                  <code>{name}</code>
+                  <code
+                    style={{
+                      ...(required ? { borderBottom: `1px solid ${colors.purple}` } : null),
+                    }}
+                  >
+                    {name}
+                  </code>
                 </li>
               )
 

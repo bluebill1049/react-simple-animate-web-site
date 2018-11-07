@@ -14,7 +14,7 @@ export default [
   {
     name: (
       <>
-        play: <PropType>boolean</PropType> = false
+        play: <PropType>boolean</PropType> = false <i>required</i>
       </>
     ),
     description: (

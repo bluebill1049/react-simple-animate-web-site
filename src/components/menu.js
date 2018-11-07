@@ -46,10 +46,6 @@ export const links = [
     name: 'Basics',
   },
   {
-    path: '/advanced',
-    name: 'Advanced',
-  },
-  {
     path: '/animate',
     name: '<Animate />',
   },
@@ -60,6 +56,10 @@ export const links = [
   {
     path: '/animate-group',
     name: '<AnimateGroup />',
+  },
+  {
+    path: '/advanced',
+    name: 'Advanced',
   },
 ]
 

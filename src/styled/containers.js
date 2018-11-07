@@ -27,6 +27,16 @@ export const PropsContentContainer = styled.div`
     padding: 10px;
     background: ${colors.secondary};
     color: ${colors.white};
+    
+    
+
+    & > i:last-child {
+      background: ${colors.purple};
+      color: ${colors.white};
+      padding: 5px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -95,9 +105,9 @@ export const Side = styled.div`
       & li {
         margin-bottom: 10px;
         list-style: none;
-
-        & code {
-          padding: 4px 10px;
+        
+        & i {
+          font-size: 12px;
         }
       }
     }

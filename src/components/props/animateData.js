@@ -6,7 +6,7 @@ export default [
   {
     name: (
       <>
-        play: <PropType>boolean</PropType> = false
+        play: <PropType>boolean</PropType> = false <i>required</i>
       </>
     ),
     description: (
@@ -19,20 +19,19 @@ export default [
   {
     name: (
       <>
+        endStyle: <PropType>Object</PropType> <i>required</i>
+      </>
+    ),
+    description: 'Component transition to inline style.',
+  },
+  {
+    name: (
+      <>
         startStyle: <PropType>Object</PropType>
       </>
     ),
 
     description: 'Component initial inline style.',
-  },
-  {
-    name: (
-      <>
-        endStyle: <PropType>Object</PropType>
-      </>
-    ),
-
-    description: 'Component transition to inline style.',
   },
   {
     name: (
@@ -93,22 +92,22 @@ export default [
     ),
     description: `Call back function after animation complete.`,
   },
-  {
-    name: (
-      <>
-        mount: <PropType>boolean</PropType> = false
-      </>
-    ),
-    description: <>Apply <code>mount</code> as true, will mount component then apply animation.</>,
-  },
-  {
-    name: (
-      <>
-        unMount: <PropType>boolean</PropType> = false
-      </>
-    ),
-
-    description: <>Apply <code>unMount</code> as true, will unMount component after animation completion.</>,
-  },
+  // {
+  //   name: (
+  //     <>
+  //       mount: <PropType>boolean</PropType> = false
+  //     </>
+  //   ),
+  //   description: <>Apply <code>mount</code> as true, will mount component then apply animation.</>,
+  // },
+  // {
+  //   name: (
+  //     <>
+  //       unMount: <PropType>boolean</PropType> = false
+  //     </>
+  //   ),
+  //
+  //   description: <>Apply <code>unMount</code> as true, will unMount component after animation completion.</>,
+  // },
   ...commonData,
 ]

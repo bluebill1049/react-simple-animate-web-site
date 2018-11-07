@@ -4,6 +4,7 @@ import { docco } from 'react-syntax-highlighter/styles/hljs'
 import { PropsContentContainer, Side } from '../styled/containers'
 import data from './props/animateGroupData'
 import Button from '@material-ui/core/Button/Button'
+import colors from '../styled/colors'
 
 const example = `import react from 'react';
 import { Animate, AnimateGroup } from 'react-simple-animate';
@@ -65,10 +66,16 @@ export default class Content extends Component {
         <Side>
           <h4>Props</h4>
           <ol>
-            {data.map(({ name, isAnimateGroup }, i) => {
+            {data.map(({ required, name, isAnimateGroup }, i) => {
               const result = (
                 <li onClick={() => this.goToProp(i)} key={`codeShortCut${i}`}>
-                  <code>{name}</code>
+                  <code
+                    style={{
+                      ...(required ? { borderBottom: `1px solid ${colors.purple}` } : null),
+                    }}
+                  >
+                    {name}
+                  </code>
                 </li>
               )
               if (isAnimateGroup) {
@@ -106,12 +113,16 @@ export default class Content extends Component {
           </ul>
 
           <h3 ref={this.example}>Examples: </h3>
-          <p>Set up animation sequence with <code>sequenceIndex</code>.</p>
+          <p>
+            Set up animation sequence with <code>sequenceIndex</code>.
+          </p>
           <SyntaxHighlighter language="javascript" style={docco}>
             {sequenceIndexExample}
           </SyntaxHighlighter>
 
-          <p>Set up animation sequence with <code>sequenceId</code>.</p>
+          <p>
+            Set up animation sequence with <code>sequenceId</code>.
+          </p>
           <SyntaxHighlighter language="javascript" style={docco}>
             {example}
           </SyntaxHighlighter>

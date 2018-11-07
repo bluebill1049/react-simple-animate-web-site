@@ -69,10 +69,16 @@ export default class Content extends Component {
         <Side>
           <h4>Props</h4>
           <ol>
-            {data.map(({ name, isAnimateGroup }, i) => {
+            {data.map(({ required, name, isAnimateGroup }, i) => {
               const result = (
                 <li onClick={() => this.goToProp(i)} key={`codeShortCut${i}`}>
-                  <code>{name}</code>
+                  <code
+                    style={{
+                      ...(required ? { borderBottom: `1px solid ${colors.purple}` } : null),
+                    }}
+                  >
+                    {name}
+                  </code>
                 </li>
               )
               if (isAnimateGroup) {
@@ -101,7 +107,8 @@ export default class Content extends Component {
         <div>
           <p>
             <code>{'<Animate />'}</code> component is made to achieve a simple animation task, which is animated{' '}
-            <code>Components</code> from destination A to destination B, and with the ability to reverse the animation backwards.
+            <code>Components</code> from destination A to destination B, and with the ability to reverse the animation
+            backwards.
           </p>
 
           <h3>Props</h3>
