@@ -6,7 +6,7 @@ import { docco } from 'react-syntax-highlighter/styles/hljs'
 
 const keyframesString = `<AnimateKeyframes 
   play 
-  keyframes={['opacity: 0', 'opacity: 1']}
+  keyframes={['opacity: 0', 'opacity: 1']} // same as CSS @keyframes { 0% { ... } 100% { ... }}
 />
   <Component />
 </AnimateKeyframes>
