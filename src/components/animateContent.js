@@ -13,7 +13,7 @@ import { Animate }  from 'react-simple-animate';
 import YourComponent from './YourComponent';
 
 export default ({ play, onCompleteCallBack }) => (
-  <Aniamte
+  <Animate
     play={play}
     durationSeconds={1}
     delaySeconds={0.3}
@@ -25,7 +25,7 @@ export default ({ play, onCompleteCallBack }) => (
     onComplete={onCompleteCallBack}
   >
     <YourComponent />
-  </Aniamte>
+  </Animate>
 );
 `
 

@@ -2,15 +2,13 @@ import React from 'react'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import { ContentContainer } from '../styled/containers'
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet'
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
     <Helmet
       title={'Advanced'}
-      meta={[
-        { name: 'description', content: 'Do more complex animation with React Simple Animate' },
-      ]}
+      meta={[{ name: 'description', content: 'Do more complex animation with React Simple Animate' }]}
     >
       <html lang="en" />
     </Helmet>
@@ -45,15 +43,29 @@ const AnimateGroup = ({ location }) => (
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
+      <h3>Animate SVG</h3>
+
+      <p>
+        You can use <code>{`<Aniamte />`}</code> to animate svg elements, the following example will animate the{' '}
+        <code>path</code> element within the <code>svg</code>.
+      </p>
+
+      <iframe
+        title="react simple animate with animation sequences"
+        src="https://codesandbox.io/embed/vqm6w2mv47"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
+
       {/*<h3>Add or Remove components</h3>*/}
 
       {/*<p>React simple animation also support transition on component enter or exit.</p>*/}
 
       {/*<iframe*/}
-        {/*title="react simple animate on adding or removing animation"*/}
-        {/*src="https://codesandbox.io/embed/kx9p504k97"*/}
-        {/*style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}*/}
-        {/*sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"*/}
+      {/*title="react simple animate on adding or removing animation"*/}
+      {/*src="https://codesandbox.io/embed/kx9p504k97"*/}
+      {/*style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}*/}
+      {/*sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"*/}
       {/*/>*/}
     </ContentContainer>
   </Layout>
