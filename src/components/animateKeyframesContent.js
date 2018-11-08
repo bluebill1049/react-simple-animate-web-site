@@ -20,7 +20,9 @@ export default ({ children, play }) => {
     keyframes={[
       'transform: translateY(0)',
       'transform: translateY(10px)',
-    ]}
+    ]} 
+    // animation keyframes will be distributed evenly the above key frames is equivalent as
+    // @keyframes { 0% { ... } 100% { ... }}
   />
     <YourComponent />
   </AnimateKeyframes>

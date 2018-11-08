@@ -36,7 +36,7 @@ const props = {
 
 export default () => (
   <AnimateGroup play>
-    <Animate {...props} sequenceIndex={0}) />
+    <Animate {...props} sequenceIndex={0}) /> // sequence index will defined which animation play first
     <Animate {...props} sequenceIndex={1} />
     <Animate {...props} sequenceIndex={2} />
   </AnimateGroup>
