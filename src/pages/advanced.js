@@ -57,23 +57,12 @@ const AnimateGroup = ({ location }) => (
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
-      <h3>Add or Remove components</h3>
-
-      <p>React simple animation also support transition on component enter or exit.</p>
-
-      <iframe
-        title="react simple animate on adding or removing animation"
-        src="https://codesandbox.io/embed/kx9p504k97"
-        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
-        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      />
-
       <h3>With Hooks</h3>
 
       <p>Toggle animation is even simpler.</p>
 
       <iframe
-        src="https://codesandbox.io/s/o7q2z0lw8y"
+        src="https://codesandbox.io/embed/o7q2z0lw8y"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
