@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 const Animate = ({ location }) => (
   <Layout location={location}>
     <Helmet
-      title="Animate Component"
+      title="Animate - easy animation from style A to B"
       meta={[
         { name: 'description', content: 'Simple React animation from style A to B' },
       ]}

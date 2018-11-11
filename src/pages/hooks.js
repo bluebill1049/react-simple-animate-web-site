@@ -48,7 +48,10 @@ export default function example {
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <Helmet title={'Basics'} meta={[{ name: 'description', content: 'React animation basics' }]}>
+    <Helmet
+      title={'Hooks - useAnimate and useAnimateKeyframes with react simple animate'}
+      meta={[{ name: 'description', content: 'React animation basics' }]}
+    >
       <html lang="en" />
     </Helmet>
     <ContentHeader location={location} title="Basics" />
@@ -77,7 +80,8 @@ const AnimateGroup = ({ location }) => (
         This hook share the same functionality and props as{' '}
         <Link to="/animate">
           <code>{`<Animate />`}</code>
-        </Link>.
+        </Link>
+        .
       </p>
 
       <SyntaxHighlighter language="javascript" style={docco}>
@@ -90,7 +94,8 @@ const AnimateGroup = ({ location }) => (
         This hook share the same functionality and props as{' '}
         <Link to="/animate-keyframes">
           <code>{`<AnimateKeyframes />`}</code>
-        </Link>.
+        </Link>
+        .
       </p>
 
       <SyntaxHighlighter language="javascript" style={docco}>

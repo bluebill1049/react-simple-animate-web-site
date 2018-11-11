@@ -7,7 +7,7 @@ import Helmet from 'react-helmet'
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
     <Helmet
-      title={'Advanced'}
+      title={'Advanced - tip and tricks on react simple animate'}
       meta={[{ name: 'description', content: 'Do more complex animation with React Simple Animate' }]}
     >
       <html lang="en" />

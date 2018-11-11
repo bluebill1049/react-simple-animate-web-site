@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 const AnimateGroup = ({location}) => (
   <Layout location={location}>
     <Helmet
-      title={'Animation Sequences'}
+      title={'Animation Sequences - control your animation sequences'}
       meta={[
         { name: 'description', content: 'Fully controller your React Components animation sequences.' },
       ]}

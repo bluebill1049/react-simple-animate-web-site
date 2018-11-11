@@ -16,7 +16,7 @@ const InlineCode = styled.code`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <Helmet title={'Basics'} meta={[{ name: 'description', content: 'React animation basics' }]}>
+    <Helmet title={'Basics - Get started with React Animation'} meta={[{ name: 'description', content: 'React animation basics' }]}>
       <html lang="en" />
     </Helmet>
     <ContentHeader location={location} title="Basics" />
