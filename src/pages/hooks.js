@@ -55,7 +55,7 @@ const AnimateGroup = ({ location }) => (
 
     <ContentContainer>
       <h3>
-        Custom Hooks <span>[Beta]</span>
+        Animation with Custom Hooks <span>[Beta]</span>
       </h3>
 
       <p>

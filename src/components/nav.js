@@ -19,29 +19,26 @@ const Root = styled.nav`
 
   @media (min-width: 1024px) {
     position: absolute;
-    top: 70px;
-    display: block;
-  }
-
-  @media (min-width: 1208px) {
     top: 20px;
+    display: block;
   }
 
   & > a {
     color: ${colors.white};
     text-transform: uppercase;
-    margin: 0 20px;
+    margin: 0 15px;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
     position: relative;
+    padding: 10px 0;
 
     &::before {
       content: '';
       position: absolute;
       height: 2px;
       background: ${colors.purple};
-      bottom: -4px;
+      bottom: 4px;
       left: 0;
       width: 0;
       transition: 0.2s all;
