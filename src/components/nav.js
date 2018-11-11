@@ -21,6 +21,8 @@ const Root = styled.nav`
     position: absolute;
     top: 20px;
     display: block;
+    text-align: center;
+    width: 100%;
   }
 
   & > a {
