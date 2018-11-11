@@ -58,6 +58,10 @@ export const links = [
     name: '<AnimateGroup />',
   },
   {
+    path: '/hooks',
+    name: 'Hooks',
+  },
+  {
     path: '/advanced',
     name: 'Advanced',
   },
