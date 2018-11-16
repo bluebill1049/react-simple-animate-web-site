@@ -39,6 +39,7 @@ const NavExtend = styled(Nav)`
 
   @media (min-width: 1024px) {
     display: block;
+    text-align: left;
   }
 `
 
