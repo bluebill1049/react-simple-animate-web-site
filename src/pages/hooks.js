@@ -46,6 +46,26 @@ export default function example {
   </>;
 }`
 
+const useAnimateGroup = `import React from 'react'
+import { useAnimateGroup } from 'react-simple-aniamte';
+
+export default function example {
+  const [{styles, play}, startAnimation] = useAnimateGroup({
+    sequences: {
+      {
+        startStyle: { opacity: 0 }, // refer <Animate /> for props information
+        endStyle: { opacity: 1 }
+      },
+      keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
+    }
+  });
+  
+  return <>
+    {styles.map(style) => <div style={style}>show me</div>}
+    <button onClick={() => startAnimation(!play)}>Play</button>
+  </>;
+}`
+
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
     <Helmet
@@ -68,11 +88,7 @@ const AnimateGroup = ({ location }) => (
 
       <h3>Installation</h3>
 
-      <InlineCode>npm install --S react-simple-animate@2.3.0-beta.2</InlineCode>
-
-      <p>
-        So far, i have built two custom hooks <code>useAnimate</code> and <code>useAnimateKeyframes</code>.
-      </p>
+      <InlineCode>npm install --S react-simple-animate@2.4.0-beta.1</InlineCode>
 
       <h3>useAnimate</h3>
 
@@ -100,6 +116,19 @@ const AnimateGroup = ({ location }) => (
 
       <SyntaxHighlighter language="javascript" style={docco}>
         {useKeyframes}
+      </SyntaxHighlighter>
+
+      <h4>useAnimateGroup</h4>
+      <p>
+        This hook share the same functionality and props as{' '}
+        <Link to="/animate-group">
+          <code>{`<AnimateGroup />`}</code>
+        </Link>
+        .
+      </p>
+
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {useAnimateGroup}
       </SyntaxHighlighter>
     </ContentContainer>
   </Layout>
