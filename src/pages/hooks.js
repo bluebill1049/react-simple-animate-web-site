@@ -118,7 +118,7 @@ const AnimateGroup = ({ location }) => (
         {useKeyframes}
       </SyntaxHighlighter>
 
-      <h4>useAnimateGroup</h4>
+      <h3>useAnimateGroup</h3>
       <p>
         This hook share the same functionality and props as{' '}
         <Link to="/animate-group">

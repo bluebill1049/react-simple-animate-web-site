@@ -26,6 +26,7 @@
   "keywords": [
     "gatsby"
   ],
+  "alias": "react-simple-aniamte",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
