@@ -22,7 +22,7 @@ const code = play => `<AnimateGroup
         startStyle={{ opacity: 1, transform: 'translateY(0)' }}
       >
         <Component />
-      </AnimateGroup>
+      </Animate>
     )
   })}
 </AnimateGroup>
