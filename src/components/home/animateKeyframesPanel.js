@@ -14,7 +14,7 @@ registerLanguage('jsx', jsx)
 const code = (play) => `<AnimateKeyframes
   play
   iterationCount="infinite"
-  direaction="alternate"
+  direction="alternate"
   durationSeconds={10}
   playState="${!play ? 'running' : 'paused'}"
   keyframes={[
