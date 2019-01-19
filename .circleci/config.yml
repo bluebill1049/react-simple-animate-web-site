@@ -22,7 +22,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
     deployment:
-     development:
-       branch: master
-         commands:
-           - now -t ${NOW_TOKEN}
+      development:
+        branch: master
+          commands:
+            - now -t ${NOW_TOKEN}
