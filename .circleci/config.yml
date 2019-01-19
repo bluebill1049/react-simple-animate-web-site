@@ -18,7 +18,7 @@ jobs:
 
       - run: sudo npm install --global --unsafe-perm now
 
-      - run: now -t $NOW_TOKEN --local-config ./now.json ./public && now -t $NOW_TOKEN --local-config ./now.json alias
+      - run: now -t $NOW_TOKEN ./public && now -t $NOW_TOKEN alias
 
       - save_cache:
           paths:

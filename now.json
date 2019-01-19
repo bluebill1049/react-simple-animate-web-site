@@ -1,6 +1,5 @@
 {
   "version": 2,
   "name": "react-simple-animate",
-  "alias": ["react-simple-animate"],
-  "forwardNpm": true
+  "alias": "react-simple-animate"
 }
