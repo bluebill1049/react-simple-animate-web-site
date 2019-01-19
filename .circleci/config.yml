@@ -21,6 +21,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   deploy:
-    steps:
-      - run: yarn add now -g
-      - run: now -t "test"
+    machine:
+      environment:
+        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+      node:
+        version: 10.0.0
+
