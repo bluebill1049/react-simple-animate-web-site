@@ -20,7 +20,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-  deploy:
-    steps:
-      - run: now -t ${NOW_TOKEN}
+    deploy:
+      steps:
+        - run: now -t ${NOW_TOKEN}
