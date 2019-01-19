@@ -21,8 +21,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: now -t "test"
-
     deploy:
       steps:
-        - run: yarn global add now
+        - run: yarn add now -g
+        - run: now -t "test"
