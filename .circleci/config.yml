@@ -18,9 +18,7 @@ jobs:
 
       - run: sudo npm install --global --unsafe-perm now
 
-      - run: now -t $NOW_TOKEN ./public
-
-      - run: now -t $NOW_TOKEN alias react-simple-aniamte
+      - run: now -t $NOW_TOKEN --local-config ./now.json ./public
 
       - save_cache:
           paths:

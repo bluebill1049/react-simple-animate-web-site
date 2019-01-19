@@ -1,4 +1,4 @@
 {
-  "alias": ["react-simple-animate", "react-simple-animate-dev"],
+  "alias": ["react-simple-animate"],
   "forwardNpm": true
 }
