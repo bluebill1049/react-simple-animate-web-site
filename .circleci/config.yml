@@ -14,7 +14,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn global add now && yarn install && yarn build
+      - run: yarn install && yarn build
 
       - save_cache:
           paths:
@@ -22,3 +22,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: now -t "test"
+
+    deploy:
+      steps:
+        - run: yarn global add now
