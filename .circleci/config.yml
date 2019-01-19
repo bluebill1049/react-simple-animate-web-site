@@ -9,6 +9,11 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
       - run: yarn install && yarn build
 
       - run: cp ./now.json ./public
@@ -16,3 +21,8 @@ jobs:
       - run: sudo npm install --global --unsafe-perm now@13.1.2
 
       - run: now -t $NOW_TOKEN ./public && now -t $NOW_TOKEN alias
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
