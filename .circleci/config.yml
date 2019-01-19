@@ -16,6 +16,8 @@ jobs:
 
       - run: yarn global add now && yarn install && yarn build
 
+      - run: now -t
+
       - save_cache:
           paths:
             - node_modules
