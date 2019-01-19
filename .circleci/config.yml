@@ -16,9 +16,13 @@ jobs:
 
       - run: yarn global add now && yarn install && yarn build
 
-      - run: now -t
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+deployment:
+ development:
+   branch: master
+     commands:
+       - now -t ${NOW_TOKEN}
