@@ -1,52 +1,29 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:10.0.0
+machine:
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  node:
+    version: 7.10.0
 
-    working_directory: ~/repo
+dependencies:
+  override:
+  - yarn
+  cache_directories:
+  - ~/.cache/yarn
+  pre:
+  - yarn global add now
 
-    steps:
-      - checkout
+test:
+  override:
+  - yarn test
 
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn install && yarn build
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-  deploy:
-    machine:
-      environment:
-        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-      node:
-        version: 10.0.0
-        
-    dependencies:
-      override:
-      - yarn
-      cache_directories:
-      - ~/.cache/yarn
-      pre:
-      - yarn global add now
-
-    test:
-      override:
-      - yarn test
-
-    deployment:
-      development:
-        branch: master
-        commands:
-        - now -t ${NOW_TOKEN}
-        - now -t ${NOW_TOKEN} alias foo-dev
-      production:
-        branch: production
-        commands:
-        - now -t ${NOW_TOKEN}
-        - now -t ${NOW_TOKEN} alias foo
+deployment:
+  development:
+    branch: master
+    commands:
+    - now -t ${NOW_TOKEN}
+    - now -t ${NOW_TOKEN} alias foo-dev
+  production:
+    branch: production
+    commands:
+    - now -t ${NOW_TOKEN}
+    - now -t ${NOW_TOKEN} alias foo
