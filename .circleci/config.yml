@@ -16,14 +16,9 @@ jobs:
 
       - run: yarn install && yarn build
 
+      - run: sudo npm install --global --unsafe-perm now
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-  deploy:
-    steps:
-      - attach_workspace:
-        at: ~/repo
-      - run:
-        name: Install Now CLI
-        command: sudo npm install --global --unsafe-perm now
