@@ -20,6 +20,8 @@ jobs:
 
       - run: now -t $NOW_TOKEN ./public
 
+      - run: now -t $NOW_TOKEN alias react-simple-aniamte
+
       - save_cache:
           paths:
             - node_modules
