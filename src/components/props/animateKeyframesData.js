@@ -4,6 +4,14 @@ import commonData from './commonData'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 
+const renderProps = `<AnimateKeyframes 
+  play 
+  keyframes={['opacity: 0', 'opacity: 1']} // same as CSS @keyframes { 0% { ... } 100% { ... }}
+  render={({ style }) => (
+    <Component style={ style } />
+  )} 
+/>`
+
 const keyframesString = `<AnimateKeyframes 
   play 
   keyframes={['opacity: 0', 'opacity: 1']} // same as CSS @keyframes { 0% { ... } 100% { ... }}
@@ -162,6 +170,28 @@ export default [
           animation-play-state
         </a>
       </>
+    ),
+  },
+  {
+    name: (
+      <>
+        render: <PropType>Function</PropType>
+      </>
+    ),
+    description: (
+      <>
+        This is a{' '}
+        <a href="https://reactjs.org/docs/render-props.html" rel="noopener noreferrer" target="_blank">
+          Render props
+        </a>{' '}
+        function, which is useful for render animation component without any <code>div</code> or <code>span</code>{' '}
+        wrapper.
+      </>
+    ),
+    code: (
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {renderProps}
+      </SyntaxHighlighter>
     ),
   },
 
