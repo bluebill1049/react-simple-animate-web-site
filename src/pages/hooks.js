@@ -78,17 +78,8 @@ const AnimateGroup = ({ location }) => (
 
     <ContentContainer>
       <h3>
-        Animation with Custom Hooks <span>[Beta]</span>
+        Animation with Custom Hooks
       </h3>
-
-      <p>
-        With React <code>16.7.0-alpha.0</code>, i have the ability to build custom hook to further improve developer
-        experience with react simple animation.
-      </p>
-
-      <h3>Installation</h3>
-
-      <InlineCode>npm install --S react-simple-animate@2.4.0-beta.1</InlineCode>
 
       <h3>useAnimate</h3>
 
