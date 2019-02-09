@@ -18,7 +18,7 @@ const InlineCode = styled.code`
 `
 
 const useAnimate = `import React from 'react'
-import { useAnimate } from 'react-simple-aniamte';
+import { useAnimate } from 'react-simple-animate';
 
 export default function example {
   const [{style, play}, startAnimation] = useAnimate({
