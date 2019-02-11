@@ -77,10 +77,6 @@ const AnimateGroup = ({ location }) => (
     <ContentHeader location={location} title="Basics" />
 
     <ContentContainer>
-      <h3>
-        Animation with Custom Hooks
-      </h3>
-
       <h3>useAnimate</h3>
 
       <p>
