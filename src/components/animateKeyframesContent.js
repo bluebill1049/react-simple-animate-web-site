@@ -23,7 +23,7 @@ export default ({ children, play }) => {
     ]} 
     // animation keyframes will be distributed evenly the above key frames is equivalent as
     // @keyframes { 0% { ... } 100% { ... }}
-  />
+  >
     <YourComponent />
   </AnimateKeyframes>
 };
