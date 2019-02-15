@@ -33,7 +33,7 @@ export default function example {
 }`
 
 const useKeyframes = `import React from 'react'
-import { useAnimateKeyframes } from 'react-simple-aniamte';
+import { useAnimateKeyframes } from 'react-simple-animate';
 
 export default function example {
   const [{style, play}, startAnimation] = useAnimateKeyframes({
@@ -47,7 +47,7 @@ export default function example {
 }`
 
 const useAnimateGroup = `import React from 'react'
-import { useAnimateGroup } from 'react-simple-aniamte';
+import { useAnimateGroup } from 'react-simple-animate';
 
 export default function example {
   const [{styles, play}, startAnimation] = useAnimateGroup({
