@@ -51,13 +51,11 @@ import { useAnimateGroup } from 'react-simple-animate';
 
 export default function example {
   const [{styles, play}, startAnimation] = useAnimateGroup({
-    sequences: {
-      {
-        startStyle: { opacity: 0 }, // refer <Animate /> for props information
-        endStyle: { opacity: 1 }
-      },
+    sequences: [{
+      startStyle: { opacity: 0 }, // refer <Animate /> for props information
+      endStyle: { opacity: 1 },
       keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
-    }
+    }]
   });
   
   return <>
