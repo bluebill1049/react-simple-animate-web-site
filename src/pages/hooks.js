@@ -1,26 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
 import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
-import colors from '../styled/colors'
 import { ContentContainer } from '../styled/containers'
 import Helmet from 'react-helmet'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { Link } from 'gatsby'
 
-const InlineCode = styled.code`
-  display: block;
-  padding: 10px;
-  background: ${colors.secondary};
-  color: ${colors.white};
-  margin-bottom: 30px;
-`
-
 const useAnimate = `import React from 'react'
 import { useAnimate } from 'react-simple-animate';
 
-export default function example {
+export default function example() {
   const [{style, play}, startAnimation] = useAnimate({
     startStyle: { opacity: 0 }, // refer <Animate /> for props information
     endStyle: { opacity: 1 }
@@ -35,7 +25,7 @@ export default function example {
 const useKeyframes = `import React from 'react'
 import { useAnimateKeyframes } from 'react-simple-animate';
 
-export default function example {
+export default function example() {
   const [{style, play}, startAnimation] = useAnimateKeyframes({
     keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
   });
@@ -49,7 +39,7 @@ export default function example {
 const useAnimateGroup = `import React from 'react'
 import { useAnimateGroup } from 'react-simple-animate';
 
-export default function example {
+export default function example() {
   const [{styles, play}, startAnimation] = useAnimateGroup({
     sequences: [{
       startStyle: { opacity: 0 }, // refer <Animate /> for props information
@@ -59,7 +49,7 @@ export default function example {
   });
   
   return <>
-    {styles.map(style) => <div style={style}>show me</div>}
+    {styles.map(style => <div style={style}>show me</div>)}
     <button onClick={() => startAnimation(!play)}>Play</button>
   </>;
 }`

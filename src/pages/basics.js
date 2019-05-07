@@ -26,7 +26,7 @@ const AnimateGroup = ({ location }) => (
 
       <p>
         Animation with React can be difficult, there are a number of libraries out there that attempt to solve this but
-        most of them require education, specific configuration and can be a large dependency for your project.{' '}
+        most of them require deep learning, specific configuration and can be a large dependency for your project.{' '}
         <code>React Simple Animate</code> focuses on standard CSS animation leveraging existing knowledge of styling and
         aims to provide simple and great experience to get you on board with React animation.
       </p>
