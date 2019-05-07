@@ -15,7 +15,7 @@ const code = (play) => `<AnimateKeyframes
   play
   iterationCount="infinite"
   direction="alternate"
-  durationSeconds={10}
+  durationSeconds={5}
   playState="${!play ? 'running' : 'paused'}"
   keyframes={[
     'transform: rotateX(0) rotateY(0) rotateZ(0)',
