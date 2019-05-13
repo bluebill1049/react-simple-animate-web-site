@@ -48,7 +48,7 @@ export default [
     name: (
       <>
         {' '}
-        onCompleteStyle: <PropType>Object</PropType>
+        onComplete: <PropType>Object</PropType>
       </>
     ),
     description: (

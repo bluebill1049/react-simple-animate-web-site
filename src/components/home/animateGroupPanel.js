@@ -61,7 +61,7 @@ export default class AnimatePanel extends React.PureComponent {
                   sequenceIndex={index}
                   end={{ opacity: 0, transform: 'translateY(-10px)' }}
                   start={{ opacity: 1, transform: 'translateY(0)' }}
-                  overlaySeconds={0.1}
+                  overlay={0.1}
                   easeType="cubic-bezier(0.895, 0.03, 0.685, 0.22)"
                   render={style => (
                     <Character {...style} key={item}>

@@ -58,7 +58,7 @@ export default [
   {
     name: (
       <>
-        overlaySeconds: <PropType>number</PropType>
+        overlay: <PropType>number</PropType>
       </>
     ),
     description: (

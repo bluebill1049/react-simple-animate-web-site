@@ -11,14 +11,14 @@ const useAnimate = `import React from 'react'
 import { useAnimate } from 'react-simple-animate';
 
 export default function example() {
-  const [{style, play}, startAnimation] = useAnimate({
+  const {style, play, isPlaying} = useAnimate({
     start: { opacity: 0 }, // refer <Animate /> for props information
     end: { opacity: 1 }
   });
   
   return <>
     <div style={style}>show me</div>
-    <button onClick={() => startAnimation(!play)}>Play</button>
+    <button onClick={() => play(!isPlaying)}>Play</button>
   </>;
 }`
 
@@ -26,13 +26,13 @@ const useKeyframes = `import React from 'react'
 import { useAnimateKeyframes } from 'react-simple-animate';
 
 export default function example() {
-  const [{style, play}, startAnimation] = useAnimateKeyframes({
+  const {style, play, isPlaying} = useAnimateKeyframes({
     keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
   });
   
   return <>
     <div style={style}>show me</div>
-    <button onClick={() => startAnimation(!play)}>Play</button>
+    <button onClick={() => play(!isPlaying)}>Play</button>
   </>;
 }`
 
@@ -40,7 +40,7 @@ const useAnimateGroup = `import React from 'react'
 import { useAnimateGroup } from 'react-simple-animate';
 
 export default function example() {
-  const [{styles, play}, startAnimation] = useAnimateGroup({
+  const {styles, play, isPlaying} = useAnimateGroup({
     sequences: [{
       start: { opacity: 0 }, // refer <Animate /> for props information
       end: { opacity: 1 },
@@ -50,7 +50,7 @@ export default function example() {
   
   return <>
     {styles.map(style => <div style={style}>show me</div>)}
-    <button onClick={() => startAnimation(!play)}>Play</button>
+    <button onClick={() => play(!isPlaying)}>Play</button>
   </>;
 }`
 
