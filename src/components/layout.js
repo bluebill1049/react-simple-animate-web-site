@@ -90,15 +90,15 @@ export default class Layout extends React.PureComponent {
           >
             <Animate
               play={showMenu}
-              startStyle={{
+              start={{
                 transform: 'translateX(200px)',
                 zIndex: -1,
               }}
-              endStyle={{
+              end={{
                 transform: 'translateX(0)',
                 zIndex: 0,
               }}
-              durationSeconds={0.6}
+              duration={0.6}
               easeType="cubic-bezier(0.19, 1, 0.22, 1)"
               render={style => <Menu {...{ ...style, location: this.props.location }} />}
             />
@@ -106,12 +106,12 @@ export default class Layout extends React.PureComponent {
 
           <Animate
             play
-            startStyle={{
+            start={{
               background: colors.white,
               width: '100%',
               // overflow: 'hidden',
             }}
-            endStyle={{
+            end={{
               background: colors.white,
               width: '100%',
               // overflow: 'hidden',
@@ -122,7 +122,7 @@ export default class Layout extends React.PureComponent {
                   }
                 : null),
             }}
-            durationSeconds={0.8}
+            duration={0.8}
             easeType="cubic-bezier(0.19, 1, 0.22, 1)"
           >
             <div

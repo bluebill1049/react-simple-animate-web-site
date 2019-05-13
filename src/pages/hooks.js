@@ -12,8 +12,8 @@ import { useAnimate } from 'react-simple-animate';
 
 export default function example() {
   const [{style, play}, startAnimation] = useAnimate({
-    startStyle: { opacity: 0 }, // refer <Animate /> for props information
-    endStyle: { opacity: 1 }
+    start: { opacity: 0 }, // refer <Animate /> for props information
+    end: { opacity: 1 }
   });
   
   return <>
@@ -42,8 +42,8 @@ import { useAnimateGroup } from 'react-simple-animate';
 export default function example() {
   const [{styles, play}, startAnimation] = useAnimateGroup({
     sequences: [{
-      startStyle: { opacity: 0 }, // refer <Animate /> for props information
-      endStyle: { opacity: 1 },
+      start: { opacity: 0 }, // refer <Animate /> for props information
+      end: { opacity: 1 },
       keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
     }]
   });

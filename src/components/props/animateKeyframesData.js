@@ -72,7 +72,7 @@ export default [
   {
     name: (
       <>
-        durationSeconds: <PropType>number</PropType> = 0.3
+        duration: <PropType>number</PropType> = 0.3
       </>
     ),
     description: 'How long the animation takes in seconds.',
@@ -80,7 +80,7 @@ export default [
   {
     name: (
       <>
-        delaySeconds: <PropType>number</PropType>
+        delay: <PropType>number</PropType>
       </>
     ),
     description: (

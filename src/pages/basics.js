@@ -50,7 +50,7 @@ const AnimateGroup = ({ location }) => (
 
       <p>
         The following example demonstrates doing basic animation from style <b>A</b> to <b>B</b>, which is perfect to
-        use <code>{`<Animate />`}</code> Component, by declaring <code>startStyle</code>, <code>endStyle</code> and a
+        use <code>{`<Animate />`}</code> Component, by declaring <code>start</code>, <code>end</code> and a
         local state to control the <code>play</code> animation.
       </p>
 

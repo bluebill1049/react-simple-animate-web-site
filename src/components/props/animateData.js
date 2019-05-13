@@ -6,8 +6,8 @@ import {docco} from "react-syntax-highlighter/styles/hljs";
 
 const renderProps = `<Animate 
   play 
-  startStyle={{ opacity: 0 }}
-  endStyle={{ opacity: 1 }} 
+  start={{ opacity: 0 }}
+  end={{ opacity: 1 }} 
   render={({ style }) => (
     <Component style={ style } />
   )} 
@@ -30,7 +30,7 @@ export default [
   {
     name: (
       <>
-        endStyle: <PropType>Object</PropType> <i>required</i>
+        end: <PropType>Object</PropType> <i>required</i>
       </>
     ),
     description: 'Component transition to inline style.',
@@ -38,7 +38,7 @@ export default [
   {
     name: (
       <>
-        startStyle: <PropType>Object</PropType>
+        start: <PropType>Object</PropType>
       </>
     ),
 
@@ -61,39 +61,22 @@ export default [
   {
     name: (
       <>
-        durationSeconds: <PropType>number</PropType> = 0.3
+        duration: <PropType>number</PropType> = 0.3
       </>
     ),
     description: (
       <>
-        How long the animation takes in seconds.( if <code>reverseDurationSeconds</code> is not provided, then this
-        apply to reverse animation duration seconds as well. )
+        How long the animation takes in seconds.
       </>
     ),
   },
   {
     name: (
       <>
-        delaySeconds: <PropType>number</PropType>
+        delay: <PropType>number</PropType>
       </>
     ),
     description: 'How much delay should apply before animation starts',
-  },
-  {
-    name: (
-      <>
-        reverseDurationSeconds: <PropType>number</PropType>
-      </>
-    ),
-    description: 'How long the reverse/toggle animation takes in seconds.',
-  },
-  {
-    name: (
-      <>
-        reverseDelaySeconds: <PropType>number</PropType>
-      </>
-    ),
-    description: `How much delay should apply when reverse/toggle animation.`,
   },
   {
     name: (

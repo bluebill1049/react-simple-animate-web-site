@@ -15,12 +15,10 @@ import YourComponent from './YourComponent';
 export default ({ play, onCompleteCallBack }) => (
   <Animate
     play={play} // set play true to start the animation
-    durationSeconds={1} // how long is the animation duration
-    delaySeconds={0.3} // how many delay seconds will apply before the animation start
-    reverseDurationSeconds={0.2} // when play toggle to false, how long is the animation duration
-    reverseDelaySeconds={0.1} // when play toggle to false, how many delay seconds will applied
-    startStyle={{ transform: 'translate(0, 0)' }}
-    endStyle={{ transform: 'translate(10px, 10px)' }}
+    duration={1} // how long is the animation duration
+    delay={0.3} // how many delay seconds will apply before the animation start
+    start={{ transform: 'translate(0, 0)' }}
+    end={{ transform: 'translate(10px, 10px)' }}
     easeType="cubic-bezier(0.445, 0.05, 0.55, 0.95)"
     onComplete={onCompleteCallBack} // call back function when animation is completed
   >

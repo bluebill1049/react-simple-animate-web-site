@@ -18,8 +18,8 @@ const code = play => `<AnimateGroup
       <Animate
         key={item}
         sequenceIndex={index}
-        endStyle={{ opacity: 0, transform: 'translateY(-10px)' }}
-        startStyle={{ opacity: 1, transform: 'translateY(0)' }}
+        end={{ opacity: 0, transform: 'translateY(-10px)' }}
+        start={{ opacity: 1, transform: 'translateY(0)' }}
       >
         <Component />
       </Animate>
@@ -57,10 +57,10 @@ export default class AnimatePanel extends React.PureComponent {
               return (
                 <Animate
                   key={item}
-                  durationSeconds={0.2}
+                  duration={0.2}
                   sequenceIndex={index}
-                  endStyle={{ opacity: 0, transform: 'translateY(-10px)' }}
-                  startStyle={{ opacity: 1, transform: 'translateY(0)' }}
+                  end={{ opacity: 0, transform: 'translateY(-10px)' }}
+                  start={{ opacity: 1, transform: 'translateY(0)' }}
                   overlaySeconds={0.1}
                   easeType="cubic-bezier(0.895, 0.03, 0.685, 0.22)"
                   render={style => (

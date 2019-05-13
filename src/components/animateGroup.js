@@ -10,15 +10,15 @@ const example = `import react from 'react';
 import { Animate, AnimateGroup } from 'react-simple-animate';
 
 const props = {
-  startStyle: { opacity: 0 },
-  endStyle: { opacity: 1 }
+  start: { opacity: 0 },
+  end: { opacity: 1 }
 };
 
 export default () => (
   <AnimateGroup play sequences={[
     { sequenceId: 'header', ...props } // play first
     { sequenceId: 'content', ...props, overlaySeconds: 0.1 } // play during header animation and overlay by 0.1s
-    { sequenceId: 'footer', ...props, delaySeconds: 0.4 } // play after content with 0.4s seconds delay
+    { sequenceId: 'footer', ...props, delay: 0.4 } // play after content with 0.4s seconds delay
   ]}>
     <Animate sequenceId="header" />
     <Animate sequenceId="content" />
@@ -30,8 +30,8 @@ const sequenceIndexExample = `import react from 'react';
 import { Animate, AnimateGroup } from 'react-simple-animate';
 
 const props = {
-  startStyle: { opacity: 0 },
-  endStyle: { opacity: 1 }
+  start: { opacity: 0 },
+  end: { opacity: 1 }
 };
 
 export default () => (

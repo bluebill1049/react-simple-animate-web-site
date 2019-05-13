@@ -74,12 +74,12 @@ export default class TopMenuGroup extends React.PureComponent {
             <>
               <Animate
                 play={showFixedMenu}
-                startStyle={{
+                start={{
                   top: 5,
                   ...style,
                 }}
-                delaySeconds={0.2}
-                endStyle={{
+                delay={0.2}
+                end={{
                   top: 10,
                   background: colors.secondary,
                   borderRadius: '100%',

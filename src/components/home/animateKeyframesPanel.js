@@ -15,7 +15,7 @@ const code = (play) => `<AnimateKeyframes
   play
   iterationCount="infinite"
   direction="alternate"
-  durationSeconds={5}
+  duration={5}
   playState="${!play ? 'running' : 'paused'}"
   keyframes={[
     'transform: rotateX(0) rotateY(0) rotateZ(0)',
@@ -100,7 +100,7 @@ export default class AnimateKeyframesPanel extends React.PureComponent {
               play
               iterationCount="infinite"
               direction="alternate"
-              durationSeconds={5}
+              duration={5}
               playState={!play ? 'running' : 'paused'}
               keyframes={[
                 'rotateX(0) rotateY(0) rotateZ(0)',

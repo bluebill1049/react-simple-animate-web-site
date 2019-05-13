@@ -61,7 +61,7 @@ function Header(props) {
       <Logo>
         <AnimateKeyframes
           play
-          durationSeconds={10}
+          duration={10}
           direaction="alternate"
           iterationCount="infinite"
           keyframes={['transform: rotateZ(359deg)', 'transform: rotateZ(0deg)']}

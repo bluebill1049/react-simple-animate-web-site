@@ -13,8 +13,8 @@ import YourComponent from './YourComponent';
 export default ({ children, play }) => {
   return <AnimateKeyframes 
     play 
-    delaySeconds={1}
-    durationSeconds={10}
+    delay={1}
+    duration={10}
     iterationCount={3}
     direction="alternative"
     keyframes={[
