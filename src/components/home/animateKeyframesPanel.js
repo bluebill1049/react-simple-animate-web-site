@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { useState } from 'react'
 import { AnimateKeyframes } from 'react-simple-animate'
 import styled from 'styled-components'
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light'
@@ -7,11 +7,12 @@ import jsx from 'react-syntax-highlighter/languages/prism/jsx'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import colors from '../../styled/colors'
 import CodeContainer from '../codeContainer'
-import ButtonGroup from "../ButtonGroup";
+import ButtonGroup from '../ButtonGroup'
+import CodeToggleButton from "../codeToggleButtons";
 
 registerLanguage('jsx', jsx)
 
-const code = (play) => `<AnimateKeyframes
+const code = play => `<AnimateKeyframes
   play
   iterationCount="infinite"
   direction="alternate"
@@ -24,6 +25,20 @@ const code = (play) => `<AnimateKeyframes
 >
   <Component />
 </AnimateKeyframes>
+`
+
+const hookCode = (play) => `const { play, style } = useAnimateKeyframes({ 
+  iterationCount: 'infinite',
+  direction: 'alternate'
+  duration: 5,
+  playState: '${!play ? 'running' : 'paused'}',
+  keyframes: {[
+    'transform: rotateX(0) rotateY(0) rotateZ(0)',
+    'transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)',
+  ]}
+});
+
+<div style={style}></div>
 `
 
 const View = styled.div`
@@ -84,49 +99,49 @@ const ViewWrapper = styled.div`
   height: 300px;
 `
 
-export default class AnimateKeyframesPanel extends React.PureComponent {
-  state = {
-    play: false,
-  }
+export default function AnimateKeyframesPanel() {
+  const [play, setPlay] = useState(false)
+  const [mode, setMode] = useState('component')
 
-  render() {
-    const { play } = this.state;
+  return (
+    <CodeContainer title="Animate CSS Keyframes" description="Defined your animation keyframes in your Component">
+      <ViewWrapper>
+        <View>
+          <AnimateKeyframes
+            play
+            iterationCount="infinite"
+            direction="alternate"
+            duration={5}
+            playState={!play ? 'running' : 'paused'}
+            keyframes={[
+              'rotateX(0) rotateY(0) rotateZ(0)',
+              'transform: rotateX(359deg) rotateY(359deg) rotateZ(359deg)',
+            ]}
+          >
+            {Array(3)
+              .fill(0)
+              .map((_, i) => (
+                <Cricle
+                  style={{
+                    transform: `rotateZ(${((i + 1) / 5) * 360}deg) rotateX(63.435deg)`,
+                  }}
+                  key={i}
+                />
+              ))}
+          </AnimateKeyframes>
+        </View>
+      </ViewWrapper>
 
-    return (
-      <CodeContainer title="Animate CSS Keyframes" description="Defined your animation keyframes in your Component">
-        <ViewWrapper>
-          <View>
-            <AnimateKeyframes
-              play
-              iterationCount="infinite"
-              direction="alternate"
-              duration={5}
-              playState={!play ? 'running' : 'paused'}
-              keyframes={[
-                'rotateX(0) rotateY(0) rotateZ(0)',
-                'transform: rotateX(359deg) rotateY(359deg) rotateZ(359deg)',
-              ]}
-            >
-              {Array(3)
-                .fill(0)
-                .map((_, i) => (
-                  <Cricle
-                    style={{
-                      transform: `rotateZ(${((i + 1) / 5) * 360}deg) rotateX(63.435deg)`,
-                    }}
-                    key={i}
-                  />
-                ))}
-            </AnimateKeyframes>
-          </View>
-        </ViewWrapper>
+      <ButtonGroup buttonText={!play ? 'Pause' : 'Resume'} path={'/animate-keyframes'} onClick={() => setPlay(!play)} />
 
-        <ButtonGroup buttonText={!play ? 'Pause' : 'Resume'} path={'/animate-keyframes'} onClick={() => this.setState(({ play }) => ({ play: !play }))}  />
+      <CodeToggleButton setMode={setMode} mode={mode} />
 
-        <SyntaxHighlighter language="javascript" style={docco}>
-          {code(play)}
-        </SyntaxHighlighter>
-      </CodeContainer>
-    )
-  }
+      {mode === 'component' && <SyntaxHighlighter language="javascript" style={docco}>
+        {code(play)}
+      </SyntaxHighlighter>}
+      {mode === 'hook' && <SyntaxHighlighter language="javascript" style={docco}>
+        {hookCode(play)}
+      </SyntaxHighlighter>}
+    </CodeContainer>
+  )
 }

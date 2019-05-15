@@ -88,20 +88,6 @@ const AnimateGroup = ({ location }) => (
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
-
-      <h3>Tutorial</h3>
-
-      <p>
-        You can follow the{' '}
-        <a href="https://alligator.io/react/craft-simple-animations-in-react/" target="_blank" without rel="noopener noreferrer">
-          quick tutorial
-        </a>{' '}
-        which wrote by{' '}
-        <a href="https://wle8300.com/" target="_blank" without rel="noopener noreferrer">
-          William Le
-        </a>
-        .
-      </p>
     </ContentContainer>
   </Layout>
 )

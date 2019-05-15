@@ -1,20 +1,20 @@
 // @flow
-import React from 'react'
+import React, { useState } from 'react'
 import { Animate } from 'react-simple-animate'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light'
 import jsx from 'react-syntax-highlighter/languages/prism/jsx'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import ReactIcon from '../reactIcon'
 import CodeContainer from '../codeContainer'
-import ButtonGroup from '../ButtonGroup';
+import ButtonGroup from '../ButtonGroup'
+import CodeToggleButton from "../codeToggleButtons";
 
 registerLanguage('jsx', jsx)
 
 const ReactIconExtends = styled(ReactIcon)`
   max-height: 250px;
-`;
-
+`
 
 const code = play => `<Animate
   play={${play}}
@@ -25,30 +25,38 @@ const code = play => `<Animate
 </Animate>
 `
 
-export default class AnimatePanel extends React.PureComponent {
-  state = {
-    play: false,
-  }
+const hookCode = () => `const { play, style } = useAnimate({ 
+  start: { opacity: 0 }, 
+  end: { opacity: 1 } 
+});
 
-  render() {
-    const { play } = this.state
+<div style={style}></div>
+`
 
-    return (
-      <CodeContainer title="Transition from inline style A to B." description="Inline style React animation made easy">
-        <Animate
-          play={play}
-          start={{ opacity: 1, filter: 'blur(0)' }}
-          end={{ opacity: 0, filter: 'blur(10px)' }}
-        >
-          <ReactIconExtends />
-        </Animate>
+export default function AnimatePanel() {
+  const [play, setPlay] = useState(false)
+  const [mode, setMode] = useState('component')
 
-        <ButtonGroup buttonText={!play ? 'Play' : 'Reverse'} path={'/animate'} onClick={() => this.setState(({ play }) => ({ play: !play }))}  />
+  return (
+    <CodeContainer title="Transition from inline style A to B." description="Inline style React animation made easy">
+      <Animate play={play} start={{ opacity: 1, filter: 'blur(0)' }} end={{ opacity: 0, filter: 'blur(10px)' }}>
+        <ReactIconExtends />
+      </Animate>
 
+      <ButtonGroup buttonText={!play ? 'Play' : 'Reverse'} path={'/animate'} onClick={() => setPlay(!play)} />
+
+      <CodeToggleButton setMode={setMode} mode={mode} />
+
+      {mode === 'component' && (
         <SyntaxHighlighter language="javascript" style={docco}>
           {code(play)}
         </SyntaxHighlighter>
-      </CodeContainer>
-    )
-  }
+      )}
+      {mode === 'hook' && (
+        <SyntaxHighlighter language="javascript" style={docco}>
+          {hookCode(play)}
+        </SyntaxHighlighter>
+      )}
+    </CodeContainer>
+  )
 }
