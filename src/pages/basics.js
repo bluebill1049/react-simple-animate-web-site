@@ -16,7 +16,10 @@ const InlineCode = styled.code`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
-    <Helmet title={'Basics - Get started with React Animation'} meta={[{ name: 'description', content: 'React animation basics' }]}>
+    <Helmet
+      title={'Basics - Get started with React Animation'}
+      meta={[{ name: 'description', content: 'React animation basics' }]}
+    >
       <html lang="en" />
     </Helmet>
     <ContentHeader location={location} title="Basics" />
@@ -50,8 +53,8 @@ const AnimateGroup = ({ location }) => (
 
       <p>
         The following example demonstrates doing basic animation from style <b>A</b> to <b>B</b>, which is perfect to
-        use <code>{`<Animate />`}</code> Component, by declaring <code>start</code>, <code>end</code> and a
-        local state to control the <code>play</code> animation.
+        use <code>{`<Animate />`}</code> Component, by declaring <code>start</code>, <code>end</code> and a local state
+        to control the <code>play</code> animation.
       </p>
 
       <iframe
@@ -65,7 +68,7 @@ const AnimateGroup = ({ location }) => (
 
       <p>
         React Simple Animate allows you easily adjust the animation speed with duration. The following example will
-        adjust the animation speed duration to 1 second, and also delay the animation by 1 second on start.
+        adjust the animation speed duration to 1 second and delay by 0.3 seconds.
       </p>
 
       <iframe
@@ -85,6 +88,20 @@ const AnimateGroup = ({ location }) => (
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
+
+      <h3>Tutorial</h3>
+
+      <p>
+        You can follow the{' '}
+        <a href="https://alligator.io/react/craft-simple-animations-in-react/" target="_blank" without rel="noopener noreferrer">
+          quick tutorial
+        </a>{' '}
+        which wrote by{' '}
+        <a href="https://wle8300.com/" target="_blank" without rel="noopener noreferrer">
+          William Le
+        </a>
+        .
+      </p>
     </ContentContainer>
   </Layout>
 )
