@@ -99,18 +99,6 @@ export default class Content extends Component {
             <code>{'<AnimateKeyframes />'}</code> in sequences, so animations will play one after another in such order
             which has been defined.
           </p>
-          <h3>Props</h3>
-          <ul>
-            {data.map(({ name, description, link, code }, i) => (
-              <li key={`code${i}`} ref={this.codeRef[i]}>
-                <code>{name}</code>
-
-                <p>{description}</p>
-                {code}
-                {link}
-              </li>
-            ))}
-          </ul>
 
           <h3 ref={this.example}>Examples: </h3>
           <p>
@@ -126,6 +114,19 @@ export default class Content extends Component {
           <SyntaxHighlighter language="javascript" style={docco}>
             {example}
           </SyntaxHighlighter>
+
+          <h3>Props</h3>
+          <ul>
+            {data.map(({ name, description, link, code }, i) => (
+              <li key={`code${i}`} ref={this.codeRef[i]}>
+                <code>{name}</code>
+
+                <p>{description}</p>
+                {code}
+                {link}
+              </li>
+            ))}
+          </ul>
         </div>
         <div style={{ clear: 'both' }} />
       </PropsContentContainer>

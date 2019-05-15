@@ -3,7 +3,7 @@ import colors from './colors'
 
 export const ContentContainer = styled.div`
   padding: 20px;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
 
   @media (min-width: 1024px) {
@@ -13,7 +13,7 @@ export const ContentContainer = styled.div`
 
 export const PropsContentContainer = styled.div`
   padding: 20px;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
 
   & ul {
@@ -80,7 +80,7 @@ export const PropsContentContainer = styled.div`
 
     & div:nth-child(2) {
       padding-top: 20px;
-      max-width: 670px;
+      max-width: 900px;
       float: right;
     }
   }

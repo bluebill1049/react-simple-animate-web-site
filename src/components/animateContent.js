@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { docco } from 'react-syntax-highlighter/styles/hljs'
 import Button from '@material-ui/core/Button'
@@ -19,6 +19,7 @@ export default ({ play, onCompleteCallBack }) => (
     delay={0.3} // how many delay seconds will apply before the animation start
     start={{ transform: 'translate(0, 0)' }}
     end={{ transform: 'translate(10px, 10px)' }}
+    complete={{ display: 'none' }}
     easeType="cubic-bezier(0.445, 0.05, 0.55, 0.95)"
     onComplete={onCompleteCallBack} // call back function when animation is completed
   >
@@ -27,21 +28,21 @@ export default ({ play, onCompleteCallBack }) => (
 );
 `
 
-const LinkButton = styled.span`
-  & > button {
-    background: ${colors.primary};
-
-    & span {
-      color: ${colors.white};
-    }
-
-    &:hover {
-      & span {
-        color: ${colors.primary};
-      }
-    }
-  }
-`
+// const LinkButton = styled.span`
+//   & > button {
+//     background: ${colors.primary};
+//
+//     & span {
+//       color: ${colors.white};
+//     }
+//
+//     &:hover {
+//       & span {
+//         color: ${colors.primary};
+//       }
+//     }
+//   }
+// `
 
 export default class Content extends Component {
   constructor(props) {
@@ -90,15 +91,7 @@ export default class Content extends Component {
               return result
             })}
           </ol>
-          <LinkButton>
-            <Button
-              variant="contained"
-              onClick={() => (window.location = 'https://react-simple-animate.herokuapp.com/')}
-            >
-              interactive demo
-            </Button>
-          </LinkButton>
-          <Button variant="outlined" onClick={this.showExample}>
+          <Button variant="outlined" onClick={this.showExample} style={{ marginBottom: 20}}>
             Example
           </Button>
         </Side>
@@ -108,6 +101,11 @@ export default class Content extends Component {
             <code>Components</code> from destination A to destination B, and with the ability to reverse the animation
             backwards.
           </p>
+
+          <h3 ref={this.example}>Example: </h3>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {example}
+          </SyntaxHighlighter>
 
           <h3>Props</h3>
           <ul>
@@ -121,11 +119,6 @@ export default class Content extends Component {
               </li>
             ))}
           </ul>
-
-          <h3 ref={this.example}>Examples: </h3>
-          <SyntaxHighlighter language="javascript" style={docco}>
-            {example}
-          </SyntaxHighlighter>
         </div>
 
         <div style={{ clear: 'both' }} />

@@ -10,8 +10,8 @@ const exmaple = `import React from 'react';
 import { AnimateKeyframes }  from 'react-simple-animate';
 import YourComponent from './YourComponent';
 
-export default ({ children, play }) => {
-  return <AnimateKeyframes 
+export default ({ children, play }) => (
+  <AnimateKeyframes 
     play 
     delay={1}
     duration={10}
@@ -21,12 +21,10 @@ export default ({ children, play }) => {
       'transform: translateY(0)',
       'transform: translateY(10px)',
     ]} 
-    // animation keyframes will be distributed evenly the above key frames is equivalent as
-    // @keyframes { 0% { ... } 100% { ... }}
   >
     <YourComponent />
   </AnimateKeyframes>
-};
+)};
 `
 
 export default class Content extends Component {
@@ -93,6 +91,13 @@ export default class Content extends Component {
             </a>{' '}
             specification. It's best to use for infinite animation, or animation which can be paused and resumed.
           </p>
+
+          <h3 ref={this.example}>Example: </h3>
+          <p>The following example will animate the component to move at X coordinate 3 times.</p>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {exmaple}
+          </SyntaxHighlighter>
+
           <h3>Props</h3>
           <ul>
             {data.map(({ customised, name, description, link, code }, i) => (
@@ -105,12 +110,6 @@ export default class Content extends Component {
               </li>
             ))}
           </ul>
-
-          <h3 ref={this.example}>Examples: </h3>
-          <p>The following example will animate the component to move at X coordinate 3 times.</p>
-          <SyntaxHighlighter language="javascript" style={docco}>
-            {exmaple}
-          </SyntaxHighlighter>
         </div>
         <div style={{ clear: 'both' }} />
       </PropsContentContainer>
