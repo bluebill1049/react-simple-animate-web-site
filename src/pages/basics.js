@@ -70,18 +70,18 @@ const AnimateGroup = ({ location }) => (
 
       <iframe
         title="Animate with speed control"
-        src="https://codesandbox.io/embed/r7q1pj660p?view=editor"
+        src="https://codesandbox.io/embed/m52301on5x?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
-      <h3>Apply complete style after animation is finished</h3>
+      <h3>Animation with CSS keyframes</h3>
 
-      <p>You can apply a complete style right after the animation finished playing.</p>
+      <p>You can easily apply CSS keyframes animation</p>
 
       <iframe
         title="Apply complete style after animation is finished"
-        src="https://codesandbox.io/embed/n0xv5z362l?view=editor"
+        src="https://codesandbox.io/embed/4jpon7pvw9?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
