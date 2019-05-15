@@ -6,4 +6,4 @@
 
 // You can delete this file if you're not using it
 
-exports.onServiceWorkerUpdateReady= () => window.location.reload(true);
+// exports.onServiceWorkerUpdateReady= () => window.location.reload(true);
