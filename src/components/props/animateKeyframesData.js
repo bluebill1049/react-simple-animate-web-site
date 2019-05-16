@@ -137,25 +137,6 @@ export default [
   {
     name: (
       <>
-        playState: <PropType>'running' | 'paused'</PropType> = 'running'
-      </>
-    ),
-    description: (
-      <>
-        An animation is running or paused:&nbsp;
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          animation-play-state
-        </a>
-      </>
-    ),
-  },
-  {
-    name: (
-      <>
         fillMode: <PropType>'none' | 'forwards' | 'backwards' | 'both'</PropType> = 'none'
       </>
     ),

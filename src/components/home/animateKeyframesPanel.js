@@ -13,11 +13,10 @@ import CodeToggleButton from "../codeToggleButtons";
 registerLanguage('jsx', jsx)
 
 const code = play => `<AnimateKeyframes
-  play
+  play={${!play ? 'true' : 'false'}}
   iterationCount="infinite"
   direction="alternate"
   duration={5}
-  playState="${!play ? 'running' : 'paused'}"
   keyframes={[
     'transform: rotateX(0) rotateY(0) rotateZ(0)',
     'transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)',
@@ -27,11 +26,10 @@ const code = play => `<AnimateKeyframes
 </AnimateKeyframes>
 `
 
-const hookCode = (play) => `const { play, style } = useAnimateKeyframes({ 
+const hookCode = () => `const { play, style } = useAnimateKeyframes({ 
   iterationCount: 'infinite',
   direction: 'alternate',
   duration: 5,
-  playState: '${!play ? 'running' : 'paused'}',
   keyframes: [
     'transform: rotateX(0) rotateY(0) rotateZ(0)',
     'transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)',
@@ -108,11 +106,10 @@ export default function AnimateKeyframesPanel() {
       <ViewWrapper>
         <View>
           <AnimateKeyframes
-            play
+            play={!play}
             iterationCount="infinite"
             direction="alternate"
             duration={5}
-            playState={!play ? 'running' : 'paused'}
             keyframes={[
               'rotateX(0) rotateY(0) rotateZ(0)',
               'transform: rotateX(359deg) rotateY(359deg) rotateZ(359deg)',
