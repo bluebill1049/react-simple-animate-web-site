@@ -3,56 +3,7 @@ import Layout from '../components/layout'
 import ContentHeader from '../components/contentHeader'
 import { ContentContainer } from '../styled/containers'
 import Helmet from 'react-helmet'
-import { docco } from 'react-syntax-highlighter/styles/hljs'
-import SyntaxHighlighter from 'react-syntax-highlighter/prism-light'
 import { Link } from 'gatsby'
-
-const useAnimate = `import React from 'react'
-import { useAnimate } from 'react-simple-animate';
-
-export default function example() {
-  const {style, play, isPlaying} = useAnimate({
-    start: { opacity: 0 }, // refer <Animate /> for props information
-    end: { opacity: 1 }
-  });
-  
-  return <>
-    <div style={style}>show me</div>
-    <button onClick={() => play(!isPlaying)}>Play</button>
-  </>;
-}`
-
-const useKeyframes = `import React from 'react'
-import { useAnimateKeyframes } from 'react-simple-animate';
-
-export default function example() {
-  const {style, play, isPlaying} = useAnimateKeyframes({
-    keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
-  });
-  
-  return <>
-    <div style={style}>show me</div>
-    <button onClick={() => play(!isPlaying)}>Play</button>
-  </>;
-}`
-
-const useAnimateGroup = `import React from 'react'
-import { useAnimateGroup } from 'react-simple-animate';
-
-export default function example() {
-  const {styles, play, isPlaying} = useAnimateGroup({
-    sequences: [{
-      start: { opacity: 0 }, // refer <Animate /> for props information
-      end: { opacity: 1 },
-      keyframes: [ 'opacity: 0', 'opacity: 1' ], // refer <AniamteKeyframes /> for props information
-    }]
-  });
-  
-  return <>
-    {styles.map(style => <div style={style}>show me</div>)}
-    <button onClick={() => play(!isPlaying)}>Play</button>
-  </>;
-}`
 
 const AnimateGroup = ({ location }) => (
   <Layout location={location}>
@@ -75,9 +26,12 @@ const AnimateGroup = ({ location }) => (
         .
       </p>
 
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {useAnimate}
-      </SyntaxHighlighter>
+      <iframe
+        title="react simple animate with useAnimate"
+        src="https://codesandbox.io/embed/useanimate-iuui5"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
 
       <h3>useAnimateKeyframes</h3>
 
@@ -89,9 +43,12 @@ const AnimateGroup = ({ location }) => (
         .
       </p>
 
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {useKeyframes}
-      </SyntaxHighlighter>
+      <iframe
+        title="react simple animate with useAnimateKeyframes"
+        src="https://codesandbox.io/embed/9q2kypmrrp"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
 
       <h3>useAnimateGroup</h3>
       <p>
@@ -102,9 +59,13 @@ const AnimateGroup = ({ location }) => (
         .
       </p>
 
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {useAnimateGroup}
-      </SyntaxHighlighter>
+
+      <iframe
+        title="react simple animate with useAnimateGroup"
+        src="https://codesandbox.io/embed/r4xpko5pwp"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
     </ContentContainer>
   </Layout>
 )
