@@ -57,6 +57,17 @@ const AnimateGroup = ({ location }) => (
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
 
+      <h3>AnimateKeyFrames to create looping animation</h3>
+
+      <p>Fire wave effect with AnimateKeyFrames</p>
+
+      <iframe
+        title="Fire wave effect with AnimateKeyFrames"
+        src="https://codesandbox.io/embed/z49nj0q5m"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
+
       <h3>Use Hooks to control Animate</h3>
 
       <p>Toggle animation is even simpler.</p>
