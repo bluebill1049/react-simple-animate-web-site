@@ -73,7 +73,7 @@ const AnimateGroup = ({ location }) => (
 
       <iframe
         title="Animate with speed control"
-        src="https://codesandbox.io/embed/m52301on5x?view=editor"
+        src="https://codesandbox.io/embed/control-duration-3k2i9?view=editor"
         style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
