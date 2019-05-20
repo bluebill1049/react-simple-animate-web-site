@@ -49,6 +49,25 @@ export default [
   {
     name: (
       <>
+        pause: <PropType>boolean</PropType> = false
+      </>
+    ),
+    description: (
+      <>
+        An animation is running or paused:&nbsp;
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          animation-play-state
+        </a>
+      </>
+    ),
+  },
+  {
+    name: (
+      <>
         keyframes: <PropType>{'Array<string> | Array<Object>'}</PropType> <i>required</i>
       </>
     ),

@@ -10,7 +10,7 @@ const exmaple = `import React from 'react';
 import { AnimateKeyframes }  from 'react-simple-animate';
 import YourComponent from './YourComponent';
 
-export default ({ children, play }) => (
+export default ({ play }) => (
   <AnimateKeyframes 
     play 
     delay={1}

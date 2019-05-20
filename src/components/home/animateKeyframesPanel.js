@@ -13,7 +13,8 @@ import CodeToggleButton from "../codeToggleButtons";
 registerLanguage('jsx', jsx)
 
 const code = play => `<AnimateKeyframes
-  play={${!play ? 'true' : 'false'}}
+  play
+  pause={${!play ? 'true' : 'false'}}
   iterationCount="infinite"
   direction="alternate"
   duration={5}
