@@ -5,6 +5,15 @@ import styled from 'styled-components'
 const Container = styled.div`
   padding: 20px;
   position: relative;
+  
+  & pre {
+    padding-top: 50px !important;
+    
+    @media (min-width: 768px) {
+      
+    padding-top: 10px !important;
+    }
+  }
 
   @media (min-width: 1024px) {
     max-width: 800px;
