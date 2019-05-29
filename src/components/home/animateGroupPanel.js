@@ -58,7 +58,7 @@ export default function AnimatePanel() {
   const [mode, setMode] = useState('component')
 
   return (
-    <CodeContainer title="Animation Sequences" description="Control Animate components sequences">
+    <CodeContainer title="Animation Sequences" description="Control component's animation sequences">
       <CharacterGroup>
         <AnimateGroup play={play}>
           {['R', 'E', 'A', 'C', 'T'].map((item, index) => {

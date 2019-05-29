@@ -38,7 +38,7 @@ export default function AnimatePanel() {
   const [mode, setMode] = useState('component')
 
   return (
-    <CodeContainer title="Transition from inline style A to B." description="Inline style React animation made easy">
+    <CodeContainer title="Transition from style A to B." description="React style animation made easy">
       <Animate play={play} start={{ opacity: 1, filter: 'blur(0)' }} end={{ opacity: 0, filter: 'blur(10px)' }}>
         <ReactIconExtends />
       </Animate>

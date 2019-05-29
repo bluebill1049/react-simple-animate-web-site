@@ -103,7 +103,7 @@ export default function AnimateKeyframesPanel() {
   const [mode, setMode] = useState('component')
 
   return (
-    <CodeContainer title="Animate CSS Keyframes" description="Defined your animation keyframes in your Component">
+    <CodeContainer title="Animate CSS Keyframes" description="Define animation keyframes in the Component">
       <ViewWrapper>
         <View>
           <AnimateKeyframes
