@@ -5,6 +5,7 @@ import ContentHeader from '../components/contentHeader'
 import colors from '../styled/colors'
 import { ContentContainer } from '../styled/containers'
 import Helmet from 'react-helmet'
+import { Link } from '@reach/router'
 
 const InlineCode = styled.code`
   display: block;
@@ -31,7 +32,7 @@ const AnimateGroup = ({ location }) => (
         Animation with React can be difficult, there are a number of libraries out there that attempt to solve this but
         most of them require deep learning, specific configuration and can be a large dependency for your project.{' '}
         <code>React Simple Animate</code> focuses on standard CSS animation leveraging existing knowledge of styling and
-        aims to provide simple and great experience to get you on board with React animation.
+        aims to provide a simple and great experience to get you on board with React animation.
       </p>
 
       <p>The package provided some of the key features below:</p>
@@ -52,9 +53,12 @@ const AnimateGroup = ({ location }) => (
       <h3>Getting Started</h3>
 
       <p>
-        The following example demonstrates doing basic animation from style <b>A</b> to <b>B</b>, which is perfect to
-        use <code>{`<Animate />`}</code> Component, by declaring <code>start</code>, <code>end</code> and a local state
-        to control the <code>play</code> animation.
+        The following example demonstrates basic animation from style <b>A</b> to <b>B</b> with{' '}
+        <Link to="/animate">
+          <code>{`<Animate />`}</code>
+        </Link>{' '}
+        Component, by declaring <code>start</code>, <code>end</code> props with a local state to control the{' '}
+        <code>play</code> animation.
       </p>
 
       <iframe
@@ -80,7 +84,10 @@ const AnimateGroup = ({ location }) => (
 
       <h3>Animation with CSS keyframes</h3>
 
-      <p>You can easily apply CSS keyframes animation</p>
+      <p>
+        You can easily apply CSS keyframes animation in <Link to="/animate-keyframes">{`<AnimateKeyframes />`}</Link>{' '}
+        Component by supply an array of styles.
+      </p>
 
       <iframe
         title="Apply complete style after animation is finished"

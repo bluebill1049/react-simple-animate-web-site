@@ -3,17 +3,18 @@ import styled from 'styled-components'
 import { Animate } from 'react-simple-animate'
 import { MenuContext } from '../components/layout'
 import colors from '../styled/colors'
+import GitHubButton from 'react-github-btn'
 
 const GitHub = styled.span`
   position: absolute;
   top: 15px;
-  right: 60px;
+  right: 146px;
 `
 
 const Medium = styled.span`
   position: absolute;
   top: 18px;
-  right: 20px;
+  right: 110px;
 `
 
 const Menu = styled.span`
@@ -25,6 +26,12 @@ const Menu = styled.span`
   @media (min-width: 1024px) {
     display: none !important;
   }
+`
+
+const GitHubButtonWrapper = styled.span`
+  position: absolute;
+  right: 10px;
+  top: 15px;
 `
 
 const style = {
@@ -97,6 +104,9 @@ export default class TopMenuGroup extends React.PureComponent {
                   </Menu>
                 )}
               />
+              <GitHubButtonWrapper>
+              <GitHubButton href="https://github.com/bluebill1049/react-simple-animate" data-icon="octicon-star" data-show-count="true" aria-label="Star bluebill1049/react-simple-animate on GitHub">Star</GitHubButton>
+              </GitHubButtonWrapper>
               <a rel="noopener noreferrer" href="https://github.com/bluebill1049/react-simple-animate" target="_blank">
                 <GitHub>
                   <svg viewBox="0 0 496 512" height="30" aria-hidden="true" focusable="false" fill="currentColor">
