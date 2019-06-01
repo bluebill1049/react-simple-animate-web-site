@@ -4,7 +4,7 @@ import colors from '../styled/colors'
 import logo from '../images/logo.svg'
 
 const Root = styled.div`
-  padding: 20px;
+  padding: 0 20px 20px;
   color: ${colors.white};
   background: ${colors.secondary};
   font-size: 14px;
@@ -34,6 +34,27 @@ export default function Footer() {
       </span>
       ️&nbsp;by <a href="https://twitter.com/bluebill1049">@Bill Luo</a> & <img src={logo} alt="logo" />{' '}
       {`<React Simple Animate />`}
+
+      <a
+        href="https://www.producthunt.com/posts/react-simple-animate?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-react-simple-animate"
+        target="_blank"
+        style={{
+          top: 13,
+          position: 'relative',
+          marginLeft: 10
+        }}
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=156850&theme=dark"
+          alt="React Simple Animate - UI animation made simple | Product Hunt Embed"
+          width="150px"
+          height="35px"
+          style={{
+            margin: 0
+          }}
+        />
+      </a>
     </Root>
   )
 }
