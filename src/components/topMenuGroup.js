@@ -8,13 +8,13 @@ import GitHubButton from 'react-github-btn'
 const GitHub = styled.span`
   position: absolute;
   top: 15px;
-  right: 146px;
+  right: 156px;
 `
 
 const Medium = styled.span`
   position: absolute;
   top: 18px;
-  right: 110px;
+  right: 120px;
 `
 
 const Menu = styled.span`
