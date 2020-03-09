@@ -46,7 +46,7 @@ const AnimateGroup = ({ location }) => (
       <h3>Animate SVG</h3>
 
       <p>
-        You can use <code>{`<Aniamte />`}</code> to animate svg elements, the following example will animate the{' '}
+        You can use <code>{`<Animate />`}</code> to animate svg elements, the following example will animate the{' '}
         <code>path</code> element within the <code>svg</code>.
       </p>
 
