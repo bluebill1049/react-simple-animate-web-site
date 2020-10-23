@@ -16,7 +16,7 @@ export default ({ play }) => (
     delay={1}
     duration={10}
     iterationCount={3}
-    direction="alternative"
+    direction="alternate"
     keyframes={[
       'transform: translateY(0)',
       'transform: translateY(10px)',
