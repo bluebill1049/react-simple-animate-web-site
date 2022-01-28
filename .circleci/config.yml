@@ -12,7 +12,3 @@ jobs:
       - run: yarn install && yarn build
 
       - run: cp ./now.json ./public
-
-      - run: sudo npm install --global --unsafe-perm vercel
-
-      - run: vercel -t $NOW_TOKEN ./public && vercel -t $NOW_TOKEN alias
