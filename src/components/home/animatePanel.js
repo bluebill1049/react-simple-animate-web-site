@@ -14,6 +14,8 @@ registerLanguage('jsx', jsx)
 
 const ReactIconExtends = styled(ReactIcon)`
   max-height: 250px;
+  margin: 0 auto;
+  display: block;
 `
 
 const code = play => `<Animate
