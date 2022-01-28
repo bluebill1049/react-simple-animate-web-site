@@ -13,6 +13,6 @@ jobs:
 
       - run: cp ./now.json ./public
 
-      - run: sudo npm install --global --unsafe-perm now@13.1.2
+      - run: sudo npm install --global --unsafe-perm vercel
 
-      - run: now -t $NOW_TOKEN ./public && now -t $NOW_TOKEN alias
+      - run: vercel -t $NOW_TOKEN ./public && vercel -t $NOW_TOKEN alias
