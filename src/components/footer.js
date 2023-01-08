@@ -58,9 +58,7 @@ export default function Footer() {
       </span>
       ️&nbsp;
       <RSA>
-        by <a href="https://twitter.com/bluebill1049">@Bill Luo</a> & <img src={logo} alt="logo" />{' '}
-        {`<React Simple Animate />`}
-      </RSA>
+        A project by <a href="https://www.beekai.com/" target="_blank" rel="noopener noreferrer">@Bill Luo</a></RSA>
       <ProductHuntLink
         href="https://www.producthunt.com/posts/react-simple-animate?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-react-simple-animate"
         target="_blank"
