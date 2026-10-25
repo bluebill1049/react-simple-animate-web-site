@@ -18,6 +18,7 @@ const snippets = {
 
 <Animate
   play={isOpen}
+  transitionProperty="opacity, transform"
   start={{ opacity: 0, transform: 'translateY(12px)' }}
   end={{ opacity: 1, transform: 'translateY(0)' }}
 >
@@ -315,22 +316,44 @@ const docs = {
   },
   '/animate': {
     kicker: 'PRIMITIVE 01', title: '<Animate />', description: 'Transition a component from style A to style B—and back again.', demo: 'transition', code: snippets.animate,
-    props: [['play','boolean','Starts or reverses the animation.'],['cancel','boolean','Cancels the current run when true. Clear before starting another run.'],['start','object','The component’s initial inline styles.'],['end','object','The inline styles to transition toward.'],['duration','number','Animation duration in seconds. Default: 0.3.'],['delay','number','Delay before the animation begins, in seconds.'],['easeType','string','A CSS easing value such as ease-out or cubic-bezier(...).'],['onStart','function','Runs once when the transition starts.'],['onComplete','function','Runs once when the transition completes.'],['onCancel','function','Runs once when the transition is cancelled.'],['render','function','Render a custom element and forward supplied transition handlers.']],
+    props: [['play','boolean','Moves to end when true and back to start when false.'],['cancel','boolean','Cancels the current transition when true. Clear before starting another run.'],['start','CSSProperties','Inline styles used at the start of the transition.'],['end','CSSProperties','Inline styles applied when play is true.'],['complete','CSSProperties','Optional inline styles applied after the forward transition ends.'],['duration','number','Transition duration in seconds. Default: 0.3.'],['delay','number','Delay before the transition starts, in seconds.'],['easeType','string','CSS timing function. Default: linear.'],['transitionProperty','string','CSS properties to transition. Default: all.'],['onStart','function','Runs when the element’s own transition starts.'],['onComplete','function','Runs when its transition ends.'],['onCancel','function','Runs when its transition is cancelled.'],['sequenceIndex / sequenceId','number / string','Optional identifier and order when this animation is inside AnimateGroup.'],['render','function','Render a custom element. Apply style and forward supplied transition event handlers.']],
   },
   '/animate-keyframes': {
     kicker: 'PRIMITIVE 02', title: '<AnimateKeyframes />', description: 'Create expressive multi-step or repeating animation with CSS keyframes.', demo: 'keyframes', code: snippets.keyframes,
-    props: [['play','boolean','Starts the keyframe animation.'],['pause','boolean','Pauses or resumes the current animation.'],['cancel','boolean','Cancels the current animation run.'],['keyframes','array','An array of CSS declaration strings or percentage objects.'],['duration','number','One cycle’s duration in seconds.'],['iterationCount','string | number','The number of cycles, or infinite.'],['direction','string','normal, reverse, alternate, or alternate-reverse.'],['fillMode','string','Controls styles before and after execution.'],['onStart / onComplete / onCancel','functions','Lifecycle callbacks for the current run.'],['render','function','Render a custom element and forward supplied animation handlers.']],
+    props: [['play','boolean','Starts or reverses the keyframe animation.'],['pause','boolean','Pauses or resumes the current animation.'],['cancel','boolean','Cancels the current animation run.'],['keyframes','Keyframes','Array of CSS declaration strings, percentage-keyed frames, or CSS property objects.'],['duration','number','One cycle’s duration in seconds. Default: 0.3.'],['delay','number','Delay before the animation starts, in seconds.'],['easeType','string','CSS timing function. Default: linear.'],['iterationCount','string | number','Number of cycles, or infinite. Default: 1.'],['direction','string','normal, reverse, alternate, or alternate-reverse. Default: normal.'],['fillMode','string','none, forwards, backwards, or both. Default: none.'],['onStart / onComplete / onCancel','functions','Lifecycle callbacks for the current run.'],['sequenceIndex / sequenceId','number / string','Optional identifier and order when this animation is inside AnimateGroup.'],['render','function','Render a custom element and forward supplied animation event handlers.']],
   },
   '/animate-group': {
     kicker: 'PRIMITIVE 03', title: '<AnimateGroup />', description: 'Turn individual motions into one coordinated sequence.', demo: 'sequence', code: snippets.group,
-    props: [['play','boolean','Starts or reverses the full sequence.'],['sequenceIndex','number','Determines the order for each child animation.'],['sequenceId','string | number','Associates a child with an explicit sequence entry.'],['overlay','number','Starts an animation early by overlapping the previous one.'],['delay','number','Waits before an individual animation starts.']],
+    sections: [['Provide sequence data directly', <><p>Put <code>sequenceIndex</code>, <code>sequenceId</code>, <code>overlay</code>, and per-item <code>delay</code> on each child animation. These are child props, not <code>AnimateGroup</code> props. For data-driven sequences, pass descriptors through the group’s <code>sequences</code> prop and register matching child animations with the same indexes.</p><CodeBlock code={`<AnimateGroup play sequences={steps.map((step, index) => ({
+  sequenceIndex: index,
+  duration: 0.4,
+  transitionProperty: 'opacity, transform',
+}))}>
+  {steps.map((step, index) => (
+    <Animate key={step.id} sequenceIndex={index}
+      start={{ opacity: 0 }} end={{ opacity: 1 }}>
+      {step.label}
+    </Animate>
+  ))}
+</AnimateGroup>`} /></>]],
+    props: [['play','boolean','Starts the sequence when true and runs it in reverse when false.'],['cancel','boolean','Cancels the current group run when true.'],['sequences','array','Optional sequence descriptors that define child order and timing. When omitted, registered children with sequenceIndex or sequenceId are used.'],['children','ReactNode','Animations coordinated by the group. Set sequenceIndex or sequenceId on each Animate or AnimateKeyframes child.'],['sequenceIndex','number (child)','Orders an animation within the group. This belongs on Animate or AnimateKeyframes.'],['sequenceId','string | number (child)','Identifies a child animation. This belongs on Animate or AnimateKeyframes.'],['overlay','number (child)','Overlaps this animation with the previous one, in seconds.'],['delay','number (child)','Adds a delay before this animation, in seconds.'],['transitionProperty','string (child)','CSS properties to transition for an Animate child. Default: all.']],
   },
   '/hooks': {
     kicker: 'HOOKS', title: 'Prefer functions?', description: 'The same animation model, ready to compose inside your own components.', demo: 'hook', code: snippets.hook,
     sections: [
-      ['useAnimate', <p>Returns an inline <code>style</code> object and controls for a two-state transition. It mirrors the <code>&lt;Animate /&gt;</code> component API.</p>],
-      ['useAnimateKeyframes', <p>Creates keyframe styles without adding a wrapper component. Use it for looping, paused, or multi-stage motion.</p>],
-      ['useAnimateGroup', <p>Coordinates a list of animation style objects. It is useful when you need complete control over the rendered markup.</p>],
+      ['useAnimate', <><p>Pass <code>start</code>, <code>end</code>, and optional timing, <code>transitionProperty</code>, completion styles, and lifecycle callbacks. The hook returns <code>style</code>, <code>play(boolean)</code>, <code>cancel()</code>, <code>isPlaying</code>, and transition event handlers. Attach all three handlers to the element using the returned style so callbacks can run.</p><CodeBlock code={`const { style, play, cancel, onTransitionStart,
+  onTransitionEnd, onTransitionCancel } = useAnimate({
+  start: { opacity: 0 },
+  end: { opacity: 1 },
+  transitionProperty: 'opacity',
+  onComplete: () => console.log('Done'),
+})
+
+return <div style={style} onTransitionStart={onTransitionStart}
+  onTransitionEnd={onTransitionEnd}
+  onTransitionCancel={onTransitionCancel} />`} /></>],
+      ['useAnimateKeyframes', <><p>Pass <code>keyframes</code> and optional timing, direction, fill mode, iteration count, and lifecycle callbacks. The hook returns <code>style</code>, <code>play(boolean)</code>, <code>pause(boolean)</code>, <code>cancel()</code>, <code>isPlaying</code>, and animation event handlers. Attach the handlers to the animated element.</p></>],
+      ['useAnimateGroup', <><p>Pass a <code>sequences</code> array. Each item can describe a transition with <code>start</code>/<code>end</code>, or keyframes with <code>keyframes</code>, along with timing and callbacks. Transition items also accept <code>transitionProperty</code> to limit which CSS properties animate. The hook returns one style and one handler object per item, plus <code>play(boolean)</code>, <code>cancel()</code>, and <code>isPlaying</code>. Apply each style and its matching handlers to the corresponding rendered element.</p></>],
       ['Cancel and observe a hook animation', <HookCancelDemo />],
     ],
   },
