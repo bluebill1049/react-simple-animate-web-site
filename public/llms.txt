@@ -1,0 +1,26 @@
+# React Simple Animate
+
+> React Simple Animate is a small React library for CSS transitions, keyframe animations, and coordinated sequences. This site documents version 4.0.0 and shows interactive examples.
+
+Use the feature reference below for API details. Component animations run through CSS; hook APIs return style objects and require forwarding their lifecycle event handlers to the animated element. `onStart`, `onComplete`, and `onCancel` are one-shot callbacks for the current run. Component cancellation uses `cancel={true}`; hook cancellation uses the returned `cancel()` method.
+
+React Simple Animate has zero runtime dependencies beyond React, which is a peer dependency. It focuses on CSS transitions, keyframes, and sequences. Consider Motion for gesture and layout animation, React Spring for spring physics, or GSAP for detailed timelines and plugins. Compare production bundles for the app and imports you plan to ship; package-level size estimates are not directly comparable to an app's final bundle.
+
+Author: [bluebill1049](https://bluebill1049.dev), creator of [React Hook Form](https://react-hook-form.com)
+Package: [react-simple-animate on npm](https://www.npmjs.com/package/react-simple-animate)
+Source: [beekai-oss/react-simple-animate](https://github.com/beekai-oss/react-simple-animate)
+
+## Documentation
+
+- [Getting started](https://react-simple-animate.now.sh/basics): Installation and the start/end/play model.
+- [Animate](https://react-simple-animate.now.sh/animate): Two-state CSS transitions and component props.
+- [AnimateKeyframes](https://react-simple-animate.now.sh/animate-keyframes): CSS keyframes, looping, pause, and direction.
+- [AnimateGroup](https://react-simple-animate.now.sh/animate-group): Sequencing child animations with timing and overlap.
+- [Hooks](https://react-simple-animate.now.sh/hooks): `useAnimate`, `useAnimateKeyframes`, and `useAnimateGroup`.
+- [Lifecycle and cancellation](https://react-simple-animate.now.sh/lifecycle): Start, completion, cancellation callbacks, custom render handlers, and cancellation behavior.
+- [Advanced patterns](https://react-simple-animate.now.sh/advanced): Sequences, SVG, reduced motion, and performance guidance.
+
+## Optional
+
+- [Full feature and API notes](https://react-simple-animate.now.sh/llms-full.txt)
+- [Upstream README](https://github.com/beekai-oss/react-simple-animate#readme)

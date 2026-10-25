@@ -5,6 +5,12 @@ yarn-error.log
 
 # Build directory
 /public
+!/public/
+/public/*
+!/public/llms.txt
+!/public/llms-full.txt
+!/public/robots.txt
+!/public/sitemap.xml
 /dist
 .DS_Store
 .idea/

@@ -52,11 +52,35 @@ try {
     const canonical = `${siteUrl}${route === '/' ? '/' : route}`
     const description = escapeHtml(metadata.description)
     const title = escapeHtml(metadata.title)
+    const structuredData = route === '/'
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'React Simple Animate',
+          applicationCategory: 'DeveloperApplication',
+          operatingSystem: 'Any',
+          softwareVersion: '4.0.0',
+          description: metadata.description,
+          url: canonical,
+          downloadUrl: 'https://www.npmjs.com/package/react-simple-animate',
+          author: { '@type': 'Person', name: 'bluebill1049', url: 'https://bluebill1049.dev' },
+        }
+      : {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          headline: metadata.title.replace(/ — React Simple Animate$/, ''),
+          description: metadata.description,
+          url: canonical,
+          inLanguage: 'en',
+          author: { '@type': 'Person', name: 'bluebill1049', url: 'https://bluebill1049.dev' },
+          about: { '@type': 'SoftwareApplication', name: 'React Simple Animate', softwareVersion: '4.0.0' },
+        }
+    const structuredDataTag = `<script type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</script>`
     let html = shell
       .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
       .replace(/<meta name="description" content="[^"]*"\s*\/>/, `<meta name="description" content="${description}" />`)
       .replace('<div id="root"></div>', `<div id="root">${content}</div>`)
-      .replace('</head>', `<link rel="canonical" href="${canonical}" />\n    <meta property="og:title" content="${title}" />\n    <meta property="og:description" content="${description}" />\n    <meta property="og:url" content="${canonical}" />\n    <meta property="og:type" content="website" />\n    <meta name="twitter:card" content="summary" />\n    </head>`)
+      .replace('</head>', `<link rel="canonical" href="${canonical}" />\n    <meta property="og:title" content="${title}" />\n    <meta property="og:description" content="${description}" />\n    <meta property="og:url" content="${canonical}" />\n    <meta property="og:type" content="website" />\n    <meta name="twitter:card" content="summary" />\n    ${structuredDataTag}\n    </head>`)
 
     const outputDir = route === '/' ? path.resolve('dist') : path.resolve('dist', `.${route}`)
     await mkdir(outputDir, { recursive: true })

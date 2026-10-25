@@ -1,0 +1,88 @@
+# React Simple Animate: AI Reference
+
+React Simple Animate 4.0.0 provides CSS-based motion for React through three components (`Animate`, `AnimateKeyframes`, and `AnimateGroup`) and three hooks (`useAnimate`, `useAnimateKeyframes`, and `useAnimateGroup`). Install with `npm install react-simple-animate`. The author, bluebill1049, is also the creator of [React Hook Form](https://react-hook-form.com).
+
+The package has no runtime dependencies; React is specified as a peer dependency. Its focused scope is CSS transitions, keyframes, and sequences. Motion for React provides a broader declarative animation API including gestures, scroll triggers, and layout transitions. React Spring focuses on spring physics and animated values. GSAP offers imperative tweens, detailed timelines, and plugins. These tools target different use cases; measure the production bundle with the imports and bundler configuration used by your app before drawing size conclusions.
+
+## Core concepts
+
+- `Animate` transitions from `start` styles to `end` styles. `play` selects the end or start state, so setting it to false reverses the transition.
+- `AnimateKeyframes` applies CSS keyframes. It supports duration, delay, easing, direction, fill mode, iteration count, pause, and sequence membership.
+- `AnimateGroup` coordinates child animations by `sequenceIndex` or `sequenceId`. `overlay` can make a sequence start an item before the previous item finishes.
+- Hooks return styles and play controls for custom markup. Attach the returned native transition or animation event handlers to the actual animated element.
+
+## Lifecycle and cancellation
+
+`Animate` and `AnimateKeyframes` accept `onStart`, `onComplete`, and `onCancel`. Each callback runs at most once for the current run. Transition components use transition events; keyframe components use animation events. Events bubbling from a child are ignored. Infinite keyframe runs do not complete naturally; cancelling one invokes `onCancel`.
+
+Set a component's `cancel` prop to true to stop its active run. Clear the prop before starting a new run. Cancellation is separate from `play`: `play={false}` selects the reverse/start path, while cancellation stops the current run. A cancelled transition applies its target style without a transition. Cancelling keyframes removes the animation effect and restores the underlying style.
+
+`useAnimate`, `useAnimateKeyframes`, and `useAnimateGroup` return `cancel()`. The hooks also return native event handlers needed to observe animation lifecycle events. Forward them to the animated element. `useAnimateGroup` returns `handlers` aligned by index with `styles`.
+
+With a component's `render` prop, forward the event handlers supplied to the render callback to the element owning the animation. `Animate` uses `onTransitionStart`, `onTransitionEnd`, and `onTransitionCancel`; `AnimateKeyframes` uses `onAnimationStart`, `onAnimationEnd`, and `onAnimationCancel`.
+
+## Component API summary
+
+### Animate
+
+- `play?: boolean` — choose the active (`end`) or start state.
+- `start?: CSSProperties`, `end?: CSSProperties`, `complete?: CSSProperties` — styles for the transition states.
+- `duration?: number`, `delay?: number`, `easeType?: string` — CSS transition timing.
+- `cancel?: boolean` — cancel the active run.
+- `onStart?: () => void`, `onComplete?: () => void`, `onCancel?: () => void` — lifecycle callbacks.
+- `render?: (data) => ReactElement` — custom rendering with style and native event handlers.
+- `sequenceIndex?: number`, `sequenceId?: string | number`, `overlay?: number` — group sequence controls.
+
+### AnimateKeyframes
+
+- `keyframes: string[] | object[]` — CSS declarations or keyframe objects.
+- `play?: boolean`, `pause?: boolean`, `cancel?: boolean` — run controls.
+- `duration?: number`, `delay?: number`, `easeType?: string` — timing.
+- `iterationCount?: string | number`, `direction?: normal | reverse | alternate | alternate-reverse`, `fillMode?: none | forwards | backwards | both`.
+- `onStart`, `onComplete`, `onCancel`, and `render` — lifecycle and custom rendering APIs as above.
+- `sequenceIndex`, `sequenceId`, and `overlay` — group sequence controls.
+
+### Hooks
+
+- `useAnimate({ start, end, complete, duration, delay, easeType, onStart, onComplete, onCancel })` returns `style`, `play(boolean)`, `cancel()`, and transition handlers.
+- `useAnimateKeyframes({ keyframes, duration, delay, easeType, direction, fillMode, iterationCount, onStart, onComplete, onCancel })` returns `style`, `play(boolean)`, `cancel()`, and animation handlers.
+- `useAnimateGroup({ sequences, onCancel })` returns `styles`, matching `handlers`, `play(boolean)`, `cancel()`, and `isPlaying`.
+
+## Accessibility and performance
+
+Respect `prefers-reduced-motion` for decorative animation. Prefer transforms and opacity for frequent motion to avoid unnecessary layout work. Keep essential information available without requiring an animation to finish.
+
+## Common questions
+
+### Does React Simple Animate use JavaScript animation or CSS?
+
+It applies CSS transitions and CSS keyframes. Supply CSS-compatible style values or keyframe declarations; use React state to control when an animation runs.
+
+### How do I reverse an `Animate` transition?
+
+Set `play` to `false`. The component transitions back toward `start`. The `cancel` prop has different behavior: it stops the current run and is not the reverse control.
+
+### How do I use the hooks with custom markup?
+
+Apply the returned `style` to the element being animated and attach the returned transition or animation event handlers to that same element. This lets the hook observe lifecycle events.
+
+### Does an infinite keyframe animation call `onComplete`?
+
+No. An infinite animation has no natural completion. Cancelling it invokes `onCancel`.
+
+### Does it support reduced motion?
+
+The library does not automatically disable every animation. Check `prefers-reduced-motion` in the application and shorten or disable decorative motion, while keeping content available.
+
+## More information
+
+- [Getting started](https://react-simple-animate.now.sh/basics)
+- [Transition component](https://react-simple-animate.now.sh/animate)
+- [Keyframe component](https://react-simple-animate.now.sh/animate-keyframes)
+- [Sequence component](https://react-simple-animate.now.sh/animate-group)
+- [Hooks](https://react-simple-animate.now.sh/hooks)
+- [Lifecycle details and demo](https://react-simple-animate.now.sh/lifecycle)
+- [Advanced examples](https://react-simple-animate.now.sh/advanced)
+- [npm package](https://www.npmjs.com/package/react-simple-animate)
+- [Source repository](https://github.com/beekai-oss/react-simple-animate)
+- [Author website](https://bluebill1049.dev)
