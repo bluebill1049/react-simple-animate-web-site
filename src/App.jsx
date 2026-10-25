@@ -232,6 +232,18 @@ function Home() {
             </div>
           </div>
         </section>
+
+        <section className="section shell comparison">
+          <div className="comparison-heading"><div><span className="section-index">04 / PICK THE RIGHT TOOL</span><h2>Small surface.<br />Focused motion.</h2></div><div><p>React Simple Animate covers common UI motion with CSS transitions, keyframes, and sequences. The package has zero runtime dependencies beyond its React peer dependency.</p><CodeBlock code={`<Animate play={open}\n  start={{ opacity: 0, transform: 'translateY(12px)' }}\n  end={{ opacity: 1, transform: 'translateY(0)' }}>\n  <Panel />\n</Animate>`} /></div></div>
+          <div className="comparison-table" role="table" aria-label="Animation library comparison">
+            <div className="comparison-row comparison-labels" role="row"><span role="columnheader">Library</span><span role="columnheader">Approach</span><span role="columnheader">Use it when you need</span></div>
+            <div className="comparison-row is-current" role="row"><strong role="cell">React Simple Animate</strong><span role="cell">CSS transitions and keyframes</span><span role="cell">A small API for everyday component motion and sequences.</span></div>
+            <div className="comparison-row" role="row"><a role="cell" href="https://motion.dev/docs/react-animation" target="_blank" rel="noreferrer">Motion for React</a><span role="cell">Declarative motion components</span><span role="cell">Gestures, scroll triggers, layout changes, and enter/exit transitions.</span></div>
+            <div className="comparison-row" role="row"><a role="cell" href="https://www.react-spring.dev/docs/getting-started" target="_blank" rel="noreferrer">React Spring</a><span role="cell">Spring physics and animated values</span><span role="cell">Physics-driven motion that responds to changing values.</span></div>
+            <div className="comparison-row" role="row"><a role="cell" href="https://gsap.com/docs/v3/GSAP/Timeline/" target="_blank" rel="noreferrer">GSAP</a><span role="cell">Imperative tweens and timelines</span><span role="cell">Detailed choreography, precise timeline control, and a broad plugin ecosystem.</span></div>
+          </div>
+          <p className="comparison-note">These libraries solve different problems. Bundle size depends on the imports and build setup; compare your production bundles when file size is a deciding factor.</p>
+        </section>
       </main>
     </>
   )
@@ -413,7 +425,7 @@ function NotFound() {
 }
 
 function Footer() {
-  return <footer><div className="shell footer-grid"><div><Link className="brand" to="/"><span className="logo-wrap"><img src={logo} alt="" /></span><span>React Simple Animate</span></Link><p>UI animation made simple.</p><p className="author-credit">Created by <a href="https://bluebill1049.dev" target="_blank" rel="noreferrer">bluebill1049</a></p></div><div><span>LEARN</span><Link to="/basics">Get started</Link><Link to="/animate">API</Link><Link to="/advanced">Patterns</Link></div><div><span>PROJECT</span><a href="https://github.com/beekai-oss/react-simple-animate" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.npmjs.com/package/react-simple-animate" target="_blank" rel="noreferrer">npm</a><a href="https://github.com/beekai-oss/react-simple-animate/blob/master/LICENSE" target="_blank" rel="noreferrer">License</a></div></div><div className="shell footer-base"><span>Built for React, powered by CSS.</span><span>MIT License</span></div></footer>
+  return <footer><div className="shell footer-grid"><div><Link className="brand" to="/"><span className="logo-wrap"><img src={logo} alt="" /></span><span>React Simple Animate</span></Link><p>UI animation made simple.</p><p className="author-credit">Created by <a href="https://bluebill1049.dev" target="_blank" rel="noreferrer">bluebill1049</a>, creator of <a href="https://react-hook-form.com" target="_blank" rel="noreferrer">React Hook Form</a></p></div><div><span>LEARN</span><Link to="/basics">Get started</Link><Link to="/animate">API</Link><Link to="/advanced">Patterns</Link></div><div><span>PROJECT</span><a href="https://github.com/beekai-oss/react-simple-animate" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.npmjs.com/package/react-simple-animate" target="_blank" rel="noreferrer">npm</a><a href="https://github.com/beekai-oss/react-simple-animate/blob/master/LICENSE" target="_blank" rel="noreferrer">License</a></div></div><div className="shell footer-base"><span>Built for React, powered by CSS.</span><span>MIT License</span></div></footer>
 }
 
 function ScrollToTop() {
