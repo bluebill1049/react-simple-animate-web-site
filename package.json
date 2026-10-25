@@ -1,44 +1,34 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "react-simple-animate-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Documentation and examples for React Simple Animate",
+  "type": "module",
+  "packageManager": "pnpm@10.19.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prerender.js",
+    "preview": "vite preview",
+    "check": "vite build"
+  },
   "dependencies": {
-    "@material-ui/core": "^3.3.1",
-    "gatsby": "^2.0.19",
-    "gatsby-image": "^2.0.15",
-    "gatsby-plugin-google-analytics": "^2.0.20",
-    "gatsby-plugin-manifest": "^2.0.5",
-    "gatsby-plugin-offline": "^2.0.5",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.7",
-    "gatsby-plugin-sitemap": "^2.0.2",
-    "gatsby-plugin-styled-components": "^3.0.0",
-    "gatsby-source-filesystem": "^2.0.4",
-    "gatsby-transformer-sharp": "^2.1.4",
-    "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0",
-    "react-github-btn": "^1.0.5",
-    "react-helmet": "^5.2.0",
-    "react-simple-animate": "^3.1.0",
-    "react-syntax-highlighter": "^9.0.1",
-    "styled-components": "^4.0.2",
-    "typeface-fjalla-one": "^0.0.54"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "react-simple-animate": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.5"
   },
   "keywords": [
-    "gatsby"
+    "react",
+    "animation",
+    "documentation"
   ],
-  "alias": "react-simple-aniamte",
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"src/**/*.js\"",
-    "isMenuVisible": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/bluebill1049/react-simple-animate-web-site"
   }
 }

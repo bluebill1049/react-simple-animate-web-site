@@ -1,14 +1,12 @@
-<div align="center"><p align="center"><a href="https://react-simple-animate.now.sh"><img src="https://raw.githubusercontent.com/bluebill1049/react-simple-animate/master/logo.png" alt="React Simple Animate Logo - UI Animation Made Simple" width="180px" height="180px" /></a></p></div>
-<h1 align="center">
-  React Simple Animate Website 
-</h1>
+# React Simple Animate website
 
-## Install
+The documentation and demo site for [React Simple Animate](https://github.com/bluebill1049/react-simple-animate), built with React and Vite.
 
-    $ npm i && npm start
-    
-#### Thanks to 
+## Local development
 
-* WebStorm for IDE licence
-* ZEIT for free hosting 
-* React ❤️
+```sh
+pnpm install
+pnpm dev
+```
+
+Create a production build with `pnpm build`, then inspect it locally with `pnpm preview`.

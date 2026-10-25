@@ -1,5 +1,8 @@
 {
   "version": 2,
   "name": "react-simple-animate",
-  "alias": "react-simple-animate"
+  "alias": "react-simple-animate",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
