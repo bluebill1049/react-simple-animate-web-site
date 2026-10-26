@@ -2,7 +2,7 @@
 
 :root {
   color: #191821;
-  background: #171622;
+  background: var(--paper);
   font-family: 'Manrope', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
