@@ -235,7 +235,7 @@ function Home() {
         </section>
 
         <section className="section shell comparison">
-          <div className="comparison-heading"><div><span className="section-index">04 / PICK THE RIGHT TOOL</span><h2>Small surface.<br />Focused motion.</h2></div><div><p>React Simple Animate covers common UI motion with CSS transitions, keyframes, and sequences. The package has zero runtime dependencies beyond its React peer dependency.</p><CodeBlock code={`<Animate play={open}\n  start={{ opacity: 0, transform: 'translateY(12px)' }}\n  end={{ opacity: 1, transform: 'translateY(0)' }}>\n  <Panel />\n</Animate>`} /></div></div>
+          <div className="comparison-heading"><div><span className="section-index">04 / PICK THE RIGHT TOOL</span><h2>Small surface.<br />Focused motion.</h2></div><div><p>Keep your animation layer tiny: CSS transitions, keyframes, and sequences in a focused package with no runtime dependencies beyond React as a peer dependency.</p><CodeBlock code={`<Animate play={open}\n  start={{ opacity: 0, transform: 'translateY(12px)' }}\n  end={{ opacity: 1, transform: 'translateY(0)' }}>\n  <Panel />\n</Animate>`} /></div></div>
           <div className="comparison-table" role="table" aria-label="Animation library comparison">
             <div className="comparison-row comparison-labels" role="row"><span role="columnheader">Library</span><span role="columnheader">Approach</span><span role="columnheader">Use it when you need</span></div>
             <div className="comparison-row is-current" role="row"><strong role="cell">React Simple Animate</strong><span role="cell">CSS transitions and keyframes</span><span role="cell">A small API for everyday component motion and sequences.</span></div>

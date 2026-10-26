@@ -15,8 +15,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: var(--paper); }
+html { min-height: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; min-height: 100dvh; margin: 0; min-width: 320px; background: var(--paper); }
 button, a { font: inherit; }
 button { color: inherit; }
 a { color: inherit; }
@@ -226,7 +226,6 @@ footer { padding: 75px 0 20px; color: #fff; background: #111018; }
 }
 
 @media (max-width: 640px) {
-  body { overflow-x: clip; }
   .shell { width: min(100% - 28px, 1180px); }.header-inner { height: 64px; gap: 12px; }.nav { top: 64px; }.brand { gap: 8px; }.brand > span:last-child { font-size: 13px; }.github-link span { display: none; }.github-link { padding-left: 0; border-left: 0; }.menu-button { width: 36px; flex: 0 0 36px; }
   .hero { min-height: auto; }.hero-grid { padding-block: 64px 80px; }.hero h1 { font-size: clamp(52px, 17vw, 76px); }.lede { font-size: 16px; }.hero-actions { align-items: stretch; flex-direction: column; }.hero-actions .button { width: 100%; }
   .motion-stage { min-height: 430px; box-shadow: 14px 14px 0 var(--violet); }.orbit-scene { height: 310px; }.orbit-one { width: 230px; height: 125px; margin: -62px 0 0 -115px; }.orbit-two { width: 138px; height: 240px; margin: -120px 0 0 -69px; }.core { width: 84px; height: 84px; }.core img { width: 46px; }.stage-controls { height: 62px; }.stage-controls code { display: none; }
